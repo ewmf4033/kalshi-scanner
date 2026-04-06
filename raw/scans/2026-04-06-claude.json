@@ -1,54 +1,12 @@
 {
   "date": "2026-04-06",
-  "scan_timestamp": "2026-04-06T00:18:11Z",
+  "scan_timestamp": "2026-04-06T00:26:03Z",
   "model": "claude",
   "macro_regime": "inflationary",
-  "markets_analyzed": 49,
+  "markets_analyzed": 48,
   "trades": [
     {
-      "market": "CPI inflation above 3.1% for year ending March 2026",
-      "ticker": "KXCPIYOY-26MAR-T3.1",
-      "direction": "YES",
-      "current_price": 0.94,
-      "implied_prob": 0.94,
-      "prob_range": [
-        0.98,
-        1.0
-      ],
-      "prob_midpoint": 0.99,
-      "edge_pct": 5,
-      "catalyst": "March CPI release April 10th - data shows sustained inflation above 3%",
-      "resolution_date": "2026-04-10",
-      "entry_valid_until": "2026-04-06T23:59:59Z",
-      "confidence": "speculative",
-      "risk_notes": "Small edge below macro threshold, but strong grounding",
-      "grounding_source": "https://www.cnbc.com/2026/04/01/oecd-predicts-higher-inflation-than-fedwhat-that-means-for-your-money.html",
-      "correlation_cluster_id": "inflation",
-      "category": "macro"
-    },
-    {
-      "market": "CPI inflation above 3.0% for year ending March 2026",
-      "ticker": "KXCPIYOY-26MAR-T3.0",
-      "direction": "YES",
-      "current_price": 0.97,
-      "implied_prob": 0.9798,
-      "prob_range": [
-        0.99,
-        1.0
-      ],
-      "prob_midpoint": 0.995,
-      "edge_pct": 2,
-      "catalyst": "March CPI release April 10th - consensus expects sustained inflation",
-      "resolution_date": "2026-04-10",
-      "entry_valid_until": "2026-04-06T23:59:59Z",
-      "confidence": "speculative",
-      "risk_notes": "Edge below threshold but extremely high conviction",
-      "grounding_source": "https://tradingeconomics.com/united-states/inflation-cpi",
-      "correlation_cluster_id": "inflation",
-      "category": "macro"
-    },
-    {
-      "market": "Fed cuts rates 0 times in 2026",
+      "market": "Fed cuts 0 times in 2026",
       "ticker": "KXRATECUTCOUNT-26DEC31-T0",
       "direction": "YES",
       "current_price": 0.406,
@@ -59,51 +17,72 @@
       ],
       "prob_midpoint": 0.575,
       "edge_pct": 17,
-      "catalyst": "Rising inflation expectations reducing Fed easing pressure",
+      "catalyst": "CME FedWatch showing sustained 51% chance of no cuts through Dec 2026 amid sticky inflation",
       "resolution_date": "2027-01-01",
-      "entry_valid_until": "2026-04-30T23:59:59Z",
+      "entry_valid_until": "2026-04-10T13:00:00Z",
       "confidence": "high",
-      "risk_notes": "Geopolitical shocks could force cuts despite inflation",
-      "grounding_source": "https://www.cbsnews.com/news/federal-reserve-interest-rate-decision-iran-war/",
+      "risk_notes": "Labor market weakening or recession could force cuts despite inflation",
+      "grounding_source": "https://finance.yahoo.com/economy/policy/articles/fed-quietly-altered-march-inflation-100000735.html",
       "correlation_cluster_id": "fed_policy",
       "category": "macro"
     },
     {
-      "market": "2026 recession starts",
-      "ticker": "KXRECSSNBER-26",
-      "direction": "NO",
-      "current_price": 0.34,
-      "implied_prob": 0.34,
+      "market": "CPI inflation above 3.2% for year ending March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.2",
+      "direction": "YES",
+      "current_price": 0.86,
+      "implied_prob": 0.86,
       "prob_range": [
-        0.2,
-        0.3
+        0.9,
+        0.95
       ],
-      "prob_midpoint": 0.25,
-      "edge_pct": 9,
-      "catalyst": "Strong GDP forecasts and resilient economy metrics",
-      "resolution_date": "2027-01-31",
-      "entry_valid_until": "2026-12-31T23:59:59Z",
+      "prob_midpoint": 0.925,
+      "edge_pct": 7,
+      "catalyst": "Fed's revised inflation forecast to 2.7% supports upward pressure; energy costs from Iran conflict not yet reflected",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-09T12:00:00Z",
       "confidence": "medium",
-      "risk_notes": "Economic shocks or tariff/trade war escalation",
-      "grounding_source": "https://money.com/recession-predictions-2026/",
+      "risk_notes": "Base effects could moderate annual reading; only 4 days until resolution",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow/current-and-past-gdpnow-commentaries",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Real GDP growth above 1.5% in Q1 2026",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "NO",
+      "current_price": 0.7,
+      "implied_prob": 0.7,
+      "prob_range": [
+        0.4,
+        0.55
+      ],
+      "prob_midpoint": 0.475,
+      "edge_pct": 22,
+      "catalyst": "Atlanta Fed GDPNow nowcast down to 1.6% as of April 2, consistent decline from 3.0% peak",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-25T12:00:00Z",
+      "confidence": "high",
+      "risk_notes": "Late quarter data could boost final reading above nowcast",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow/current-and-past-gdpnow-commentaries",
       "correlation_cluster_id": "growth_gdp",
       "category": "macro"
     }
   ],
   "avoid": [
     {
-      "market": "Weather markets for temperature April 5",
-      "reason": "Event date has passed - resolution imminent"
+      "market": "NYC high temp <60\u00b0 on Apr 5, 2026",
+      "reason": "Resolution already passed - market closes today at 4:59 UTC but event was yesterday"
     },
     {
-      "market": "Ethereum price prediction April 10",
-      "reason": "Insufficient edge and high crypto volatility"
+      "market": "Miami high temp 83-84\u00b0 on Apr 5, 2026",
+      "reason": "Resolution already passed - market closes today at 4:59 UTC but event was yesterday"
     },
     {
-      "market": "Fed rate cuts above 3 times",
-      "reason": "Extremely low probabilities with minimal edge potential"
+      "market": "Chicago high temp 52-53\u00b0 on Apr 5, 2026",
+      "reason": "Resolution already passed - event was yesterday"
     }
   ],
   "no_trades_today": false,
-  "notes": "Inflationary regime with persistent above-target inflation pressures from tariffs, energy costs, and wage growth. Fed likely to maintain restrictive stance longer than markets expect. Strong GDP growth forecasts reduce recession risk below market pricing."
+  "notes": "Current macro regime shows persistent inflationary pressures with Fed maintaining hawkish stance. CME FedWatch indicates markets pricing higher probability of no cuts than Kalshi markets suggest. Recent Fed revision of 2026 inflation forecast to 2.7% from 2.4% supports sticky inflation narrative. GDP nowcasts trending lower throughout Q1 2026, creating value in betting against strong growth expectations."
 }

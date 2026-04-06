@@ -380,7 +380,7 @@ async def call_synthesizer(claude_output: str, gemini_output: str) -> str:
 
     try:
         response = client.messages.create(
-            model="claude-sonnet-4-20250514",
+            model="claude-haiku-4-5-20251001",
             max_tokens=8192,
             messages=[{"role": "user", "content": prompt}],
         )
