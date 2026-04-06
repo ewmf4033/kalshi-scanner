@@ -459,7 +459,7 @@ def send_telegram(message: str):
     for chunk in chunks:
         try:
             r = requests.post(url, json={
-                "chat_id": chat_id, "text": chunk, "parse_mode": "Markdown",
+                "chat_id": chat_id, "text": chunk, 
             }, timeout=10)
             r.raise_for_status()
         except Exception as e:

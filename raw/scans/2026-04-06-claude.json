@@ -1,113 +1,109 @@
 {
   "date": "2026-04-06",
-  "scan_timestamp": "2026-04-06T00:36:49Z",
+  "scan_timestamp": "2026-04-06T10:00:15Z",
   "model": "claude",
   "macro_regime": "inflationary",
-  "markets_analyzed": 46,
+  "markets_analyzed": 47,
   "trades": [
     {
-      "market": "CPI inflation above 3.2% YoY March 2026",
-      "ticker": "KXCPIYOY-26MAR-T3.2",
+      "market": "Fed cuts 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.401,
+      "implied_prob": 0.4046,
+      "prob_range": [
+        0.5,
+        0.65
+      ],
+      "prob_midpoint": 0.575,
+      "edge_pct": 17,
+      "catalyst": "Persistent Iran war inflation, Fed hawkish pivot",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Oil price decline would reduce inflation pressure",
+      "grounding_source": "https://cryptonews.net/news/finance/32656784/",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will there be a recession in 2026?",
+      "ticker": "KXRECSSNBER-26",
       "direction": "NO",
-      "current_price": 0.86,
-      "implied_prob": 0.86,
+      "current_price": 0.3,
+      "implied_prob": 0.3,
+      "prob_range": [
+        0.15,
+        0.25
+      ],
+      "prob_midpoint": 0.2,
+      "edge_pct": 10,
+      "catalyst": "Economist consensus shift to 20-30% recession probability",
+      "resolution_date": "2027-01-31",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "AI spending slowdown could trigger downturn",
+      "grounding_source": "https://www.goldmansachs.com/insights/articles/us-gdp-growth-is-projected-to-outperform-economist-forecasts-in-2026",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Miami high temp 84-85\u00b0F April 6",
+      "ticker": "KXHIGHMIA-26APR06-B84.5",
+      "direction": "NO",
+      "current_price": 0.47,
+      "implied_prob": 0.4845,
+      "prob_range": [
+        0.25,
+        0.35
+      ],
+      "prob_midpoint": 0.3,
+      "edge_pct": 18,
+      "catalyst": "NWS guidance showing 80-82\u00b0F range more likely",
+      "resolution_date": "2026-04-07",
+      "entry_valid_until": "2026-04-06T18:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "Late-day heating could push temps higher",
+      "grounding_source": "https://polymarket.com/event/highest-temperature-in-miami-on-april-6-2026",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    },
+    {
+      "market": "CPI above 3.3% March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.3",
+      "direction": "YES",
+      "current_price": 0.54,
+      "implied_prob": 0.54,
       "prob_range": [
         0.65,
         0.75
       ],
       "prob_midpoint": 0.7,
       "edge_pct": 16,
-      "catalyst": "March CPI release April 10 showing weaker than expected energy/shelter inflation",
+      "catalyst": "Oil shock from Iran war pushing energy costs higher",
       "resolution_date": "2026-04-10",
       "entry_valid_until": "2026-04-09T23:59:59Z",
       "confidence": "high",
-      "risk_notes": "Energy prices could spike further; shelter inflation sticky",
-      "grounding_source": "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
+      "risk_notes": "Base effects from last year could limit upside",
+      "grounding_source": "https://www.cnbc.com/2026/03/11/cpi-inflation-february-2026-breakdown.html",
       "correlation_cluster_id": "inflation",
-      "category": "macro"
-    },
-    {
-      "market": "Fed cuts 0 times in 2026",
-      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
-      "direction": "YES",
-      "current_price": 0.406,
-      "implied_prob": 0.4064,
-      "prob_range": [
-        0.55,
-        0.65
-      ],
-      "prob_midpoint": 0.6,
-      "edge_pct": 19,
-      "catalyst": "Sticky inflation readings keeping Fed hawkish through 2026",
-      "resolution_date": "2027-01-01",
-      "entry_valid_until": "2026-04-06T23:59:59Z",
-      "confidence": "high",
-      "risk_notes": "Economic slowdown could force cuts; geopolitical shocks",
-      "grounding_source": "https://www.mexc.com/news/982205",
-      "correlation_cluster_id": "fed_policy",
-      "category": "macro"
-    },
-    {
-      "market": "March CPI monthly above 0.9%",
-      "ticker": "KXCPI-26MAR-T0.9",
-      "direction": "NO",
-      "current_price": 0.56,
-      "implied_prob": 0.56,
-      "prob_range": [
-        0.35,
-        0.45
-      ],
-      "prob_midpoint": 0.4,
-      "edge_pct": 16,
-      "catalyst": "Base effects and seasonal patterns favor moderate March reading",
-      "resolution_date": "2026-04-10",
-      "entry_valid_until": "2026-04-09T23:59:59Z",
-      "confidence": "medium",
-      "risk_notes": "Energy disruptions from Iran conflict; unexpected shelter surge",
-      "grounding_source": "https://octagonai.co/news/march-2026-cpi-inflation-prediction-market-forecast/",
-      "correlation_cluster_id": "inflation",
-      "category": "macro"
-    },
-    {
-      "market": "Q1 2026 GDP above 2.0%",
-      "ticker": "KXGDP-26APR30-T2.0",
-      "direction": "NO",
-      "current_price": 0.572,
-      "implied_prob": 0.5825,
-      "prob_range": [
-        0.25,
-        0.35
-      ],
-      "prob_midpoint": 0.3,
-      "edge_pct": 28,
-      "catalyst": "Atlanta Fed GDPNow showing 1.6% Q1 growth, well below 2.0% threshold",
-      "resolution_date": "2026-04-30",
-      "entry_valid_until": "2026-04-25T23:59:59Z",
-      "confidence": "high",
-      "risk_notes": "BEA revisions could be more positive than nowcasts suggest",
-      "grounding_source": "https://www.fx.co/en/forex-news/2957586",
-      "correlation_cluster_id": "growth_gdp",
       "category": "macro"
     }
   ],
   "avoid": [
     {
-      "market": "2026 recession market",
-      "reason": "Spread too wide (>10%); insufficient edge given uncertainty"
+      "market": "Fed cuts 1 time",
+      "reason": "Low conviction with overlapping probabilities"
     },
     {
-      "market": "Weather temperature markets NYC/Miami/Chicago",
-      "reason": "Already resolved/about to resolve with obvious outcomes priced at 99%"
+      "market": "CPI monthly markets",
+      "reason": "Too many variables with narrow spreads"
     },
     {
-      "market": "Ethereum price markets",
-      "reason": "Spread >5% and insufficient crypto market data for credible edge"
-    },
-    {
-      "market": "High rate cut count markets (10+ cuts)",
-      "reason": "Illiquid with 0% volume_24h; extreme tail scenarios"
+      "market": "GDP Q1 markets",
+      "reason": "Mixed economist forecasts, high uncertainty"
     }
   ],
   "no_trades_today": false,
-  "notes": "<cite index='5-13,7-1,16-4'>Markets are pricing in a sustained inflationary regime with CME FedWatch showing 94.8% probability of April rate hold and prediction markets expecting March CPI between 3.2%-3.4% YoY versus current 2.4%</cite>. <cite index='18-1,27-3'>Cleveland Fed nowcasting 3% March CPI while Atlanta Fed GDPNow revised Q1 growth down to 1.6%</cite>, suggesting stagflationary pressures. Energy disruptions from Iran conflict creating volatility but base effects may limit March CPI upside."
+  "notes": "Inflationary regime driven by Iran war oil shock and persistent supply chain pressures. Fed likely to pause cutting despite political pressure. Market still pricing in cuts despite hawkish reality. High conviction on zero cuts given current inflation trajectory and geopolitical tensions."
 }

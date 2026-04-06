@@ -1,87 +1,78 @@
 {
   "date": "2026-04-06",
   "macro_regime_claude": "inflationary",
-  "macro_regime_gemini": null,
+  "macro_regime_gemini": "no_analysis",
   "regime_agreement": false,
-  "regime_disagreement_note": "Gemini returned API 429 error; no regime assessment available. Claude assesses inflationary macro regime. Proceeding with Claude analysis only, but treating all trades as single-source with reduced conviction weighting.",
+  "regime_disagreement_note": "Gemini returned API error (429) and produced no analysis. Claude identifies inflationary regime driven by Iran war oil shock. Regime cannot be cross-validated. Proceed with caution on all trades; treat as single-source.",
   "consensus_trades": [],
   "single_source_trades": [
     {
-      "market": "CPI inflation above 3.2% YoY March 2026",
-      "ticker": "KXCPIYOY-26MAR-T3.2",
-      "direction": "NO",
+      "market": "Fed cuts 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 17,
+      "prob_range": [
+        0.5,
+        0.65
+      ],
+      "max_acceptable_price": 0.497,
+      "reason_other_missed": "Gemini API error; no analysis produced",
+      "grounding_source": "https://cryptonews.net/news/finance/32656784/",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 3
+    },
+    {
+      "market": "CPI above 3.3% March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.3",
+      "direction": "YES",
       "source": "claude",
       "edge": 16,
       "prob_range": [
         0.65,
         0.75
       ],
-      "max_acceptable_price": 0.67,
-      "reason_other_missed": "Gemini API offline; no comparative analysis available",
-      "grounding_source": "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
+      "max_acceptable_price": 0.653,
+      "reason_other_missed": "Gemini API error; no analysis produced",
+      "grounding_source": "https://www.cnbc.com/2026/03/11/cpi-inflation-february-2026-breakdown.html",
       "correlation_cluster_id": "inflation",
       "relative_weight": 3
     },
     {
-      "market": "Fed cuts 0 times in 2026",
-      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
-      "direction": "YES",
-      "source": "claude",
-      "edge": 19,
-      "prob_range": [
-        0.55,
-        0.65
-      ],
-      "max_acceptable_price": 0.52,
-      "reason_other_missed": "Gemini API offline; no comparative analysis available",
-      "grounding_source": "https://www.mexc.com/news/982205",
-      "correlation_cluster_id": "fed_policy",
-      "relative_weight": 3
-    },
-    {
-      "market": "March CPI monthly above 0.9%",
-      "ticker": "KXCPI-26MAR-T0.9",
+      "market": "Will there be a recession in 2026?",
+      "ticker": "KXRECSSNBER-26",
       "direction": "NO",
       "source": "claude",
-      "edge": 16,
+      "edge": 10,
       "prob_range": [
-        0.35,
-        0.45
+        0.15,
+        0.25
       ],
-      "max_acceptable_price": 0.47,
-      "reason_other_missed": "Gemini API offline; medium confidence only; lower edge threshold relative to macro category minimum",
-      "grounding_source": "https://octagonai.co/news/march-2026-cpi-inflation-prediction-market-forecast/",
-      "correlation_cluster_id": "inflation",
+      "max_acceptable_price": 0.82,
+      "reason_other_missed": "Gemini API error; no analysis produced. Edge meets macro threshold (\u22658%) but confidence is medium.",
+      "grounding_source": "https://www.goldmansachs.com/insights/articles/us-gdp-growth-is-projected-to-outperform-economist-forecasts-in-2026",
+      "correlation_cluster_id": "growth_gdp",
       "relative_weight": 2
     },
     {
-      "market": "Q1 2026 GDP above 2.0%",
-      "ticker": "KXGDP-26APR30-T2.0",
+      "market": "Miami high temp 84-85\u00b0F April 6",
+      "ticker": "KXHIGHMIA-26APR06-B84.5",
       "direction": "NO",
       "source": "claude",
-      "edge": 28,
+      "edge": 18,
       "prob_range": [
         0.25,
         0.35
       ],
-      "max_acceptable_price": 0.27,
-      "reason_other_missed": "Gemini API offline; strongest edge in portfolio (28%); high conviction with Atlanta Fed GDPNow support",
-      "grounding_source": "https://www.fx.co/en/forex-news/2957586",
-      "correlation_cluster_id": "growth_gdp",
-      "relative_weight": 3
+      "max_acceptable_price": 0.73,
+      "reason_other_missed": "Gemini API error; no analysis produced. Edge exceeds weather threshold (\u22655%). Urgency: entry valid until 2026-04-06T18:00:00Z (same day deadline).",
+      "grounding_source": "https://polymarket.com/event/highest-temperature-in-miami-on-april-6-2026",
+      "correlation_cluster_id": "weather_temp",
+      "relative_weight": 2
     }
   ],
   "contradictions": [],
   "cluster_exposure": [
-    {
-      "cluster_id": "inflation",
-      "total_weight": 5,
-      "over_limit": false,
-      "trades_in_cluster": [
-        "KXCPIYOY-26MAR-T3.2",
-        "KXCPI-26MAR-T0.9"
-      ]
-    },
     {
       "cluster_id": "fed_policy",
       "total_weight": 3,
@@ -91,23 +82,39 @@
       ]
     },
     {
-      "cluster_id": "growth_gdp",
+      "cluster_id": "inflation",
       "total_weight": 3,
       "over_limit": false,
       "trades_in_cluster": [
-        "KXGDP-26APR30-T2.0"
+        "KXCPIYOY-26MAR-T3.3"
+      ]
+    },
+    {
+      "cluster_id": "growth_gdp",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXRECSSNBER-26"
+      ]
+    },
+    {
+      "cluster_id": "weather_temp",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXHIGHMIA-26APR06-B84.5"
       ]
     }
   ],
-  "portfolio_concentration_warning": "Gemini API failure creates single-model dependency. All four trades sourced exclusively from Claude. Total relative_weight = 11 across 3 clusters (no cluster exceeds cap of 5, but portfolio lacks cross-validation). Two trades (KXCPIYOY-26MAR-T3.2 and KXCPI-26MAR-T0.9) resolve April 10 within 4 days; concentration of near-term catalysts. Recommend: (1) Weight allocation capped at 60% of portfolio pending Gemini recovery; (2) consider reducing March CPI position size due to clustering; (3) monitor Iran energy disruption risk which could invalidate both inflation theses.",
+  "portfolio_concentration_warning": "Gemini API failure leaves all four trades unvalidated by independent cross-check. All trades are single-source (Claude only). Total portfolio weight: 10 across four clusters, no cluster violations. However, recommend: (1) Reduce position sizes below normal single-source caps given lack of consensus validation; (2) KXHIGHMIA-26APR06-B84.5 has same-day deadline (expires 2026-04-06T18:00:00Z)\u2014execute or skip immediately; (3) three of four trades assume inflationary regime (fed_policy, inflation, growth_gdp clusters)\u2014if oil prices decline sharply or geopolitical tensions ease, entire macro thesis unravels. Suggest max 60% of intended bankroll allocation today pending Gemini recovery.",
   "no_trades_today": false,
   "reeval_triggers": [
-    "Gemini API recovery \u2014 immediate re-cross-validation required",
-    "Energy price spike exceeding $95/bbl WTI \u2014 invalidates March CPI NO thesis",
-    "Atlanta Fed GDPNow upward revision above 2.0% for Q1 \u2014 contradicts GDP NO trade",
-    "CME FedWatch rate cut probability exceeds 25% \u2014 contradicts Fed 0-cuts thesis",
-    "Cleveland Fed CPI nowcast revision above 3.5% YoY \u2014 contradicts CPI YoY NO trade",
-    "March 10 CPI release (resolution trigger for 2 of 4 trades)",
-    "April 30 GDP advanced estimate release (resolution trigger for GDP trade)"
+    "Oil price decline >10% (reduces Iran war inflation premium)",
+    "Fed surprise hawkish/dovish communication",
+    "March 2026 CPI release (April 10)",
+    "Geopolitical de-escalation in Iran conflict",
+    "Recession probability spike >35% (changes NO recession thesis)",
+    "Miami weather forecast update before 2026-04-06T18:00:00Z",
+    "Gemini service recovery\u2014re-run full cross-validation"
   ]
 }
