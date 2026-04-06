@@ -341,7 +341,7 @@ async def call_claude(prompt: str) -> str:
 async def call_gemini(prompt: str) -> str:
     log.info("Calling Gemini...")
     api_key = os.environ["GEMINI_API_KEY"]
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={api_key}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
 
     payload = {
         "contents": [{"parts": [{"text": prompt}]}],
@@ -589,6 +589,8 @@ async def run(args):
         return
 
     # --- Step 5: Synthesize ---
+    log.info("Waiting 65s for rate limit cooldown...")
+    import time as _t; _t.sleep(65)
     synth_raw = await call_synthesizer(
         json.dumps(claude_parsed, indent=2),
         json.dumps(gemini_parsed, indent=2),
