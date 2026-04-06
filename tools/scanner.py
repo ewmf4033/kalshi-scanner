@@ -78,6 +78,13 @@ SERIES_TICKERS = [
     "KXINAUGCABINET",
     "KXCEASEFIRE",
     "KXIRAN",
+    "KXHORMUZ",
+    "KXDHSSHUTDOWN",
+    "KXSHUTDOWN",
+    "KXAG",
+    "KXAIMODEL",
+    "KXAILMMSYS",
+    "KXZELDIN",
     # Finance
     "KXSP500",
     "KXFEDRATE",
