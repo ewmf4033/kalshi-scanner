@@ -1,9 +1,101 @@
 {
   "date": "2026-04-06",
-  "model": "gemini",
-  "markets_analyzed": 0,
-  "trades": [],
-  "avoid": [],
-  "no_trades_today": true,
-  "notes": "API error: 429 Client Error: Too Many Requests for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAc5mqHB4rXv2IOpRDmniqpKFbyF_Jjb64"
+  "scan_timestamp": "2026-04-06T13:18:16Z",
+  "model": "claude",
+  "macro_regime": "neutral",
+  "markets_analyzed": 44,
+  "trades": [
+    {
+      "market": "Will the rate of CPI inflation be above 3.3% for the year ending in March 2026?",
+      "ticker": "KXCPIYOY-26MAR-T3.3",
+      "direction": "YES",
+      "current_price": 0.54,
+      "implied_prob": 0.54,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "prob_midpoint": 0.7,
+      "edge_pct": 16,
+      "catalyst": "Recent CPI data and Cleveland Fed Nowcast suggest inflation is stickier than market pricing indicates.",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Unexpectedly weak CPI data release could invalidate this trade.",
+      "grounding_source": "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will **real GDP** increase by more than 3.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T3.0",
+      "direction": "YES",
+      "current_price": 0.197,
+      "implied_prob": 0.1976,
+      "prob_range": [
+        0.3,
+        0.4
+      ],
+      "prob_midpoint": 0.35,
+      "edge_pct": 15,
+      "catalyst": "Positive economic growth signals and durable investment trends suggest GDP growth may exceed market expectations.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Trade and immigration uncertainties could negatively impact GDP growth.",
+      "grounding_source": "https://www.wellsfargo.com/investment-institute/economic-outlook/",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "YES",
+      "current_price": 0.62,
+      "implied_prob": 0.6458,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "prob_midpoint": 0.8,
+      "edge_pct": 15,
+      "catalyst": "Market is underpricing the likelihood of rate cuts given current economic conditions and forward guidance.",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "The Fed may maintain current rates if inflation remains high.",
+      "grounding_source": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will the **high temp in NYC** be 56-57\u00b0 on Apr 6, 2026?",
+      "ticker": "KXHIGHNY-26APR06-B56.5",
+      "direction": "NO",
+      "current_price": 0.48,
+      "implied_prob": 0.4848,
+      "prob_range": [
+        0.35,
+        0.43
+      ],
+      "prob_midpoint": 0.39,
+      "edge_pct": 9,
+      "catalyst": "Weather forecasts suggest a lower probability of the high temperature being in the 56-57\u00b0 range.",
+      "resolution_date": "2026-04-07",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected weather pattern changes could invalidate this trade.",
+      "grounding_source": "https://www.weather.gov/",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "KXCPI-26MAR-T0.6",
+      "reason": "Wide spread."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "The economic outlook is mixed, with inflation showing signs of stickiness and GDP growth expected to continue. The Fed's policy decisions will be critical in navigating these conditions."
 }
