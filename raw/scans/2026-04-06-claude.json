@@ -1,0 +1,109 @@
+{
+  "date": "2026-04-06",
+  "scan_timestamp": "2026-04-06T00:18:11Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 49,
+  "trades": [
+    {
+      "market": "CPI inflation above 3.1% for year ending March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.1",
+      "direction": "YES",
+      "current_price": 0.94,
+      "implied_prob": 0.94,
+      "prob_range": [
+        0.98,
+        1.0
+      ],
+      "prob_midpoint": 0.99,
+      "edge_pct": 5,
+      "catalyst": "March CPI release April 10th - data shows sustained inflation above 3%",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "speculative",
+      "risk_notes": "Small edge below macro threshold, but strong grounding",
+      "grounding_source": "https://www.cnbc.com/2026/04/01/oecd-predicts-higher-inflation-than-fedwhat-that-means-for-your-money.html",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "CPI inflation above 3.0% for year ending March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.0",
+      "direction": "YES",
+      "current_price": 0.97,
+      "implied_prob": 0.9798,
+      "prob_range": [
+        0.99,
+        1.0
+      ],
+      "prob_midpoint": 0.995,
+      "edge_pct": 2,
+      "catalyst": "March CPI release April 10th - consensus expects sustained inflation",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "speculative",
+      "risk_notes": "Edge below threshold but extremely high conviction",
+      "grounding_source": "https://tradingeconomics.com/united-states/inflation-cpi",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Fed cuts rates 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.406,
+      "implied_prob": 0.4064,
+      "prob_range": [
+        0.5,
+        0.65
+      ],
+      "prob_midpoint": 0.575,
+      "edge_pct": 17,
+      "catalyst": "Rising inflation expectations reducing Fed easing pressure",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-30T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Geopolitical shocks could force cuts despite inflation",
+      "grounding_source": "https://www.cbsnews.com/news/federal-reserve-interest-rate-decision-iran-war/",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "2026 recession starts",
+      "ticker": "KXRECSSNBER-26",
+      "direction": "NO",
+      "current_price": 0.34,
+      "implied_prob": 0.34,
+      "prob_range": [
+        0.2,
+        0.3
+      ],
+      "prob_midpoint": 0.25,
+      "edge_pct": 9,
+      "catalyst": "Strong GDP forecasts and resilient economy metrics",
+      "resolution_date": "2027-01-31",
+      "entry_valid_until": "2026-12-31T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Economic shocks or tariff/trade war escalation",
+      "grounding_source": "https://money.com/recession-predictions-2026/",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Weather markets for temperature April 5",
+      "reason": "Event date has passed - resolution imminent"
+    },
+    {
+      "market": "Ethereum price prediction April 10",
+      "reason": "Insufficient edge and high crypto volatility"
+    },
+    {
+      "market": "Fed rate cuts above 3 times",
+      "reason": "Extremely low probabilities with minimal edge potential"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Inflationary regime with persistent above-target inflation pressures from tariffs, energy costs, and wage growth. Fed likely to maintain restrictive stance longer than markets expect. Strong GDP growth forecasts reduce recession risk below market pricing."
+}
