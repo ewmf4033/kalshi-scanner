@@ -253,8 +253,6 @@ def filter_and_enrich(markets: list[dict], top_n: int = TOP_N_MARKETS) -> list[d
         # Use mid_price for implied_prob (more accurate than last_price)
         implied_prob = round(mid_price, 4)
 
-        # Use mid_price for implied_prob (more accurate than last_price)
-        implied_prob = round(mid_price, 4)
 
         # Skip wide spreads (no real liquidity)
         if spread >= 0.20:
