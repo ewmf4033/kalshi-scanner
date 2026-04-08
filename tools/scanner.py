@@ -250,6 +250,12 @@ def filter_and_enrich(markets: list[dict], top_n: int = TOP_N_MARKETS) -> list[d
         # Mid price
         mid_price = round((yes_bid + yes_ask) / 2, 4) if (yes_ask > 0 and yes_bid > 0) else yes_price
 
+        # Use mid_price for implied_prob (more accurate than last_price)
+        implied_prob = round(mid_price, 4)
+
+        # Use mid_price for implied_prob (more accurate than last_price)
+        implied_prob = round(mid_price, 4)
+
         # Skip wide spreads (no real liquidity)
         if spread >= 0.20:
             continue
@@ -609,7 +615,14 @@ async def run(args):
             send_telegram(f"*Kalshi Scanner {date}*\n\nNo trades today.")
         return
 
-    # --- Step 5: Synthesize ---
+    # --- Step 5: Synthesize (abort if either model failed) ---
+    if claude_parsed.get("error") or gemini_parsed.get("error"):
+        log.error(f"Model failure detected. Claude: {claude_parsed.get('error','ok')} Gemini: {gemini_parsed.get('error','ok')}. Skipping synthesizer.")
+        consensus = {"date": date, "consensus_trades": [], "single_source_trades": [], "no_trades_today": True, "notes": "Aborted: model failure"}
+        save_raw(RAW_CONSENSUS, f'{date}-consensus.json', consensus)
+        build_and_send_alert(consensus, date, dry_run=('--dry-run' in sys.argv))
+        return
+
     log.info("Waiting 65s for rate limit cooldown...")
     import time as _t; _t.sleep(65)
     synth_raw = await call_synthesizer(
