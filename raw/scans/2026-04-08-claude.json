@@ -1,0 +1,109 @@
+{
+  "date": "2026-04-08",
+  "scan_timestamp": "2026-04-08T20:35:09Z",
+  "model": "claude",
+  "macro_regime": "neutral",
+  "markets_analyzed": 53,
+  "trades": [
+    {
+      "market": "Fed 0 rate cuts in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.311,
+      "implied_prob": 0.3138,
+      "prob_range": [
+        0.42,
+        0.52
+      ],
+      "prob_midpoint": 0.47,
+      "edge_pct": 16,
+      "catalyst": "Persistent inflation and geopolitical tensions limiting Fed rate cuts",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-29T18:00:00Z",
+      "confidence": "high",
+      "risk_notes": "Economic shock could force Fed hand; new Fed leadership mid-year",
+      "grounding_source": "https://www.benzinga.com/markets/equities/26/04/51711096/iran-ceasefire-fed-rate-cut-hopes-rate-sensitive-stocks-april-2026",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "CPI above 3.2% year-over-year March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.2",
+      "direction": "YES",
+      "current_price": 0.81,
+      "implied_prob": 0.8182,
+      "prob_range": [
+        0.88,
+        0.95
+      ],
+      "prob_midpoint": 0.915,
+      "edge_pct": 10,
+      "catalyst": "February CPI at 2.4% YoY with energy pressures building",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-10T08:00:00Z",
+      "confidence": "high",
+      "risk_notes": "Data releases in 2 days; limited time for position",
+      "grounding_source": "https://www.bls.gov/news.release/cpi.htm",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Miami high temp 82-83\u00b0F April 8",
+      "ticker": "KXHIGHMIA-26APR08-B82.5",
+      "direction": "YES",
+      "current_price": 0.78,
+      "implied_prob": 0.7573,
+      "prob_range": [
+        0.82,
+        0.88
+      ],
+      "prob_midpoint": 0.85,
+      "edge_pct": 9,
+      "catalyst": "Historical April averages for Miami around 81\u00b0F with normal variance",
+      "resolution_date": "2026-04-09",
+      "entry_valid_until": "2026-04-08T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Weather microforecasts can be volatile; resolves tomorrow",
+      "grounding_source": "https://www.weather2visit.com/north-america/united-states/miami-fl-april.htm",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    },
+    {
+      "market": "Bitcoin price range $71,250-71,499.99 April 8",
+      "ticker": "KXBTC-26APR0817-B71375",
+      "direction": "YES",
+      "current_price": 0.63,
+      "implied_prob": 0.63,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "prob_midpoint": 0.8,
+      "edge_pct": 17,
+      "catalyst": "Current Bitcoin trading around $71,400-71,800 range after ceasefire rally",
+      "resolution_date": "2026-04-08",
+      "entry_valid_until": "2026-04-08T20:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Resolves today at 5PM EDT; high intraday volatility possible",
+      "grounding_source": "https://fortune.com/article/price-of-bitcoin-04-08-2026/",
+      "correlation_cluster_id": "crypto_beta",
+      "category": "crypto"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Fed rate cuts (general market)",
+      "reason": "Spread too wide (1.9%)"
+    },
+    {
+      "market": "Q1 2026 GDP markets",
+      "reason": "Insufficient edge vs current spreads"
+    },
+    {
+      "market": "NYC weather April 9",
+      "reason": "Wide spreads (4%+) and uncertain forecast"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Mixed macro signals with Fed policy dominated by geopolitical factors. Iran ceasefire announcement shifted rate cut expectations lower. CPI data release April 10 creates short-term catalyst window. Weather markets showing typical seasonal patterns with reasonable edges."
+}

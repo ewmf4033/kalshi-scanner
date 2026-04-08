@@ -1,0 +1,94 @@
+{
+  "date": "2026-04-08",
+  "macro_regime_claude": "neutral",
+  "macro_regime_gemini": "no_data",
+  "regime_agreement": false,
+  "regime_disagreement_note": "Gemini analysis failed to return JSON. Cannot validate regime consensus. Proceeding with Claude regime as single source of truth, but treating all trades as single-source until Gemini data available.",
+  "consensus_trades": [],
+  "single_source_trades": [
+    {
+      "market": "Fed 0 rate cuts in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 16,
+      "prob_range": [
+        0.42,
+        0.52
+      ],
+      "max_acceptable_price": 0.46,
+      "reason_other_missed": "Gemini failed to return analysis; cannot cross-validate conviction or probability range",
+      "grounding_source": "https://www.benzinga.com/markets/equities/26/04/51711096/iran-ceasefire-fed-rate-cut-hopes-rate-sensitive-stocks-april-2026",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 3
+    },
+    {
+      "market": "CPI above 3.2% year-over-year March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.2",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 10,
+      "prob_range": [
+        0.88,
+        0.95
+      ],
+      "max_acceptable_price": 0.87,
+      "reason_other_missed": "Gemini failed to return analysis; ultra-short window (resolves 2026-04-10) and current_price 0.81 already below max_acceptable, requires immediate entry",
+      "grounding_source": "https://www.bls.gov/news.release/cpi.htm",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 2
+    },
+    {
+      "market": "Bitcoin price range $71,250-71,499.99 April 8",
+      "ticker": "KXBTC-26APR0817-B71375",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 17,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "max_acceptable_price": 0.8,
+      "reason_other_missed": "Gemini failed to return analysis; high conviction edge (17%) but ultra-short resolution window (today 5PM EDT) limits portfolio utility",
+      "grounding_source": "https://fortune.com/article/price-of-bitcoin-04-08-2026/",
+      "correlation_cluster_id": "crypto_beta",
+      "relative_weight": 2
+    }
+  ],
+  "contradictions": [],
+  "cluster_exposure": [
+    {
+      "cluster_id": "fed_policy",
+      "total_weight": 3,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXRATECUTCOUNT-26DEC31-T0"
+      ]
+    },
+    {
+      "cluster_id": "inflation",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXCPIYOY-26MAR-T3.2"
+      ]
+    },
+    {
+      "cluster_id": "crypto_beta",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXBTC-26APR0817-B71375"
+      ]
+    }
+  ],
+  "portfolio_concentration_warning": "Gemini model failure prevents consensus validation. All four trades are single-source (Claude only). Miami weather trade (KXHIGHMIA-26APR08-B82.5, 9% edge, resolves 2026-04-09) excluded due to: (1) inability to cross-validate against second model, (2) weather category threshold 5% met but low conviction (medium), (3) overnight resolution window reduces execution flexibility. Portfolio skews macro/inflation (5 total weight) and crypto (2 weight). Recommend waiting for Gemini repair before deploying capital; if deploying, prioritize CPI trade (2-day hard catalyst) and Fed trade (high edge, long runway), reduce Bitcoin allocation due to intraday-only window.",
+  "no_trades_today": false,
+  "reeval_triggers": [
+    "CPI data release 2026-04-10 08:00 EDT (hard catalyst for KXCPIYOY-26MAR-T3.2)",
+    "Bitcoin closes below $71,250 or above $71,500 (resolves KXBTC-26APR0817-B71375 today 5PM EDT)",
+    "Gemini model returns valid JSON (enables consensus re-evaluation and Miami weather validation)",
+    "Fed communication or economic data shift inflation/rate-cut regime before 2026-04-29 (Fed policy entry window closes)",
+    "New Fed leadership announcement (mid-year leadership transition cited as tail risk)"
+  ]
+}

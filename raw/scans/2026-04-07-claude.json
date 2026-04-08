@@ -1,0 +1,109 @@
+{
+  "date": "2026-04-07",
+  "scan_timestamp": "2026-04-07T10:00:18Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 52,
+  "trades": [
+    {
+      "market": "Fed cuts zero times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.41,
+      "implied_prob": 0.41,
+      "prob_range": [
+        0.5,
+        0.62
+      ],
+      "prob_midpoint": 0.56,
+      "edge_pct": 15,
+      "catalyst": "Market fully pricing out cuts due to Iran war oil shock and sticky inflation",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-08T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Oil price retreat or geopolitical de-escalation could revive cut expectations",
+      "grounding_source": "https://www.ainvest.com/news/federal-reserve-holds-rates-2026-cuts-fully-priced-geopolitical-tensions-2604/",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "CPI above 3.3% for year ending March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.3",
+      "direction": "NO",
+      "current_price": 0.53,
+      "implied_prob": 0.53,
+      "prob_range": [
+        0.35,
+        0.45
+      ],
+      "prob_midpoint": 0.4,
+      "edge_pct": 13,
+      "catalyst": "February CPI at 2.4% YoY gives little base effect room for 3.3%+ March outcome",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-10T08:30:00Z",
+      "confidence": "high",
+      "risk_notes": "Oil shock effects could manifest sooner than expected in March reading",
+      "grounding_source": "https://www.bls.gov/news.release/pdf/cpi.pdf",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "CPI rise more than 0.9% in March 2026",
+      "ticker": "KXCPI-26MAR-T0.9",
+      "direction": "NO",
+      "current_price": 0.5,
+      "implied_prob": 0.5,
+      "prob_range": [
+        0.25,
+        0.35
+      ],
+      "prob_midpoint": 0.3,
+      "edge_pct": 20,
+      "catalyst": "Historical March CPI prints rarely exceed 0.9% MoM; oil effects likely delayed",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-10T08:30:00Z",
+      "confidence": "medium",
+      "risk_notes": "Unprecedented oil shock could drive extreme monthly print",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Miami high temperature above 81\u00b0F on April 7, 2026",
+      "ticker": "KXHIGHMIA-26APR07-T81",
+      "direction": "YES",
+      "current_price": 0.61,
+      "implied_prob": 0.598,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "prob_midpoint": 0.8,
+      "edge_pct": 20,
+      "catalyst": "Miami April historical averages show 80-82\u00b0F typical highs; no unusual weather patterns",
+      "resolution_date": "2026-04-08",
+      "entry_valid_until": "2026-04-07T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unusual weather front could suppress temperatures",
+      "grounding_source": "https://www.weather2travel.com/florida/miami/april/",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Fed cuts exactly 1, 2, or 3 times",
+      "reason": "Spread too wide >0.01 or conflicting with zero-cut thesis"
+    },
+    {
+      "market": "Most CPI monthly markets",
+      "reason": "Insufficient edge given current uncertainty and oil shock timing"
+    },
+    {
+      "market": "GDP markets",
+      "reason": "Insufficient current information to gauge Q1 2026 performance with confidence"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Current macro regime is inflationary due to Iran war driving oil above $110/barrel and market repricing of Fed policy. Geopolitical tensions creating supply shocks that complicate disinflation narrative. Core inflation showing persistence while energy effects building. Markets have dramatically repriced Fed expectations with CME FedWatch showing 99.5% hold probability for April meeting."
+}

@@ -1,0 +1,188 @@
+{
+  "date": "2026-04-07",
+  "macro_regime_claude": "inflationary",
+  "macro_regime_gemini": "inflationary",
+  "regime_agreement": true,
+  "regime_disagreement_note": null,
+  "consensus_trades": [
+    {
+      "market": "CPI above 3.3% for year ending March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.3",
+      "direction": "NO",
+      "claude_edge": 13,
+      "gemini_edge": -22,
+      "consensus_edge": 13,
+      "aggressive_edge": 22,
+      "claude_prob_range": [
+        0.35,
+        0.45
+      ],
+      "gemini_prob_range": [
+        0.7,
+        0.8
+      ],
+      "conservative_prob_range": [
+        0.35,
+        0.45
+      ],
+      "aggressive_prob_range": [
+        0.7,
+        0.8
+      ],
+      "max_acceptable_price": 0.37,
+      "catalyst": "February CPI at 2.4% YoY; limited base effect room for 3.3%+ March outcome",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-10T08:30:00Z",
+      "confidence": "medium",
+      "risk_notes": "Models diverge sharply on outcome probability (Claude: 40% midpoint vs Gemini: 75% midpoint). Ranges do not overlap\u2014signals underlying disagreement on oil shock timing and magnitude. Current price 0.53 exceeds max_acceptable_price 0.37; entry only valid if price retreats. Oil shock could accelerate March CPI above expectations.",
+      "grounding_source": "https://www.bls.gov/news.release/pdf/cpi.pdf",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 2,
+      "category": "macro"
+    }
+  ],
+  "single_source_trades": [
+    {
+      "market": "Fed cuts zero times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 15,
+      "prob_range": [
+        0.5,
+        0.62
+      ],
+      "max_acceptable_price": 0.45,
+      "reason_other_missed": "Gemini analyzed broader 'Fed cuts before 2027' (NO direction, 18% edge) rather than specific zero-cut count. Distinct markets with different resolution mechanics. Claude's granular thesis on zero cuts driven by Iran war oil shock and sticky inflation shows higher conviction than Gemini's directional hedge.",
+      "grounding_source": "https://www.ainvest.com/news/federal-reserve-holds-rates-2026-cuts-fully-priced-geopolitical-tensions-2604/",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 3
+    },
+    {
+      "market": "CPI rise more than 0.9% in March 2026",
+      "ticker": "KXCPI-26MAR-T0.9",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 20,
+      "prob_range": [
+        0.25,
+        0.35
+      ],
+      "max_acceptable_price": 0.25,
+      "reason_other_missed": "Gemini takes opposite direction (YES, 30% edge) on same market. Claude's reasoning (historical March rarely exceeds 0.9% MoM; oil effects delayed) directly contradicts Gemini's oil shock acceleration thesis. Claude assigns medium confidence; Gemini medium. This is a directional_mismatch contradiction. Claude's historical seasonality argument is more defensible than Gemini's assertion. However, Claude's max_acceptable_price 0.25 vs current 0.5 indicates entry window closed.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 1
+    },
+    {
+      "market": "Miami high temperature above 81\u00b0F on April 7, 2026",
+      "ticker": "KXHIGHMIA-26APR07-T81",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 20,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "max_acceptable_price": 0.75,
+      "reason_other_missed": "Gemini did not analyze this weather market. Claude's edge of 20% exceeds weather category minimum (5%). April 7 is TODAY; resolution occurs overnight. Current price 0.61 < max_acceptable_price 0.75 allows entry. Historical Miami April highs 80-82\u00b0F support Claude's 0.8 midpoint.",
+      "grounding_source": "https://www.weather2travel.com/florida/miami/april/",
+      "correlation_cluster_id": "weather_temp",
+      "relative_weight": 2
+    },
+    {
+      "market": "Will real GDP increase by more than 1.5% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "YES",
+      "source": "gemini",
+      "edge": 13,
+      "prob_range": [
+        0.8,
+        0.9
+      ],
+      "max_acceptable_price": 0.82,
+      "reason_other_missed": "Claude explicitly avoids GDP markets citing insufficient current information for Q1 2026 performance. Gemini projects 0.85 midpoint (13% edge). Current price 0.716 < max_acceptable_price 0.82 allows entry. Claude's caution is reasonable; Gemini's assertion of Q1 GDP >1.5% with medium confidence lacks detailed catalyst. Edge meets 8% macro threshold but conviction is soft.",
+      "grounding_source": "https://www.bea.gov/data/gdp/gross-domestic-product",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 2
+    }
+  ],
+  "contradictions": [
+    {
+      "market": "CPI rise more than 0.9% in March 2026",
+      "contradiction_type": "direction_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.25,
+        0.35
+      ],
+      "gemini_prob_range": [
+        0.75,
+        0.85
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Claude: historical March CPI rarely exceeds 0.9% MoM; oil effects likely delayed beyond March data release. Gemini: oil shock manifests in March print, 30% edge. Claude's reasoning grounded in seasonal patterns and timing mechanics is more rigorous. Gemini's thesis of March acceleration lacks specific catalyst. Both assigned medium confidence. Current price 0.5 favors Claude's NO thesis but oil supply shock could vindicate Gemini."
+    },
+    {
+      "market": "Will the rate of CPI inflation be above 3.3% for the year ending in March 2026?",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.35,
+        0.45
+      ],
+      "gemini_prob_range": [
+        0.7,
+        0.8
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Both models analyze the same market but reach opposite directional conclusions with non-overlapping probability ranges. Claude: February YoY CPI at 2.4% leaves insufficient room to reach 3.3% for March year-ending print (13% edge, direction NO). Gemini: energy prices drive CPI above 3.3% (22% edge, direction YES). Claude's reasoning is grounded in Feb baseline math; Gemini assumes larger oil shock transmission. Current price 0.53 closer to Claude's 0.4 midpoint. February data provides hard constraint supporting Claude."
+    }
+  ],
+  "cluster_exposure": [
+    {
+      "cluster_id": "inflation",
+      "total_weight": 5,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXCPIYOY-26MAR-T3.3",
+        "KXCPI-26MAR-T0.9"
+      ]
+    },
+    {
+      "cluster_id": "fed_policy",
+      "total_weight": 3,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXRATECUTCOUNT-26DEC31-T0"
+      ]
+    },
+    {
+      "cluster_id": "growth_gdp",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXGDP-26APR30-T1.5"
+      ]
+    },
+    {
+      "cluster_id": "weather_temp",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXHIGHMIA-26APR07-T81"
+      ]
+    }
+  ],
+  "portfolio_concentration_warning": "Inflation cluster at exactly 5-weight limit. Both trades (YoY CPI and monthly CPI) depend on March 2026 CPI data release (2026-04-10), creating execution concentration risk. Resolution windows overlap. Consider staggering entries or reducing one position if pre-release volatility widens spreads. Miami weather trade resolves overnight (2026-04-08); all macro trades resolve within 23 days. Portfolio tilts heavily toward inflation data risk.",
+  "no_trades_today": false,
+  "reeval_triggers": [
+    "March 2026 CPI release (2026-04-10 08:30 UTC): may invalidate or vindicate both inflation contradictions",
+    "Oil price movement >5%: geopolitical de-escalation or supply shock acceleration alters Fed policy and inflation timing assumptions",
+    "Fed communications before April 15: any official statement on rate cuts could pivot KXRATECUTCOUNT-26DEC31-T0",
+    "Real-time Miami weather update (2026-04-07 evening): forecast changes could shift KXHIGHMIA entry",
+    "Q1 GDP advance estimate (typical mid-April): may provide clarity on Gemini's KXGDP thesis vs Claude's avoidance rationale"
+  ]
+}

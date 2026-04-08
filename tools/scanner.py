@@ -254,6 +254,10 @@ def filter_and_enrich(markets: list[dict], top_n: int = TOP_N_MARKETS) -> list[d
         if spread >= 0.20:
             continue
 
+        # Skip tail contracts (favorite-longshot bias zone)
+        if mid_price < 0.15 or mid_price > 0.85:
+            continue
+
         enriched.append({
             "ticker": m.get("ticker", ""),
             "title": m.get("title", ""),
@@ -426,12 +430,15 @@ def parse_model_json(raw: str) -> dict:
 
 
 def validate_edge(parsed: dict) -> dict:
+    """Validate edge calculations. Abort trades with direction inversions or bad data."""
     if "trades" not in parsed:
         return parsed
+    valid_trades = []
     for trade in parsed["trades"]:
         implied = trade.get("implied_prob")
         prob_range = trade.get("prob_range")
         if implied is None or prob_range is None:
+            valid_trades.append(trade)
             continue
         midpoint = (prob_range[0] + prob_range[1]) / 2
         trade["prob_midpoint"] = round(midpoint, 4)
@@ -439,11 +446,18 @@ def validate_edge(parsed: dict) -> dict:
         trade["edge_pct"] = round(edge)
         correct_direction = "YES" if midpoint > implied else "NO"
         if trade.get("direction") != correct_direction:
-            log.warning(
-                f"Direction correction: {trade.get('ticker')} "
-                f"was {trade.get('direction')}, should be {correct_direction}"
+            log.error(
+                f"DIRECTION INVERSION — DROPPING TRADE: {trade.get('ticker')} "
+                f"model said {trade.get('direction')}, math says {correct_direction} "
+                f"(midpoint={midpoint:.3f}, implied={implied:.3f}). "
+                f"Model does not understand P(YES). Trade aborted."
             )
-            trade["direction"] = correct_direction
+            continue  # DROP the trade, do not correct
+        valid_trades.append(trade)
+    dropped = len(parsed.get("trades", [])) - len(valid_trades)
+    if dropped:
+        log.warning(f"Dropped {dropped} trade(s) due to direction inversion")
+    parsed["trades"] = valid_trades
     return parsed
 
 
@@ -604,11 +618,65 @@ async def run(args):
     )
     consensus = parse_model_json(synth_raw)
 
-    # Drop negative max_acceptable_price trades
+    # Validate consensus trades: range overlap, max_acceptable_price, direction math
     if "consensus_trades" in consensus:
-        valid = [t for t in consensus["consensus_trades"]
-                 if (t.get("max_acceptable_price") or 1) > 0]
-        dropped = len(consensus["consensus_trades"]) - len(valid)
+        valid = []
+        for t in consensus.get("consensus_trades", []):
+            # Check 1: negative or zero max_acceptable_price
+            max_price = t.get("max_acceptable_price") or 1
+            if max_price <= 0:
+                log.warning(f"Dropping {t.get('ticker')}: negative max_acceptable_price ({max_price})")
+                continue
+
+            # Check 2: verify prob_ranges overlap (non-overlapping = should be contradiction)
+            cr = t.get("claude_prob_range")
+            gr = t.get("gemini_prob_range")
+            if cr and gr and len(cr) == 2 and len(gr) == 2:
+                overlap = min(cr[1], gr[1]) - max(cr[0], gr[0])
+                if overlap <= 0:
+                    log.error(
+                        f"RANGE MISMATCH — DROPPING CONSENSUS: {t.get('ticker')} "
+                        f"Claude={cr} Gemini={gr} do not overlap. "
+                        f"Synthesizer incorrectly classified as consensus."
+                    )
+                    # Move to contradictions if possible
+                    if "contradictions" not in consensus:
+                        consensus["contradictions"] = []
+                    consensus["contradictions"].append({
+                        "market": t.get("market", t.get("ticker", "unknown")),
+                        "contradiction_type": "range_mismatch",
+                        "claude_direction": t.get("direction", "?"),
+                        "gemini_direction": t.get("direction", "?"),
+                        "claude_prob_range": cr,
+                        "gemini_prob_range": gr,
+                        "stronger_reasoning": "neither",
+                        "explanation": "Python validator caught non-overlapping ranges misclassified as consensus"
+                    })
+                    continue
+
+            # Check 3: validate max_acceptable_price math
+            cons_range = t.get("conservative_prob_range")
+            category = t.get("category", "other")
+            direction = t.get("direction", "YES")
+            thresholds = {"macro": 0.08, "weather": 0.05, "politics": 0.10, "crypto": 0.12,
+                          "tech": 0.10, "sports": 0.08, "other": 0.10}
+            min_edge = thresholds.get(category, 0.10)
+            if cons_range and len(cons_range) == 2:
+                cons_mid = (cons_range[0] + cons_range[1]) / 2
+                if direction == "YES":
+                    correct_max = round(cons_mid - min_edge, 4)
+                else:
+                    correct_max = round((1 - cons_mid) - min_edge, 4)
+                if correct_max > 0 and abs(max_price - correct_max) > 0.05:
+                    log.warning(
+                        f"max_acceptable_price correction: {t.get('ticker')} "
+                        f"synthesizer said {max_price}, math says {correct_max}"
+                    )
+                    t["max_acceptable_price"] = correct_max
+
+            valid.append(t)
+
+        dropped = len(consensus.get("consensus_trades", [])) - len(valid)
         if dropped:
             log.warning(f"Dropped {dropped} trades with negative limit price")
         consensus["consensus_trades"] = valid

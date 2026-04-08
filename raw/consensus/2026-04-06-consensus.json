@@ -1,84 +1,113 @@
 {
   "date": "2026-04-06",
-  "macro_regime_claude": "unable_to_assess",
-  "macro_regime_gemini": "neutral",
-  "regime_agreement": false,
-  "regime_disagreement_note": "Claude failed to complete analysis due to rate limit error (429). Gemini reports neutral macro regime. Given Claude's unavailability, macro regime assessment is incomplete and single-source (Gemini only). Conservative approach: treat regime as uncertain and downgrade macro trades to medium-weight maximum.",
-  "consensus_trades": [],
-  "single_source_trades": [
+  "macro_regime_claude": "inflationary",
+  "macro_regime_gemini": "inflationary",
+  "regime_agreement": true,
+  "regime_disagreement_note": null,
+  "consensus_trades": [
     {
-      "market": "Will the rate of CPI inflation be above 3.3% for the year ending in March 2026?",
-      "ticker": "KXCPIYOY-26MAR-T3.3",
-      "direction": "YES",
-      "source": "gemini",
-      "edge": 16,
-      "prob_range": [
-        0.65,
-        0.75
-      ],
-      "max_acceptable_price": 0.62,
-      "reason_other_missed": "Claude did not complete analysis due to rate limit error (429). Unable to cross-validate.",
-      "grounding_source": "https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting",
-      "correlation_cluster_id": "inflation",
-      "relative_weight": 2
-    },
-    {
-      "market": "Will real GDP increase by more than 3.0% in Q1 2026?",
-      "ticker": "KXGDP-26APR30-T3.0",
-      "direction": "YES",
-      "source": "gemini",
-      "edge": 15,
-      "prob_range": [
-        0.3,
-        0.4
-      ],
-      "max_acceptable_price": 0.27,
-      "reason_other_missed": "Claude did not complete analysis due to rate limit error (429). Unable to cross-validate. Gemini confidence rated medium; downgrade single-source weight accordingly.",
-      "grounding_source": "https://www.wellsfargo.com/investment-institute/economic-outlook/",
-      "correlation_cluster_id": "growth_gdp",
-      "relative_weight": 2
-    },
-    {
-      "market": "Will the Federal Reserve cut rates before 2027?",
-      "ticker": "KXRATECUT-26DEC31",
-      "direction": "YES",
-      "source": "gemini",
-      "edge": 15,
-      "prob_range": [
-        0.75,
-        0.85
-      ],
-      "max_acceptable_price": 0.72,
-      "reason_other_missed": "Claude did not complete analysis due to rate limit error (429). Unable to cross-validate. Gemini confidence rated medium; single-source cap applies.",
-      "grounding_source": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
-      "correlation_cluster_id": "fed_policy",
-      "relative_weight": 2
-    },
-    {
-      "market": "Will the high temp in NYC be 56-57\u00b0 on Apr 6, 2026?",
-      "ticker": "KXHIGHNY-26APR06-B56.5",
+      "market": "CPI inflation year-over-year March 2026",
+      "ticker": "KXCPIYOY-26MAR",
       "direction": "NO",
-      "source": "gemini",
-      "edge": 9,
-      "prob_range": [
-        0.35,
-        0.43
+      "claude_edge": 20,
+      "gemini_edge": 12,
+      "consensus_edge": 12,
+      "aggressive_edge": 20,
+      "claude_prob_range": [
+        0.68,
+        0.82
       ],
-      "max_acceptable_price": 0.38,
-      "reason_other_missed": "Claude did not complete analysis due to rate limit error (429). Unable to cross-validate. Weather edge (9%) exceeds category minimum (5%); very short resolution window (next day) limits value.",
-      "grounding_source": "https://www.weather.gov/",
-      "correlation_cluster_id": "weather_temp",
-      "relative_weight": 1
+      "gemini_prob_range": [
+        0.6,
+        0.7
+      ],
+      "conservative_prob_range": [
+        0.6,
+        0.7
+      ],
+      "aggressive_prob_range": [
+        0.68,
+        0.82
+      ],
+      "max_acceptable_price": 0.28,
+      "catalyst": "CPI data release April 10, 2026; Cleveland Fed nowcast 3.16% suggests market overpriced on above-3.1% threshold",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-07T12:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "Iran war oil shock could push inflation higher than forecast. Claude targets 3.1% threshold (NO at 0.95 price); Gemini targets 3.3% threshold (YES at 0.52). Both expect sub-consensus inflation on primary thresholds. Current price 0.95 (Claude trade) exceeds max_acceptable_price 0.28\u2014requires vigilant entry discipline.",
+      "grounding_source": "https://finance.yahoo.com/economy/policy/articles/fed-quietly-altered-march-inflation-100000735.html",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 5,
+      "category": "macro"
     }
   ],
-  "contradictions": [],
+  "single_source_trades": [
+    {
+      "market": "Fed cuts 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 16,
+      "prob_range": [
+        0.5,
+        0.62
+      ],
+      "max_acceptable_price": 0.44,
+      "reason_other_missed": "Gemini did not analyze Fed rate cut contracts; Claude identified hawkish pivot driven by Iran war inflation and CME FedWatch data.",
+      "grounding_source": "https://www.cbsnews.com/news/interest-rates-federal-reserve-austan-goolsbee-inflation-iran-war/",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 4
+    },
+    {
+      "market": "2026 recession risk",
+      "ticker": "KXRECSSNBER-26",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 7,
+      "prob_range": [
+        0.18,
+        0.25
+      ],
+      "max_acceptable_price": 0.18,
+      "reason_other_missed": "Gemini focused on near-term CPI data releases; Claude conducted longer-horizon recession analysis citing strong job growth and economist consensus at 30% recession probability.",
+      "grounding_source": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 2
+    }
+  ],
+  "contradictions": [
+    {
+      "market": "CPI inflation thresholds March 2026",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.68,
+        0.82
+      ],
+      "gemini_prob_range": [
+        0.6,
+        0.7
+      ],
+      "stronger_reasoning": "neither",
+      "explanation": "Claude bets NO on CPI > 3.1% (at 0.95 price, edge 20%); Gemini bets YES on CPI > 3.3% (at 0.52 price, edge 12%). Both forecast sub-consensus inflation but target different thresholds. Ranges overlap [0.68, 0.7]. This is a manifestation of threshold disagreement, not direction opposition on a single contract. Treated as consensus on inflation magnitude but with different strike selection. Gemini's 3.3% threshold offers less margin of safety than Claude's 3.1% given Cleveland Fed nowcast of 3.16%."
+    }
+  ],
   "cluster_exposure": [
     {
       "cluster_id": "inflation",
-      "total_weight": 2,
+      "total_weight": 5,
       "over_limit": false,
       "trades_in_cluster": [
-        "KXCPIYOY-26MAR-T3.3"
+        "KXCPIYOY-26MAR"
+      ]
+    },
+    {
+      "cluster_id": "fed_policy",
+      "total_weight": 4,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXRATECUTCOUNT-26DEC31-T0"
       ]
     },
     {
@@ -86,34 +115,17 @@
       "total_weight": 2,
       "over_limit": false,
       "trades_in_cluster": [
-        "KXGDP-26APR30-T3.0"
-      ]
-    },
-    {
-      "cluster_id": "fed_policy",
-      "total_weight": 2,
-      "over_limit": false,
-      "trades_in_cluster": [
-        "KXRATECUT-26DEC31"
-      ]
-    },
-    {
-      "cluster_id": "weather_temp",
-      "total_weight": 1,
-      "over_limit": false,
-      "trades_in_cluster": [
-        "KXHIGHNY-26APR06-B56.5"
+        "KXRECSSNBER-26"
       ]
     }
   ],
-  "portfolio_concentration_warning": "All four trades are single-source (Gemini only). Claude's rate limit failure eliminates cross-validation and consensus-building. Recommend: (1) Reduce macro trade weights to 1-2 each until Claude analysis is available; (2) Weather trade (KXHIGHNY) has <24hr resolution\u2014tactically valid but low informational value; (3) Macro regime remains unvalidated (Gemini 'neutral' is unchallenged but unconfirmed). Portfolio is underweight relative to edge quality. Consider re-running Claude analysis when rate limits reset, or consolidating to highest-edge trades (CPI, GDP, RateCut) and deferring weather.",
+  "portfolio_concentration_warning": "Inflation cluster (weight 5) at cluster cap. Fed policy (weight 4) and growth (weight 2) provide diversification. Claude's weather trade (NYC temp) was excluded from consensus and single-source\u2014too low edge (8%) vs. weather threshold (5%), and resolution imminent (2026-04-07) with limited alpha window. Recommend deferring to next scan. Total portfolio relative weight: 11 across 3 uncorrelated clusters. Monitor for stagflation tail risk (inflation + recession simultaneously); current portfolio is hedged (long no-cut, long no-recession, short high-inflation).",
   "no_trades_today": false,
   "reeval_triggers": [
-    "Claude API rate limit recovery and re-analysis completion",
-    "CPI data release (scheduled Apr 10, 2026 for March data)",
-    "Q1 2026 GDP advance estimate (typically released ~4 weeks after quarter end, late Apr/early May)",
-    "Federal Reserve policy announcements or forward guidance changes",
-    "Significant weather pattern changes affecting NYC forecast",
-    "Macro regime shift away from 'neutral' (inflation data, labor market surprises, Fed communications)"
+    "CPI data release April 10, 2026 at 08:30 ET\u2014immediate re-evaluation if print deviates >0.2% from Cleveland Fed nowcast",
+    "Fed speaker commentary on rate path in response to March inflation data",
+    "Geopolitical escalation in Iran conflict affecting oil prices >$90/bbl",
+    "Unexpected labor market weakness (jobs report <100k or unemployment tick >4.5%)",
+    "Market repricing of Fed cut expectations in CME FedWatch post-CPI"
   ]
 }

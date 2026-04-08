@@ -1,9 +1,109 @@
 {
   "date": "2026-04-06",
+  "scan_timestamp": "2026-04-06T22:42:06Z",
   "model": "claude",
-  "markets_analyzed": 0,
-  "trades": [],
-  "avoid": [],
-  "no_trades_today": true,
-  "notes": "API error: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': \"This request would exceed your organization's rate limit of 30,000 input tokens per minute (org: 92650fe5-b4b6-44eb-b9c2-90d18ad4f3f3, model: claude-sonnet-4-20250514). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase.\"}, 'request_id': 'req_011CZnan2nikTs15NfLkrBUp'}"
+  "macro_regime": "inflationary",
+  "markets_analyzed": 49,
+  "trades": [
+    {
+      "market": "Fed cuts 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.4,
+      "implied_prob": 0.4,
+      "prob_range": [
+        0.5,
+        0.62
+      ],
+      "prob_midpoint": 0.56,
+      "edge_pct": 16,
+      "catalyst": "CME FedWatch showing no cuts through Dec 2026 due to Iran war inflation",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-07T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Economic data could force Fed dovish pivot if recession emerges",
+      "grounding_source": "https://www.cbsnews.com/news/interest-rates-federal-reserve-austan-goolsbee-inflation-iran-war/",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "CPI inflation above 3.1% March 2026",
+      "ticker": "KXCPIYOY-26MAR-T3.1",
+      "direction": "NO",
+      "current_price": 0.95,
+      "implied_prob": 0.95,
+      "prob_range": [
+        0.68,
+        0.82
+      ],
+      "prob_midpoint": 0.75,
+      "edge_pct": 20,
+      "catalyst": "Cleveland Fed nowcast projects 3.16% but market overshoot likely",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-07T12:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "Iran war oil shock could push inflation higher than forecast",
+      "grounding_source": "https://finance.yahoo.com/economy/policy/articles/fed-quietly-altered-march-inflation-100000735.html",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "2026 recession risk",
+      "ticker": "KXRECSSNBER-26",
+      "direction": "NO",
+      "current_price": 0.29,
+      "implied_prob": 0.29,
+      "prob_range": [
+        0.18,
+        0.25
+      ],
+      "prob_midpoint": 0.215,
+      "edge_pct": 7,
+      "catalyst": "Economists cut recession probability to 30% with strong job growth",
+      "resolution_date": "2027-01-31",
+      "entry_valid_until": "2026-04-08T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "AI investment bubble or severe geopolitical escalation could trigger downturn",
+      "grounding_source": "https://polymarket.com/event/us-recession-by-end-of-2026",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "NYC high temp 54-55\u00b0 April 6",
+      "ticker": "KXHIGHNY-26APR06-B54.5",
+      "direction": "NO",
+      "current_price": 0.95,
+      "implied_prob": 0.9794,
+      "prob_range": [
+        0.85,
+        0.95
+      ],
+      "prob_midpoint": 0.9,
+      "edge_pct": 8,
+      "catalyst": "Weather models show NYC high around 13-15\u00b0C (55-59\u00b0F) April 6",
+      "resolution_date": "2026-04-07",
+      "entry_valid_until": "2026-04-06T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Weather forecast uncertainty increases as event approaches",
+      "grounding_source": "https://www.easeweather.com/north-america/united-states/new-york/new-york-city/april",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "March 2026 CPI month-over-month increases",
+      "reason": "Spread too wide (>10%) on several CPI contracts making edge unclear"
+    },
+    {
+      "market": "High number Fed rate cut contracts",
+      "reason": "Low probability outcomes with minimal edge after transaction costs"
+    },
+    {
+      "market": "Ethereum price prediction",
+      "reason": "No reliable crypto forecast data source identified for April timeframe"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Iran war driving inflationary regime with oil shock concerns. Fed pivoting hawkish with market repricing cut expectations downward. Strong March jobs data reducing recession fears but creating stagflation risks."
 }
