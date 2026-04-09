@@ -442,12 +442,6 @@ def validate_edge(parsed: dict) -> dict:
         implied = trade.get("implied_prob")
         prob_range = trade.get("prob_range")
         if implied is None or prob_range is None:
-        # Enforce minimum edge threshold
-        thresholds = {"macro": 8, "weather": 5, "politics": 10, "crypto": 12, "tech": 10, "sports": 8, "other": 10}
-        cat = trade.get("category", "other")
-        min_edge = thresholds.get(cat, 10)
-        if trade.get("edge_pct", 0) < min_edge:
-            continue
             valid_trades.append(trade)
             continue
         midpoint = (prob_range[0] + prob_range[1]) / 2
@@ -630,7 +624,12 @@ async def run(args):
         log.error(f"Model failure detected. Claude: {claude_parsed.get('error','ok')} Gemini: {gemini_parsed.get('error','ok')}. Skipping synthesizer.")
         consensus = {"date": date, "consensus_trades": [], "single_source_trades": [], "no_trades_today": True, "notes": "Aborted: model failure"}
         save_raw(RAW_CONSENSUS, f'{date}-consensus.json', consensus)
-        build_and_send_alert(consensus, date, dry_run=('--dry-run' in sys.argv))
+        msg = format_telegram_alert(consensus)
+        if '--dry-run' not in sys.argv:
+            send_telegram(msg)
+        else:
+            print('--- DRY RUN ALERT ---')
+            print(msg)
         return
 
     log.info("Waiting 65s for rate limit cooldown...")
