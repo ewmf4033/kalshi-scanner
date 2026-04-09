@@ -255,7 +255,7 @@ def filter_and_enrich(markets: list[dict], top_n: int = TOP_N_MARKETS) -> list[d
 
 
         # Skip wide spreads (no real liquidity)
-        if spread >= 0.20:
+        if spread >= 0.10:
             continue
 
         # Skip tail contracts (favorite-longshot bias zone)
@@ -442,6 +442,12 @@ def validate_edge(parsed: dict) -> dict:
         implied = trade.get("implied_prob")
         prob_range = trade.get("prob_range")
         if implied is None or prob_range is None:
+        # Enforce minimum edge threshold
+        thresholds = {"macro": 8, "weather": 5, "politics": 10, "crypto": 12, "tech": 10, "sports": 8, "other": 10}
+        cat = trade.get("category", "other")
+        min_edge = thresholds.get(cat, 10)
+        if trade.get("edge_pct", 0) < min_edge:
+            continue
             valid_trades.append(trade)
             continue
         midpoint = (prob_range[0] + prob_range[1]) / 2
@@ -457,6 +463,12 @@ def validate_edge(parsed: dict) -> dict:
                 f"Model does not understand P(YES). Trade aborted."
             )
             continue  # DROP the trade, do not correct
+        # Enforce minimum edge threshold
+        thresholds = {"macro": 8, "weather": 5, "politics": 10, "crypto": 12, "tech": 10, "sports": 8, "other": 10}
+        cat = trade.get("category", "other")
+        min_edge = thresholds.get(cat, 10)
+        if trade.get("edge_pct", 0) < min_edge:
+            continue
         valid_trades.append(trade)
     dropped = len(parsed.get("trades", [])) - len(valid_trades)
     if dropped:
