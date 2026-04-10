@@ -28,3 +28,9 @@
 
 ## [2026-04-08] scan | Daily Scan
 - Markets: 50 | Claude: 4 | Gemini: 0 | Consensus: 0
+
+## [2026-04-09] scan | Daily Scan
+- Markets: 50 | Claude: 3 | Gemini: 6 | Consensus: 0
+
+## [2026-04-10] scan | Daily Scan
+- Markets: 50 | Claude: 3 | Gemini: 5 | Consensus: 1

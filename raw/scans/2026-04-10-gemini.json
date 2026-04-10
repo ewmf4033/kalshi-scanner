@@ -1,0 +1,142 @@
+{
+  "date": "2026-04-10",
+  "scan_timestamp": "2026-04-10T10:00:18Z",
+  "model": "gemini",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 47,
+  "trades": [
+    {
+      "market": "Will the rate of CPI inflation be above 3.2% for the year ending in March 2026?",
+      "ticker": "KXCPIYOY-26MAR-T3.2",
+      "direction": "NO",
+      "current_price": 0.84,
+      "implied_prob": 0.835,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "prob_midpoint": 0.7,
+      "edge_pct": 14,
+      "catalyst": "March CPI data release on April 10, 2026, showing lower than expected inflation.",
+      "resolution_date": "2026-04-10",
+      "entry_valid_until": "2026-04-10T13:25:00Z",
+      "confidence": "high",
+      "risk_notes": "Unexpected surge in energy prices or supply chain disruptions could increase inflation.",
+      "grounding_source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "NO",
+      "current_price": 0.67,
+      "implied_prob": 0.66,
+      "prob_range": [
+        0.45,
+        0.55
+      ],
+      "prob_midpoint": 0.5,
+      "edge_pct": 16,
+      "catalyst": "Recent Fed minutes and statements suggest a willingness to consider rate hikes if inflation remains high.",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-10T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "A significant economic slowdown or recession could force the Fed to cut rates.",
+      "grounding_source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will the high temp in Miami be 80-81\u00b0 on Apr 10, 2026?",
+      "ticker": "KXHIGHMIA-26APR10-B80.5",
+      "direction": "NO",
+      "current_price": 0.53,
+      "implied_prob": 0.51,
+      "prob_range": [
+        0.4,
+        0.45
+      ],
+      "prob_midpoint": 0.425,
+      "edge_pct": 8,
+      "catalyst": "Weather forecasts suggest a high temperature outside the 80-81\u00b0 range.",
+      "resolution_date": "2026-04-11",
+      "entry_valid_until": "2026-04-10T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected weather pattern shift.",
+      "grounding_source": "https://www.weather.gov/",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    },
+    {
+      "market": "Will the high temp in NYC be 63-64\u00b0 on Apr 10, 2026?",
+      "ticker": "KXHIGHNY-26APR10-B63.5",
+      "direction": "NO",
+      "current_price": 0.37,
+      "implied_prob": 0.335,
+      "prob_range": [
+        0.2,
+        0.3
+      ],
+      "prob_midpoint": 0.25,
+      "edge_pct": 9,
+      "catalyst": "Weather forecasts suggest a high temperature outside the 63-64\u00b0 range.",
+      "resolution_date": "2026-04-11",
+      "entry_valid_until": "2026-04-10T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected weather pattern shift.",
+      "grounding_source": "https://www.weather.gov/",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    },
+    {
+      "market": "Will the high temp in Chicago be 50-51\u00b0 on Apr 10, 2026?",
+      "ticker": "KXHIGHCHI-26APR10-B50.5",
+      "direction": "NO",
+      "current_price": 0.43,
+      "implied_prob": 0.445,
+      "prob_range": [
+        0.3,
+        0.4
+      ],
+      "prob_midpoint": 0.35,
+      "edge_pct": 10,
+      "catalyst": "Weather forecasts suggest a high temperature outside the 50-51\u00b0 range.",
+      "resolution_date": "2026-04-11",
+      "entry_valid_until": "2026-04-10T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected weather pattern shift.",
+      "grounding_source": "https://www.weather.gov/",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "KXCPI-26MAY-T0.5",
+      "reason": "Wide spread and low volume."
+    },
+    {
+      "market": "KXCPIYOY-26JUN-T3.7",
+      "reason": "Wide spread and low volume."
+    },
+    {
+      "market": "KXCPIYOY-26APR-T3.8",
+      "reason": "Wide spread and low volume."
+    },
+    {
+      "market": "KXCPI-26JUN-T0.5",
+      "reason": "Wide spread and low volume."
+    },
+    {
+      "market": "KXCPI-26NOV-T0.4",
+      "reason": "Wide spread and low volume."
+    },
+    {
+      "market": "KXCPI-26JUL-T0.5",
+      "reason": "Wide spread and low volume."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "The macro environment is inflationary due to the ongoing conflict in Iran, which has caused a surge in energy prices. The Fed is considering raising rates to combat inflation. CPI data will be released today, which will provide further insights into the current inflationary pressures."
+}
