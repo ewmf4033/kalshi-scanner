@@ -354,32 +354,36 @@ async def call_claude(prompt: str) -> str:
 
 
 async def call_gemini(prompt: str) -> str:
-    log.info("Calling Gemini...")
-    api_key = os.environ["GEMINI_API_KEY"]
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    """Call xAI Grok (replaced Gemini — Gemini was 1-7 on first 22 resolutions)."""
+    log.info("Calling Grok...")
+    api_key = os.environ["XAI_API_KEY"]
+    url = "https://api.x.ai/v1/chat/completions"
 
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {api_key}",
+    }
     payload = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "tools": [{"google_search": {}}],
-        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 8192},
+        "model": "grok-3-fast",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.2,
+        "max_tokens": 8192,
     }
 
     try:
-        r = requests.post(url, json=payload, timeout=180)
+        r = requests.post(url, json=payload, headers=headers, timeout=180)
         r.raise_for_status()
         data = r.json()
-        candidates = data.get("candidates", [])
-        if not candidates:
-            raise ValueError("No candidates in Gemini response")
-        parts = candidates[0].get("content", {}).get("parts", [])
-        text_parts = [p["text"] for p in parts if "text" in p]
-        result = "\n".join(text_parts).strip()
-        log.info(f"Gemini responded ({len(result)} chars)")
+        choices = data.get("choices", [])
+        if not choices:
+            raise ValueError("No choices in Grok response")
+        result = choices[0].get("message", {}).get("content", "").strip()
+        log.info(f"Grok responded ({len(result)} chars)")
         return result
     except Exception as e:
-        log.error(f"Gemini API error: {e}")
+        log.error(f"Grok API error: {e}")
         return json.dumps({
-            "date": today_str(), "model": "gemini",
+            "date": today_str(), "model": "grok",
             "markets_analyzed": 0, "trades": [],
             "avoid": [], "no_trades_today": True,
             "notes": f"API error: {str(e)}",
@@ -607,7 +611,7 @@ async def run(args):
     gemini_parsed.setdefault("model", "gemini")
 
     save_raw(RAW_SCANS, f"{date}-claude.json", claude_parsed)
-    save_raw(RAW_SCANS, f"{date}-gemini.json", gemini_parsed)
+    save_raw(RAW_SCANS, f"{date}-grok.json", gemini_parsed)
 
     # --- Step 4: Short-circuit if both empty ---
     if claude_parsed.get("no_trades_today") and gemini_parsed.get("no_trades_today"):

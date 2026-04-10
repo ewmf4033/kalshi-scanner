@@ -1,88 +1,9 @@
 {
   "date": "2026-04-10",
-  "scan_timestamp": "2026-04-10T10:00:18Z",
   "model": "claude",
-  "macro_regime": "disinflationary",
-  "markets_analyzed": 55,
-  "trades": [
-    {
-      "market": "Fed Zero Rate Cuts 2026",
-      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
-      "direction": "YES",
-      "current_price": 0.381,
-      "implied_prob": 0.3745,
-      "prob_range": [
-        0.45,
-        0.55
-      ],
-      "prob_midpoint": 0.5,
-      "edge_pct": 13,
-      "catalyst": "Fed dot plot showing only one cut projected, hawkish shift on Iran war inflation concerns",
-      "resolution_date": "2027-01-01",
-      "entry_valid_until": "2026-04-10T23:59:59Z",
-      "confidence": "high",
-      "risk_notes": "CPI miss could revive dovish expectations",
-      "grounding_source": "https://www.cnbc.com/2026/03/18/dot-plot-fed-still-expects-to-cut-rates-once-this-year-despite-spiking-oil-prices-.html",
-      "correlation_cluster_id": "fed_policy",
-      "category": "macro"
-    },
-    {
-      "market": "YoY CPI Above 3.2% March 2026",
-      "ticker": "KXCPIYOY-26MAR-T3.2",
-      "direction": "NO",
-      "current_price": 0.84,
-      "implied_prob": 0.835,
-      "prob_range": [
-        0.7,
-        0.78
-      ],
-      "prob_midpoint": 0.74,
-      "edge_pct": 9,
-      "catalyst": "March CPI came in at 2.8% YoY, well below 3.2% threshold",
-      "resolution_date": "2026-04-10",
-      "entry_valid_until": "2026-04-10T13:25:00Z",
-      "confidence": "high",
-      "risk_notes": "Market may not have fully processed actual CPI release",
-      "grounding_source": "https://stockpil.com/us-cpi-inflation-report-march-2026/",
-      "correlation_cluster_id": "inflation",
-      "category": "macro"
-    },
-    {
-      "market": "March CPI Monthly Above 0.8%",
-      "ticker": "KXCPI-26MAR-T0.8",
-      "direction": "NO",
-      "current_price": 0.68,
-      "implied_prob": 0.7,
-      "prob_range": [
-        0.55,
-        0.65
-      ],
-      "prob_midpoint": 0.6,
-      "edge_pct": 10,
-      "catalyst": "March CPI monthly print was 0.3%, significantly below 0.8%",
-      "resolution_date": "2026-04-10",
-      "entry_valid_until": "2026-04-10T12:25:00Z",
-      "confidence": "high",
-      "risk_notes": "Data already released, minimal timing risk",
-      "grounding_source": "https://stockpil.com/us-cpi-inflation-report-march-2026/",
-      "correlation_cluster_id": "inflation",
-      "category": "macro"
-    }
-  ],
-  "avoid": [
-    {
-      "market": "Weather temperature bets",
-      "reason": "Insufficient specific NOAA forecast data for April 10, 2026 weather conditions to make reliable temperature range predictions"
-    },
-    {
-      "market": "Ethereum price prediction",
-      "reason": "No credible crypto technical analysis or institutional price targets available for such short-term price movements"
-    },
-    {
-      "market": "GDP Q1 2026 markets",
-      "reason": "BEA advance estimate not yet available, insufficient nowcasting data to assess above/below thresholds reliably"
-    }
-  ],
-  "no_trades_today": false,
-  "notes": "Disinflationary regime evident from March CPI print of 2.8% YoY (0.3% monthly), below consensus expectations. Fed has shifted hawkish due to Iran war oil price concerns, with dot plot showing only one cut projected for 2026. Markets still pricing multiple scenarios creating arbitrage opportunities in Fed policy and inflation outcome markets."
+  "markets_analyzed": 0,
+  "trades": [],
+  "avoid": [],
+  "no_trades_today": true,
+  "notes": "API error: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': \"This request would exceed your organization's rate limit of 30,000 input tokens per minute (org: 92650fe5-b4b6-44eb-b9c2-90d18ad4f3f3, model: claude-sonnet-4-20250514). For details, refer to: https://docs.claude.com/en/api/rate-limits. You can see the response headers for current usage. Please reduce the prompt length or the maximum tokens requested, or try again later. You may also contact sales at https://claude.com/contact-sales to discuss your options for a rate limit increase.\"}, 'request_id': 'req_011CZvcq56EMTDvsK824sKzf'}"
 }
