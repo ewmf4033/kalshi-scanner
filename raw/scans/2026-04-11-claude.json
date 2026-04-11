@@ -1,0 +1,88 @@
+{
+  "date": "2026-04-11",
+  "scan_timestamp": "2026-04-11T10:00:17Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 55,
+  "trades": [
+    {
+      "market": "Q1 2026 GDP growth above 2.0%",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "NO",
+      "current_price": 0.514,
+      "implied_prob": 0.517,
+      "prob_range": [
+        0.35,
+        0.45
+      ],
+      "prob_midpoint": 0.4,
+      "edge_pct": 12,
+      "catalyst": "Atlanta Fed GDPNow estimate at 2.0% as of March 23, weak Q4 2025 base",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-20T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Late-quarter data could boost final BEA estimate above nowcasts",
+      "grounding_source": "https://www.atlantafed.org/-/media/Project/Atlanta/FRBA/Documents/cqer/researchcq/gdpnow/RealGDPTrackingSlides.pdf",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "April 2026 CPI above 0.4%",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "current_price": 0.62,
+      "implied_prob": 0.65,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "prob_midpoint": 0.8,
+      "edge_pct": 15,
+      "catalyst": "March CPI at 0.9% driven by energy, economists expect 0.3-0.4pp higher April due to oil shock",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-05-01T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Ceasefire could moderate energy prices faster than expected",
+      "grounding_source": "https://www.foxbusiness.com/economy/cpi-inflation-march-2026",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "CPI inflation above 3.5% for year ending April 2026",
+      "ticker": "KXCPIYOY-26APR-T3.5",
+      "direction": "YES",
+      "current_price": 0.66,
+      "implied_prob": 0.73,
+      "prob_range": [
+        0.8,
+        0.9
+      ],
+      "prob_midpoint": 0.85,
+      "edge_pct": 12,
+      "catalyst": "March CPI at 3.3% plus expected April energy surge from Iran war",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-05-01T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Base effects could moderate if oil shock temporary",
+      "grounding_source": "https://www.bls.gov/news.release/archives/cpi_04102026.htm",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Weather markets (NYC/Chicago/Miami temps)",
+      "reason": "Insufficient grounding data for reliable probability estimates"
+    },
+    {
+      "market": "Ethereum price markets",
+      "reason": "Spread too wide (>10%) for edge calculation"
+    },
+    {
+      "market": "Fed cut rate markets with exactly 1 or 2 cuts",
+      "reason": "Insufficient granular data on timing preferences"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Macro regime classified as inflationary due to March CPI surge to 3.3% driven by Iran war oil shock. Fed in hawkish hold posture with CME FedWatch showing 77% probability of no cuts in 2026. Q1 GDP nowcasts divergent but trending toward slower growth. Energy-driven inflation spike expected to persist into April."
+}

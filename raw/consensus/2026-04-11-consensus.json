@@ -1,0 +1,120 @@
+{
+  "date": "2026-04-11",
+  "macro_regime_claude": "inflationary",
+  "macro_regime_gemini": "inflationary",
+  "regime_agreement": true,
+  "regime_disagreement_note": null,
+  "consensus_trades": [],
+  "single_source_trades": [
+    {
+      "market": "April 2026 CPI above 0.4% (monthly)",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 15,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "max_acceptable_price": 0.7,
+      "reason_other_missed": "Gemini did not analyze monthly CPI component; focused on YoY aggregate. Claude's monthly reading (0.3-0.4pp higher in April vs March's 0.9%) supported by energy shock catalyst and forward economist consensus.",
+      "grounding_source": "https://www.foxbusiness.com/economy/cpi-inflation-march-2026",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 3
+    },
+    {
+      "market": "Q1 2026 GDP growth above 2.0%",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 12,
+      "prob_range": [
+        0.35,
+        0.45
+      ],
+      "max_acceptable_price": 0.53,
+      "reason_other_missed": "Gemini's GDP trade targets T1.5 threshold (NO direction, 11% edge); Claude targets T2.0 (NO direction, 12% edge). These are different thresholds on same underlying variable. Gemini's 1.5% threshold is lower bar; Claude's 2.0% is higher bar. Claude's grounding (Atlanta Fed GDPNow at 2.0% as of late March, weak Q4 2025 base) is more specific and recent. Both agree direction (NO) but Gemini's edge is marginally lower and threshold less aggressive. Promote Claude's higher-edge version.",
+      "grounding_source": "https://www.atlantafed.org/-/media/Project/Atlanta/FRBA/Documents/cqer/researchcq/gdpnow/RealGDPTrackingSlides.pdf",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 2
+    }
+  ],
+  "contradictions": [
+    {
+      "market": "Real GDP thresholds in Q1 2026",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "NO",
+      "claude_prob_range": [
+        0.35,
+        0.45
+      ],
+      "gemini_prob_range": [
+        0.5,
+        0.58
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Both agree GDP will NOT exceed threshold, but Claude targets 2.0% (prob_range 0.35-0.45 = 0.4 midpoint) vs Gemini targets 1.5% (prob_range 0.5-0.58 = 0.54 midpoint). Claude's estimate is more pessimistic and has higher edge (12% vs 11%). Ranges do not overlap. Claude's Atlanta Fed GDPNow source more recent and granular than Gemini's reference. Claude's position is stronger."
+    },
+    {
+      "market": "Year-over-year CPI inflation threshold in April 2026",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "YES",
+      "gemini_direction": "NO",
+      "claude_prob_range": [
+        0.8,
+        0.9
+      ],
+      "gemini_prob_range": [
+        0.6,
+        0.7
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Claude: KXCPIYOY-26APR-T3.5 YES with prob 0.8-0.9 (edge 12%). Gemini: KXCPIYOY-26APR-T3.4 NO with prob 0.6-0.7 (edge 16%). Different thresholds (3.5 vs 3.4) create semantic confusion. On substance: Claude cites March CPI at 3.3% YoY plus energy shock = pushes above 3.5%. Gemini cites disinflationary trends from Fed tightening, implying below 3.4%. Ranges do not overlap (0.8-0.9 vs 0.6-0.7). Gemini's disinflationary thesis contradicts explicit March 3.3% baseline and acknowledged geopolitical shock risk. Claude's reasoning more grounded in recent data. Direction mismatch effectively present despite different thresholds."
+    },
+    {
+      "market": "CPI inflation above 3.4-3.5% for year ending April 2026",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "YES",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.8,
+        0.9
+      ],
+      "gemini_prob_range": [
+        0.6,
+        0.7
+      ],
+      "stronger_reasoning": "neither",
+      "explanation": "Python validator caught non-overlapping ranges misclassified as consensus"
+    }
+  ],
+  "cluster_exposure": [
+    {
+      "cluster_id": "inflation",
+      "total_weight": 9,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXCPIYOY-26APR-T3.5",
+        "KXCPI-26APR-T0.4"
+      ]
+    },
+    {
+      "cluster_id": "growth_gdp",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXGDP-26APR30-T2.0"
+      ]
+    }
+  ],
+  "portfolio_concentration_warning": "Inflation cluster at weight 9 approaches limit of 5. Two inflation trades (YoY CPI and monthly CPI) are highly correlated via common energy shock catalyst. Monthly CPI (KXCPI-26APR-T0.4) is single-source with weight 3; YoY CPI (KXCPIYOY-26APR-T3.5) is consensus with weight 6. Recommend reducing YoY CPI to weight 5 or reducing monthly CPI to weight 1 to respect cluster cap. Alternatively, consider one trade sufficient given high correlation. Energy shock is primary driver of both; resolution dates overlap (May 1-12). Execution risk if oil shock moderates faster than expected. GDP trade (weight 2) provides modest diversification.",
+  "no_trades_today": false,
+  "reeval_triggers": [
+    "CPI print on 2026-05-12: If April CPI comes in \u22640.2% MoM or YoY reading \u22643.3%, reverse both inflation trades immediately.",
+    "Oil price shock resolution: If Iran ceasefire materializes or Brent crude falls below $80/bbl, reassess energy-driven inflation catalyst; likely margin compression in April CPI prints.",
+    "Atlanta Fed GDPNow update after April 18: If GDPNow revises Q1 2026 above 2.2%, exit KXGDP-26APR30-T2.0 NO.",
+    "Fed communications: Any hawkish surprise (rate hold signaling continued tightening) strengthens Gemini's disinflationary thesis; consider hedging YoY CPI YES with small counter-position.",
+    "Implied probabilities converge below consensus range: If KXCPIYOY-26APR-T3.5 price declines below 0.75, re-evaluate market repricing of inflation risk."
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "date": "2026-04-11",
+  "scan_timestamp": "2026-04-11T10:00:17Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 50,
+  "trades": [
+    {
+      "market": "CPI Inflation Above 3.4% for Year Ending April 2026",
+      "ticker": "KXCPIYOY-26APR-T3.4",
+      "direction": "NO",
+      "current_price": 0.83,
+      "implied_prob": 0.81,
+      "prob_range": [
+        0.6,
+        0.7
+      ],
+      "prob_midpoint": 0.65,
+      "edge_pct": 16,
+      "catalyst": "Expected disinflationary trends based on Fed policy tightening",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-11T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Unexpected geopolitical shocks could drive inflation higher",
+      "grounding_source": "Cleveland Fed Inflation Nowcast (https://www.clevelandfed.org/indicators-and-data/inflation-nowcasting)",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Real GDP Increase Above 1.5% in Q1 2026",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "NO",
+      "current_price": 0.66,
+      "implied_prob": 0.654,
+      "prob_range": [
+        0.5,
+        0.58
+      ],
+      "prob_midpoint": 0.54,
+      "edge_pct": 11,
+      "catalyst": "Slowing economic growth indicators",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-11T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Potential fiscal stimulus could boost GDP unexpectedly",
+      "grounding_source": "Atlanta Fed GDPNow (https://www.atlantafed.org/cqer/research/gdpnow)",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "High Temp in Miami 80-81\u00b0F on Apr 11, 2026",
+      "ticker": "KXHIGHMIA-26APR11-B80.5",
+      "direction": "YES",
+      "current_price": 0.64,
+      "implied_prob": 0.635,
+      "prob_range": [
+        0.7,
+        0.78
+      ],
+      "prob_midpoint": 0.74,
+      "edge_pct": 10,
+      "catalyst": "Historical temperature data and seasonal trends for Miami in April",
+      "resolution_date": "2026-04-12",
+      "entry_valid_until": "2026-04-11T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Unpredictable weather patterns could shift temperatures",
+      "grounding_source": "NOAA Historical Climate Data (https://www.ncdc.noaa.gov/cdo-web/)",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Ethereum Price Range on Apr 11, 2026",
+      "reason": "High volatility and lack of reliable predictive data for crypto markets"
+    },
+    {
+      "market": "Fed Rate Cuts Before 2027",
+      "reason": "Wide spread and uncertainty in long-term Fed policy outlook"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Current macro environment suggests persistent inflationary pressures, though GDP growth may be slowing. Fed policy remains a key uncertainty, with markets pricing in rate cuts but inflation data could delay dovish pivots. Weather markets offer shorter-term opportunities with clearer historical grounding."
+}
