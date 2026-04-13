@@ -417,6 +417,36 @@ async def call_synthesizer(claude_output: str, gemini_output: str) -> str:
         })
 
 
+
+
+async def call_gemini_shadow(prompt: str) -> str:
+    """Shadow call to Google Gemini. Scored by resolve.py but never enters synthesizer."""
+    log.info("Calling Gemini (shadow)...")
+    api_key = os.environ.get("GOOGLE_API_KEY")
+    if not api_key:
+        log.warning("No GOOGLE_API_KEY, skipping Gemini shadow")
+        return json.dumps({"date": today_str(), "model": "gemini", "trades": [], "no_trades_today": True, "notes": "no API key"})
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
+    payload = {
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 8192}
+    }
+
+    try:
+        r = requests.post(url, json=payload, timeout=180)
+        r.raise_for_status()
+        data = r.json()
+        candidates = data.get("candidates", [])
+        if not candidates:
+            raise ValueError("No candidates in Gemini response")
+        text = candidates[0].get("content", {}).get("parts", [{}])[0].get("text", "").strip()
+        log.info(f"Gemini responded ({len(text)} chars)")
+        return text
+    except Exception as e:
+        log.error(f"Gemini API error: {e}")
+        return json.dumps({"date": today_str(), "model": "gemini", "trades": [], "no_trades_today": True, "notes": f"API error: {str(e)}"})
+
 # ---------------------------------------------------------------------------
 # 5. JSON Parsing + Validation
 # ---------------------------------------------------------------------------
@@ -613,18 +643,25 @@ async def run(args):
     scanner_prompt = build_scanner_prompt(markets_json)
 
     # --- Step 3: Call models in parallel ---
-    claude_raw, gemini_raw = await asyncio.gather(
+    claude_raw, grok_raw, gemini_shadow_raw = await asyncio.gather(
         call_claude(scanner_prompt),
         call_gemini(scanner_prompt),
+        call_gemini_shadow(scanner_prompt),
     )
 
     claude_parsed = validate_edge(parse_model_json(claude_raw))
-    gemini_parsed = validate_edge(parse_model_json(gemini_raw))
+    gemini_parsed = validate_edge(parse_model_json(grok_raw))
     claude_parsed.setdefault("model", "claude")
     gemini_parsed.setdefault("model", "gemini")
 
     save_raw(RAW_SCANS, f"{date}-claude.json", claude_parsed)
     save_raw(RAW_SCANS, f"{date}-grok.json", gemini_parsed)
+
+    # Gemini shadow: save for resolve.py scoring, never enters synthesizer
+    gemini_shadow_parsed = validate_edge(parse_model_json(gemini_shadow_raw))
+    gemini_shadow_parsed.setdefault("model", "gemini_shadow")
+    save_raw(RAW_SCANS, f"{date}-gemini-shadow.json", gemini_shadow_parsed)
+    log.info(f"Gemini shadow: {len(gemini_shadow_parsed.get('trades', []))} trades (read-only)")
 
     # --- Step 4: Short-circuit if both empty ---
     if claude_parsed.get("no_trades_today") and gemini_parsed.get("no_trades_today"):
