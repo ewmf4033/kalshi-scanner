@@ -530,10 +530,22 @@ def format_telegram_alert(consensus: dict) -> str:
                 lines.append(f"  Risk: {risk}")
             lines.append("")
 
-    singles = consensus.get("single_source_trades", [])
-    if singles:
-        lines.append(f"\n*{len(singles)} Single-Source:*")
-        for s in singles:
+    claude_solo = consensus.get("claude_solo_trades", [])
+    if claude_solo:
+        lines.append(f"\n*{len(claude_solo)} Claude Solo (TRADE):*")
+        for s in claude_solo:
+            lines.append(
+                f"  {s.get('direction')} {s.get('ticker')} "
+                f"edge={s.get('edge',0)}% | max_px={s.get('max_acceptable_price','?')}"
+            )
+
+    other_singles = [
+        t for t in consensus.get("single_source_trades", [])
+        if t.get("source", "").lower() != "claude"
+    ]
+    if other_singles:
+        lines.append(f"\n*{len(other_singles)} Grok-Only (skip):*")
+        for s in other_singles:
             lines.append(
                 f"  {s.get('direction')} {s.get('ticker')} "
                 f"({s.get('source')}, {s.get('edge')}% edge)"
@@ -726,7 +738,16 @@ async def run(args):
         if poly_agreed or poly_disagreed:
             log.info(f"Poly filter: {len(poly_agreed)} agreed, {len(poly_disagreed)} disagreed, {len(poly_nodata)} no data")
 
-        if not valid and not consensus.get("single_source_trades"):
+        # --- Extract Claude single-source trades for alerting ---
+        claude_solo = [
+            t for t in consensus.get("single_source_trades", [])
+            if t.get("source", "").lower() == "claude"
+        ]
+        consensus["claude_solo_trades"] = claude_solo
+        if claude_solo:
+            log.info(f"Claude solo trades to alert: {len(claude_solo)}")
+
+        if not valid and not claude_solo and not consensus.get("single_source_trades"):
             consensus["no_trades_today"] = True
 
     save_raw(RAW_CONSENSUS, f"{date}-consensus.json", consensus)
