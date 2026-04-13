@@ -1,0 +1,84 @@
+{
+  "date": "2026-04-12",
+  "scan_timestamp": "2026-04-12T10:00:17Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 50,
+  "trades": [
+    {
+      "market": "Will the Fed cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "YES",
+      "current_price": 0.621,
+      "implied_prob": 0.636,
+      "prob_range": [
+        0.7,
+        0.8
+      ],
+      "prob_midpoint": 0.75,
+      "edge_pct": 11,
+      "catalyst": "Expected softening of inflation pressures by late 2026",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-12T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Persistent inflation could delay Fed action",
+      "grounding_source": "CME FedWatch Tool projections for 2026",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 2.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "YES",
+      "current_price": 0.53,
+      "implied_prob": 0.525,
+      "prob_range": [
+        0.6,
+        0.7
+      ],
+      "prob_midpoint": 0.65,
+      "edge_pct": 12,
+      "catalyst": "Strong consumer spending and investment trends",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-12T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Potential supply chain disruptions or energy price spikes",
+      "grounding_source": "Bureau of Economic Analysis historical trends and projections",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will CPI rise more than 0.4% in April 2026?",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "current_price": 0.76,
+      "implied_prob": 0.735,
+      "prob_range": [
+        0.8,
+        0.85
+      ],
+      "prob_midpoint": 0.825,
+      "edge_pct": 9,
+      "catalyst": "Persistent inflationary pressures expected in energy and housing",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-12T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected disinflationary trends could lower CPI",
+      "grounding_source": "Bureau of Labor Statistics inflation forecasts",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Will the high temp in Miami be 81-82\u00b0 on Apr 12, 2026?",
+      "reason": "Insufficient edge over implied probability based on historical weather data"
+    },
+    {
+      "market": "Ethereum price at Apr 12, 2026 at 5pm EDT?",
+      "reason": "High volatility and lack of reliable long-term crypto price forecasting data"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Current macro environment suggests inflationary pressures with strong growth expectations for 2026. Fed policy remains a key uncertainty, with potential rate cuts on the horizon if inflation moderates. Focus on macro trades with clear data grounding."
+}

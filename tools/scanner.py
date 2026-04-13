@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from tools.polymarket import evaluate_poly_consensus
 """
 Kalshi Daily Scanner
 ====================
@@ -706,6 +707,25 @@ async def run(args):
         if dropped:
             log.warning(f"Dropped {dropped} trades with negative limit price")
         consensus["consensus_trades"] = valid
+
+        # --- Polymarket consensus filter ---
+        poly_agreed = []
+        poly_disagreed = []
+        poly_nodata = []
+        for t in valid:
+            evaluate_poly_consensus(t)
+            if t.get("poly_agrees") is True:
+                poly_agreed.append(t)
+            elif t.get("poly_agrees") is False:
+                poly_disagreed.append(t)
+            else:
+                poly_nodata.append(t)
+        consensus["consensus_trades"] = poly_agreed + poly_nodata
+        consensus["poly_disagreed"] = poly_disagreed
+        valid = consensus["consensus_trades"]
+        if poly_agreed or poly_disagreed:
+            log.info(f"Poly filter: {len(poly_agreed)} agreed, {len(poly_disagreed)} disagreed, {len(poly_nodata)} no data")
+
         if not valid and not consensus.get("single_source_trades"):
             consensus["no_trades_today"] = True
 

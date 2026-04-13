@@ -1,0 +1,11 @@
+[0;1;32m●[0m masta.service - MASTA Trading Agent
+     Loaded: loaded (]8;;file://ubuntu-s-1vcpu-1gb-nyc1-01/etc/systemd/system/masta.service/etc/systemd/system/masta.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Sat 2026-04-11 15:22:50 UTC; 22ms ago
+   Main PID: 1554389 (python)
+      Tasks: 1 (limit: 1110)
+     Memory: 576.0K (peak: 900.0K)
+        CPU: 6ms
+     CGroup: /system.slice/masta.service
+             └─[0;38;5;245m1554389 /root/masta_autonomous_agent_money_patch/.venv/bin/python main.py run[0m
+
+Apr 11 15:22:50 ubuntu-s-1vcpu-1gb-nyc1-01 systemd[1]: Started masta.service - MASTA Trading Agent.

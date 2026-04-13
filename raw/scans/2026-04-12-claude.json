@@ -1,0 +1,130 @@
+{
+  "date": "2026-04-12",
+  "scan_timestamp": "2026-04-12T10:00:17Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 56,
+  "trades": [
+    {
+      "market": "CPI Rise >0.4% April 2026",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "current_price": 0.76,
+      "implied_prob": 0.735,
+      "prob_range": [
+        0.78,
+        0.88
+      ],
+      "prob_midpoint": 0.83,
+      "edge_pct": 10,
+      "catalyst": "War-driven energy surge continues into April, core tariff effects emerging",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-15T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Ceasefire could rapidly deflate energy prices; base effects from March spike",
+      "grounding_source": "https://www.bls.gov/news.release/pdf/cpi.pdf",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Fed Cut Rates 0 Times 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.379,
+      "implied_prob": 0.3775,
+      "prob_range": [
+        0.48,
+        0.58
+      ],
+      "prob_midpoint": 0.53,
+      "edge_pct": 15,
+      "catalyst": "March CPI spike to 3.3% extends hawkish hold, war uncertainty persists",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-30T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Rapid disinflation or recession could force cuts; new Fed Chair uncertainty",
+      "grounding_source": "https://www.federalreserve.gov/releases/h15/",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Real GDP >1.5% Q1 2026",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "NO",
+      "current_price": 0.719,
+      "implied_prob": 0.7145,
+      "prob_range": [
+        0.55,
+        0.65
+      ],
+      "prob_midpoint": 0.6,
+      "edge_pct": 11,
+      "catalyst": "Atlanta Fed GDPNow at 1.3%, war disruption hit Q1 growth",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-25T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Advance estimate could surprise higher; nowcast revisions possible",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "CPI Year-over-Year >3.6% April 2026",
+      "ticker": "KXCPIYOY-26APR-T3.6",
+      "direction": "YES",
+      "current_price": 0.57,
+      "implied_prob": 0.565,
+      "prob_range": [
+        0.68,
+        0.78
+      ],
+      "prob_midpoint": 0.73,
+      "edge_pct": 17,
+      "catalyst": "March 3.3% reading plus continued energy elevation projects >3.6%",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-20T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Energy price collapse would derail thesis rapidly",
+      "grounding_source": "https://www.cnbc.com/2026/04/10/cpi-inflation-report-march-2026.html",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "High Temp NYC 56-57\u00b0 Apr 12",
+      "ticker": "KXHIGHNY-26APR12-B56.5",
+      "direction": "YES",
+      "current_price": 0.44,
+      "implied_prob": 0.425,
+      "prob_range": [
+        0.5,
+        0.6
+      ],
+      "prob_midpoint": 0.55,
+      "edge_pct": 13,
+      "catalyst": "April 12 NYC forecast shows highs 55-60\u00b0F range most probable",
+      "resolution_date": "2026-04-13",
+      "entry_valid_until": "2026-04-12T12:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "Weather forecast uncertainty within 24 hours; competing temp ranges",
+      "grounding_source": "https://www.accuweather.com/en/us/new-york/10021/april-weather/349727",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Ethereum Price $2200-2240",
+      "reason": "Crypto edge threshold 12% not met, insufficient fundamental grounding"
+    },
+    {
+      "market": "Various GDP >2.0% markets",
+      "reason": "Insufficient edge vs GDPNow nowcast of 1.3%"
+    },
+    {
+      "market": "Fed 1-2 cut markets",
+      "reason": "Probability distribution favors 0 cuts given inflation surge"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Macro regime classified as inflationary due to March CPI surge to 3.3% driven by Iran war energy shock. Fed at 3.5-3.75% range with hawkish pause. Core CPI contained at 2.6% but headline persistence above target. GDP nowcast weakening to 1.3% signals growth-inflation tradeoff emerging."
+}

@@ -1,0 +1,166 @@
+{
+  "date": "2026-04-12",
+  "macro_regime_claude": "inflationary",
+  "macro_regime_gemini": "inflationary",
+  "regime_agreement": true,
+  "regime_disagreement_note": null,
+  "consensus_trades": [
+    {
+      "market": "CPI Rise >0.4% April 2026",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "claude_edge": 10,
+      "gemini_edge": 9,
+      "consensus_edge": 9,
+      "aggressive_edge": 10,
+      "claude_prob_range": [
+        0.78,
+        0.88
+      ],
+      "gemini_prob_range": [
+        0.8,
+        0.85
+      ],
+      "conservative_prob_range": [
+        0.8,
+        0.85
+      ],
+      "aggressive_prob_range": [
+        0.78,
+        0.88
+      ],
+      "max_acceptable_price": 0.745,
+      "catalyst": "War-driven energy surge continues into April, core tariff effects emerging. Persistent inflationary pressures expected in energy and housing.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-12T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Ceasefire could rapidly deflate energy prices; base effects from March spike. Unexpected disinflationary trends could lower CPI. Current price 0.76 exceeds max_acceptable_price 0.745 by 1.5bps\u2014manageable given high conviction.",
+      "grounding_source": "https://www.bls.gov/news.release/pdf/cpi.pdf",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 6,
+      "category": "macro"
+    }
+  ],
+  "single_source_trades": [
+    {
+      "market": "Fed Cut Rates 0 Times 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 15,
+      "prob_range": [
+        0.48,
+        0.58
+      ],
+      "max_acceptable_price": 0.395,
+      "reason_other_missed": "Gemini takes opposite direction (YES on rate cuts before 2027), creating direction_mismatch. Claude's 0 cuts thesis stronger given March 3.3% CPI spike and hawkish Fed messaging. Current price 0.379 trades below max_acceptable_price\u2014attractive entry.",
+      "grounding_source": "https://www.federalreserve.gov/releases/h15/",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 3
+    },
+    {
+      "market": "Real GDP >1.5% Q1 2026",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 11,
+      "prob_range": [
+        0.55,
+        0.65
+      ],
+      "max_acceptable_price": 0.61,
+      "reason_other_missed": "Gemini targets >2.0% GDP (different threshold) with YES direction and 12% edge, contradicting Claude's NO on >1.5%. Atlanta Fed GDPNow 1.3% grounds Claude's conservative view. Gemini relies on 'strong consumer spending' without nowcast specificity. Claude's focus on war disruption in Q1 is more concrete.",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 2
+    },
+    {
+      "market": "CPI Year-over-Year >3.6% April 2026",
+      "ticker": "KXCPIYOY-26APR-T3.6",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 17,
+      "prob_range": [
+        0.68,
+        0.78
+      ],
+      "max_acceptable_price": 0.655,
+      "reason_other_missed": "Gemini did not analyze this market. Claude's 17% edge is exceptionally strong, grounded in March 3.3% YoY reading plus energy persistence. High conviction. Current price 0.57 is well below max_acceptable_price\u2014strong entry opportunity.",
+      "grounding_source": "https://www.cnbc.com/2026/04/10/cpi-inflation-report-march-2026.html",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 7
+    }
+  ],
+  "contradictions": [
+    {
+      "market": "Fed Rate Cuts 2026",
+      "contradiction_type": "direction_mismatch",
+      "claude_direction": "YES (0 cuts)",
+      "gemini_direction": "YES (rate cuts before 2027)",
+      "claude_prob_range": [
+        0.48,
+        0.58
+      ],
+      "gemini_prob_range": [
+        0.7,
+        0.8
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Claude explicitly trades YES on 'Fed Cut Rates 0 Times 2026' (ticker KXRATECUTCOUNT-26DEC31-T0) with 15% edge, forecasting zero cuts. Gemini trades YES on 'Will the Fed cut rates before 2027' with 11% edge, forecasting at least one cut. Fundamental disagreement on Fed action. Claude's thesis is grounded in recent 3.3% March CPI and hawkish Fed positioning. Gemini assumes 'expected softening of inflation pressures by late 2026' without specific inflation dynamics. Claude's inflation persistence view is more concrete given war-energy shock durability."
+    },
+    {
+      "market": "Real GDP Q1 2026",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.55,
+        0.65
+      ],
+      "gemini_prob_range": [
+        0.6,
+        0.7
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Claude sells >1.5% GDP (NO), Gemini buys >2.0% GDP (YES). These are different thresholds but Claude's explicit nowcast reference (Atlanta Fed GDPNow 1.3%) directly contradicts Gemini's 'strong consumer spending' assumption. Claude's war disruption catalyst is concrete; Gemini lacks specific Q1 dynamics. Ranges slightly overlap at 0.60-0.65 but directional stance differs. Claude's lower threshold makes his NO more defensible than Gemini's YES on higher threshold."
+    }
+  ],
+  "cluster_exposure": [
+    {
+      "cluster_id": "inflation",
+      "total_weight": 13,
+      "over_limit": true,
+      "trades_in_cluster": [
+        "KXCPI-26APR-T0.4",
+        "KXCPIYOY-26APR-T3.6"
+      ]
+    },
+    {
+      "cluster_id": "fed_policy",
+      "total_weight": 3,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXRATECUTCOUNT-26DEC31-T0"
+      ]
+    },
+    {
+      "cluster_id": "growth_gdp",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXGDP-26APR30-T1.5"
+      ]
+    }
+  ],
+  "portfolio_concentration_warning": "INFLATION CLUSTER EXCEEDS 5-WEIGHT LIMIT: total_weight=13 across KXCPI-26APR-T0.4 (weight 6) and KXCPIYOY-26APR-T3.6 (weight 7). Both trades are highly correlated\u2014if energy prices collapse or disinflationary surprise occurs, portfolio loses 13 points simultaneously. RECOMMENDATION: Reduce KXCPIYOY-26APR-T3.6 from weight 7 to weight 3, or reduce KXCPI-26APR-T0.4 from weight 6 to weight 2. Alternatively, hedge with small NO position on inflation or long-duration nominal bonds. Current configuration violates cluster discipline. Macro regime concentration risk is severe given >60% of portfolio in inflation trades.",
+  "no_trades_today": false,
+  "reeval_triggers": [
+    "Ceasefire agreement in Iran conflict\u2014energy prices collapse >5% intraday",
+    "New Fed Chair announcement with dovish signaling\u2014triggers re-eval of rate cut markets",
+    "Atlanta Fed GDPNow revision above 2.0%\u2014invalidates Real GDP NO thesis",
+    "Core CPI print >2.8%\u2014suggests higher inflation persistence, strengthens KXCPIYOY case",
+    "Energy price spike >$85/barrel WTI\u2014extends inflation duration, upgrades both CPI trades",
+    "Significant supply chain normalization signals (e.g., container shipping index down >10%)\u2014suggests disinflationary pressure",
+    "Fed meeting minutes or Chair speech with explicit easing signals\u2014contradicts KXRATECUTCOUNT 0-cuts thesis"
+  ]
+}

@@ -1,0 +1,6 @@
+● masta.service - MASTA Trading Agent
+     Loaded: loaded (]8;;file://ubuntu-s-1vcpu-1gb-nyc1-01/etc/systemd/system/masta.service/etc/systemd/system/masta.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: activating (auto-restart) (Result: exit-code) since Sat 2026-04-11 15:20:54 UTC; 16s ago
+    Process: 1554300 ExecStart=/root/masta_autonomous_agent_money_patch/.venv/bin/python main.py run [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 1554300 (code=exited, status=1/FAILURE)
+        CPU: 420ms
