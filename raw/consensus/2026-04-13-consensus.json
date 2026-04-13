@@ -4,50 +4,10 @@
   "macro_regime_gemini": "inflationary",
   "regime_agreement": true,
   "regime_disagreement_note": null,
-  "consensus_trades": [
-    {
-      "market": "CPI above 0.4% in April 2026",
-      "ticker": "KXCPI-26APR-T0.4",
-      "direction": "NO",
-      "claude_edge": 23,
-      "gemini_edge": 16,
-      "consensus_edge": 16,
-      "aggressive_edge": 23,
-      "claude_prob_range": [
-        0.5,
-        0.65
-      ],
-      "gemini_prob_range": [
-        0.6,
-        0.7
-      ],
-      "conservative_prob_range": [
-        0.6,
-        0.7
-      ],
-      "aggressive_prob_range": [
-        0.5,
-        0.65
-      ],
-      "max_acceptable_price": 0.27,
-      "catalyst": "Base effects from March oil spike and seasonal moderation; expected cooling of inflation due to Fed policy tightening",
-      "resolution_date": "2026-05-12",
-      "entry_valid_until": "2026-04-13T23:59:59Z",
-      "confidence": "high",
-      "risk_notes": "Continued energy price volatility from Middle East situation could drive inflation higher. Current price 0.85 significantly exceeds max_acceptable_price 0.34\u2014entry NOT recommended at current levels.",
-      "grounding_source": "https://www.cnbc.com/2026/04/10/cpi-inflation-report-march-2026.html and Cleveland Fed Inflation Nowcast",
-      "correlation_cluster_id": "inflation",
-      "relative_weight": 6,
-      "category": "macro",
-      "poly_price": null,
-      "poly_edge": null,
-      "poly_agrees": null,
-      "poly_version": "v2_no_poly_data"
-    }
-  ],
+  "consensus_trades": [],
   "single_source_trades": [
     {
-      "market": "Fed rate cuts 0 times in 2026",
+      "market": "No Fed Rate Cuts in 2026",
       "ticker": "KXRATECUTCOUNT-26DEC31-T0",
       "direction": "YES",
       "source": "claude",
@@ -57,44 +17,92 @@
         0.65
       ],
       "max_acceptable_price": 0.425,
-      "reason_other_missed": "Gemini analyzed 'Fed cuts before 2027' (opposite framing) as NO direction with different ticker and probability structure. Claude's zero-cuts contract is more granular and exploits tail hawkishness; Gemini's 'any cuts' formulation is less precise for this regime.",
-      "grounding_source": "https://www.cnbc.com/2026/03/18/dot-plot-fed-still-expects-to-cut-rates-once-this-year-despite-spiking-oil-prices-.html",
+      "reason_other_missed": "Gemini's overlapping direction and lower edge (14% vs 16%), but range mismatch [0.4, 0.5] vs [0.5, 0.65] prevents consensus. Claude's high confidence and Iranian oil shock catalyst stronger than Gemini's medium confidence and supply chain concerns. Claude entry window closes 2026-04-29; Gemini 2026-04-13.",
+      "grounding_source": "https://www.thestreet.com/fed/jpmorgan-has-a-stark-message-on-the-next-fed-rate-cut",
       "correlation_cluster_id": "fed_policy",
       "relative_weight": 3
-    },
-    {
-      "market": "NYC high temp 78-79\u00b0F on April 13",
-      "ticker": "KXHIGHNY-26APR13-B78.5",
-      "direction": "YES",
-      "source": "claude",
-      "edge": 18,
-      "prob_range": [
-        0.45,
-        0.6
-      ],
-      "max_acceptable_price": 0.4,
-      "reason_other_missed": "Gemini explicitly avoided weather microstates, citing insufficient grounding for precise prediction. Claude took calculated bet with 18% edge and medium conviction. Weather trades below macro/macro-adjacent focus but valid as uncorrelated diversifier.",
-      "grounding_source": "https://www.accuweather.com/en/us/new-york/10021/april-weather/349727",
-      "correlation_cluster_id": "weather_temp",
-      "relative_weight": 1
     }
   ],
   "contradictions": [
     {
-      "market": "Q1 2026 GDP growth threshold",
+      "market": "Q1 2026 GDP Above 1.5%",
+      "contradiction_type": "direction_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.45,
+        0.6
+      ],
+      "gemini_prob_range": [
+        0.8,
+        0.85
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Claude cites Atlanta Fed GDPNow at 1.3% after weak durable goods (high conviction, edge 18%). Gemini expects strong consumer spending and fiscal stimulus (medium conviction, edge 12%). Current implied_prob 0.705 and market price 0.7 align closer to Claude's NO thesis. Ranges non-overlapping ([0.45, 0.6] vs [0.8, 0.85]) indicates genuine disagreement on probability magnitude, not just depth. Atlanta Fed data point concrete; Gemini's fiscal stimulus expectations not grounded in live data source."
+    },
+    {
+      "market": "Federal Reserve Rate Cut Before 2027 / No Fed Rate Cuts in 2026",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "YES",
+      "gemini_direction": "NO",
+      "claude_prob_range": [
+        0.5,
+        0.65
+      ],
+      "gemini_prob_range": [
+        0.4,
+        0.5
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Claude ticker KXRATECUTCOUNT-26DEC31-T0 resolves end-2026; Gemini ticker KXRATECUT-26DEC31 resolves 2027-01-01. Scope mismatch clouds direct comparison. Claude prob_range [0.5, 0.65] midpoint 0.575 vs Gemini [0.4, 0.5] midpoint 0.45. Non-overlapping ranges. Both agree persistent inflation delays cuts, but Claude assigns higher probability to no cuts in 2026 specifically (implied by higher prob_range). Claude high confidence vs Gemini medium. Claude entry window longer (through 2026-04-29 vs 2026-04-13). Not consensus due to range non-overlap and ticker scope ambiguity."
+    },
+    {
+      "market": "April CPI Above 0.4-0.5% MoM",
       "contradiction_type": "range_mismatch",
       "claude_direction": "NO",
       "gemini_direction": "NO",
       "claude_prob_range": [
-        0.3,
-        0.45
+        0.4,
+        0.55
       ],
       "gemini_prob_range": [
-        0.55,
+        0.6,
+        0.7
+      ],
+      "stronger_reasoning": "neither",
+      "explanation": "Python validator caught non-overlapping ranges misclassified as consensus"
+    },
+    {
+      "market": "Q1 2026 GDP Above 1.5%",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "CONTRADICTION",
+      "gemini_direction": "CONTRADICTION",
+      "claude_prob_range": [
+        0.45,
+        0.6
+      ],
+      "gemini_prob_range": [
+        0.8,
+        0.85
+      ],
+      "stronger_reasoning": "neither",
+      "explanation": "Python validator caught non-overlapping ranges misclassified as consensus"
+    },
+    {
+      "market": "No Fed Rate Cuts in 2026",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO/YES MISMATCH",
+      "gemini_direction": "NO/YES MISMATCH",
+      "claude_prob_range": [
+        0.5,
         0.65
       ],
-      "stronger_reasoning": "claude",
-      "explanation": "Both agree GDP will miss 2.0% threshold, but Claude targets 2.0% barrier (expecting ~1.3%) with prob_range [0.3, 0.45], while Gemini targets 1.5% barrier (different contract) with prob_range [0.55, 0.65]. These ranges do not overlap and represent different strike levels. Claude's 2.0% contract is more hawkish on growth slowdown. This is a range_mismatch on the same directional thesis but different granularity\u2014skip as not true consensus."
+      "gemini_prob_range": [
+        0.4,
+        0.5
+      ],
+      "stronger_reasoning": "neither",
+      "explanation": "Python validator caught non-overlapping ranges misclassified as consensus"
     }
   ],
   "cluster_exposure": [
@@ -103,7 +111,7 @@
       "total_weight": 6,
       "over_limit": true,
       "trades_in_cluster": [
-        "KXCPI-26APR-T0.4"
+        "KXCPI-26APR-T0.4/T0.5"
       ]
     },
     {
@@ -119,30 +127,23 @@
       "total_weight": 0,
       "over_limit": false,
       "trades_in_cluster": []
-    },
-    {
-      "cluster_id": "weather_temp",
-      "total_weight": 1,
-      "over_limit": false,
-      "trades_in_cluster": [
-        "KXHIGHNY-26APR13-B78.5"
-      ]
     }
   ],
-  "portfolio_concentration_warning": "CRITICAL: Consensus CPI trade (KXCPI-26APR-T0.4) assigned weight 6, causing inflation cluster to exceed cap of 5. Current market price 0.85 also SIGNIFICANTLY exceeds max_acceptable_price 0.34 (32.5% unfavorable to limit). RECOMMENDATION: Do NOT enter this trade at current price. If market reprices below 0.35, reduce weight to 4 and rebalance fed_policy down to 2 to stay within cluster limits. Alternatively, scale entire portfolio by 10% to reduce total inflation exposure relative to bankroll. Single-source fed_policy trade (weight 3) is well-grounded but in same cluster; combined fed_policy + potential GDP trades could approach cluster cap if GDP consensus forms.",
+  "portfolio_concentration_warning": "Inflation cluster at weight 6 exceeds limit of 5. Recommend reducing CPI trade relative_weight to 5 or deferring GDP trade until directional clarity achieved. Both macro trades carry hawkish Fed / stagflation risk; diversification limited. No overlapping positions on Fed policy and inflation management reduces but does not eliminate correlation tail risk.",
   "no_trades_today": false,
   "reeval_triggers": [
-    "CPI data release 2026-05-12: If April CPI >0.4% MoM, immediate reversal of consensus trade thesis",
-    "Fed FOMC Minutes or dot plot update: Any shift toward 1+ cuts in 2026 contradicts Claude single-source rate-cut-0 thesis",
-    "Q1 GDP advance estimate 2026-04-30: Resolution of GDP threshold contradiction; if Q1 prints >2.0%, both models wrong",
-    "Energy price spike >$90/bbl WTI: Could invalidate April CPI base-effects narrative",
-    "Labor market deterioration (NFP miss >100k two consecutive months): Could force Fed pivot and trigger rate cuts despite inflation",
-    "Weather forecast revisions for NYC: Resolution of April 13 high temp by 2026-04-14 EOD"
+    "Atlanta Fed GDPNow update (Q1 GDP data drift >0.2% from 1.3%)",
+    "April CPI print (MoM > 0.5% breaks consensus trade thesis)",
+    "FOMC communications or Fed speaker hawkish/dovish pivot",
+    "Oil price shock or geopolitical escalation (Iran war expansion)",
+    "Labor market data (unemployment, payrolls) showing rapid softening",
+    "Market repricing of rate cut odds (CME FedWatch >30% probability)",
+    "Fiscal stimulus announcement or delay"
   ],
   "poly_disagreed": [],
   "claude_solo_trades": [
     {
-      "market": "Fed rate cuts 0 times in 2026",
+      "market": "No Fed Rate Cuts in 2026",
       "ticker": "KXRATECUTCOUNT-26DEC31-T0",
       "direction": "YES",
       "source": "claude",
@@ -152,26 +153,10 @@
         0.65
       ],
       "max_acceptable_price": 0.425,
-      "reason_other_missed": "Gemini analyzed 'Fed cuts before 2027' (opposite framing) as NO direction with different ticker and probability structure. Claude's zero-cuts contract is more granular and exploits tail hawkishness; Gemini's 'any cuts' formulation is less precise for this regime.",
-      "grounding_source": "https://www.cnbc.com/2026/03/18/dot-plot-fed-still-expects-to-cut-rates-once-this-year-despite-spiking-oil-prices-.html",
+      "reason_other_missed": "Gemini's overlapping direction and lower edge (14% vs 16%), but range mismatch [0.4, 0.5] vs [0.5, 0.65] prevents consensus. Claude's high confidence and Iranian oil shock catalyst stronger than Gemini's medium confidence and supply chain concerns. Claude entry window closes 2026-04-29; Gemini 2026-04-13.",
+      "grounding_source": "https://www.thestreet.com/fed/jpmorgan-has-a-stark-message-on-the-next-fed-rate-cut",
       "correlation_cluster_id": "fed_policy",
       "relative_weight": 3
-    },
-    {
-      "market": "NYC high temp 78-79\u00b0F on April 13",
-      "ticker": "KXHIGHNY-26APR13-B78.5",
-      "direction": "YES",
-      "source": "claude",
-      "edge": 18,
-      "prob_range": [
-        0.45,
-        0.6
-      ],
-      "max_acceptable_price": 0.4,
-      "reason_other_missed": "Gemini explicitly avoided weather microstates, citing insufficient grounding for precise prediction. Claude took calculated bet with 18% edge and medium conviction. Weather trades below macro/macro-adjacent focus but valid as uncorrelated diversifier.",
-      "grounding_source": "https://www.accuweather.com/en/us/new-york/10021/april-weather/349727",
-      "correlation_cluster_id": "weather_temp",
-      "relative_weight": 1
     }
   ]
 }

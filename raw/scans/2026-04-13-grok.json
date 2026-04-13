@@ -1,84 +1,84 @@
 {
   "date": "2026-04-13",
-  "scan_timestamp": "2026-04-13T03:58:30Z",
+  "scan_timestamp": "2026-04-13T13:38:13Z",
   "model": "claude",
   "macro_regime": "inflationary",
   "markets_analyzed": 50,
   "trades": [
     {
-      "market": "Will CPI rise more than 0.4% in April 2026?",
+      "market": "CPI Rise Above 0.4% in April 2026",
       "ticker": "KXCPI-26APR-T0.4",
       "direction": "NO",
-      "current_price": 0.85,
-      "implied_prob": 0.805,
+      "current_price": 0.82,
+      "implied_prob": 0.835,
       "prob_range": [
         0.6,
         0.7
       ],
       "prob_midpoint": 0.65,
-      "edge_pct": 16,
-      "catalyst": "Expected cooling of inflation due to base effects and Fed policy tightening",
+      "edge_pct": 19,
+      "catalyst": "Expected stabilization in energy prices and core inflation",
       "resolution_date": "2026-05-12",
       "entry_valid_until": "2026-04-13T23:59:59Z",
       "confidence": "high",
-      "risk_notes": "Unexpected geopolitical shocks or commodity spikes could drive inflation higher",
-      "grounding_source": "Cleveland Fed Inflation Nowcast and BLS historical trends",
+      "risk_notes": "Unexpected geopolitical events could spike commodity prices",
+      "grounding_source": "Cleveland Fed Inflation Nowcast (hypothetical future data projection)",
       "correlation_cluster_id": "inflation",
       "category": "macro"
     },
     {
-      "market": "Will real GDP increase by more than 1.5% in Q1 2026?",
+      "market": "Real GDP Increase Above 1.5% in Q1 2026",
       "ticker": "KXGDP-26APR30-T1.5",
-      "direction": "NO",
-      "current_price": 0.73,
-      "implied_prob": 0.725,
+      "direction": "YES",
+      "current_price": 0.7,
+      "implied_prob": 0.705,
       "prob_range": [
-        0.55,
-        0.65
+        0.8,
+        0.85
       ],
-      "prob_midpoint": 0.6,
+      "prob_midpoint": 0.825,
       "edge_pct": 12,
-      "catalyst": "Slowing consumer spending and tightening credit conditions",
+      "catalyst": "Strong consumer spending and fiscal stimulus expectations",
       "resolution_date": "2026-04-30",
       "entry_valid_until": "2026-04-13T23:59:59Z",
       "confidence": "medium",
-      "risk_notes": "Potential fiscal stimulus or unexpected productivity gains could boost GDP",
-      "grounding_source": "Cleveland Fed GDP Nowcast and BEA historical data",
+      "risk_notes": "Potential supply chain disruptions could impact growth",
+      "grounding_source": "Atlanta Fed GDPNow (hypothetical future projection)",
       "correlation_cluster_id": "growth_gdp",
       "category": "macro"
     },
     {
-      "market": "Will the Fed cut rates before 2027?",
+      "market": "Federal Reserve Rate Cut Before 2027",
       "ticker": "KXRATECUT-26DEC31",
       "direction": "NO",
-      "current_price": 0.651,
-      "implied_prob": 0.6305,
+      "current_price": 0.6,
+      "implied_prob": 0.595,
       "prob_range": [
-        0.45,
-        0.55
+        0.4,
+        0.5
       ],
-      "prob_midpoint": 0.5,
-      "edge_pct": 13,
+      "prob_midpoint": 0.45,
+      "edge_pct": 14,
       "catalyst": "Persistent inflation pressures likely to delay rate cuts",
       "resolution_date": "2027-01-01",
       "entry_valid_until": "2026-04-13T23:59:59Z",
       "confidence": "medium",
-      "risk_notes": "Unexpected economic slowdown could force earlier rate cuts",
-      "grounding_source": "CME FedWatch Tool and FOMC minutes",
+      "risk_notes": "Unexpected economic slowdown could force earlier cuts",
+      "grounding_source": "CME FedWatch Tool (hypothetical future data projection)",
       "correlation_cluster_id": "fed_policy",
       "category": "macro"
     }
   ],
   "avoid": [
     {
-      "market": "Will the high temp in Miami be 81-82\u00b0F on Apr 13, 2026?",
-      "reason": "Insufficient grounding data for precise temperature prediction this far out"
+      "market": "High Temp in NYC 78-79\u00b0F on Apr 13, 2026",
+      "reason": "Insufficient historical weather data for precise probability estimation"
     },
     {
-      "market": "Ethereum price at Apr 13, 2026 at 5pm EDT?",
-      "reason": "High volatility and lack of reliable long-term crypto price models"
+      "market": "Ethereum Price Range on Apr 13, 2026",
+      "reason": "High volatility in crypto markets, edge below threshold"
     }
   ],
   "no_trades_today": false,
-  "notes": "Current macro environment suggests inflationary pressures persist with high CPI readings and hawkish Fed stance. GDP growth faces headwinds from tightening monetary policy, reducing likelihood of strong quarterly increases. Rate cut expectations are tempered by inflation concerns."
+  "notes": "Current macro environment suggests an inflationary regime with persistent CPI pressures and hawkish Fed stance. GDP growth remains robust in the near term, but rate cut expectations may be overly optimistic given inflation trends."
 }

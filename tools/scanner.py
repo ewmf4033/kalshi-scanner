@@ -91,7 +91,7 @@ SERIES_TICKERS = [
     "KXFEDRATE",
 ]
 
-TOP_N_MARKETS = 50
+TOP_N_MARKETS = 100
 
 logging.basicConfig(
     level=logging.INFO,
@@ -217,6 +217,192 @@ def pull_markets_by_series(api_key_id: str, private_key, series_list: list[str])
     log.info(f"Pulled {len(all_markets)} markets from {found_series}/{len(series_list)} series")
     return all_markets
 
+
+
+def pull_all_markets(api_key_id: str, private_key) -> list[dict]:
+    """Pull ALL open markets, drop sports client-side."""
+    SKIP_PREFIXES = (
+        "KXMVE", "KXNCAA", "KXNBA", "KXNHL", "KXMLB", "KXNFL",
+        "KXMMA", "KXSOCCER", "KXWNBA", "KXPGA", "KXNASCAR",
+        "KXCFB", "KXCBB", "KXEPL", "KXUFC", "KXF1",
+    )
+    client = httpx.Client(timeout=30)
+    out, cursor = [], None
+
+    for page in range(15):
+        path = "/markets"
+        params = {"limit": 200, "status": "open"}
+        if cursor:
+            params["cursor"] = cursor
+        headers = kalshi_auth_headers(api_key_id, private_key, "GET", path)
+        try:
+            r = client.get(f"{KALSHI_BASE}{path}", params=params, headers=headers)
+            if r.status_code == 429:
+                time.sleep(2)
+                headers = kalshi_auth_headers(api_key_id, private_key, "GET", path)
+                r = client.get(f"{KALSHI_BASE}{path}", params=params, headers=headers)
+            r.raise_for_status()
+            data = r.json()
+            markets = data.get("markets", [])
+            if not markets:
+                break
+            for m in markets:
+                ticker = m.get("ticker", "")
+                event_ticker = m.get("event_ticker", "")
+                cat = str(m.get("category", "")).lower()
+                # Skip by prefix
+                if any(ticker.startswith(p) or event_ticker.startswith(p) for p in SKIP_PREFIXES):
+                    continue
+                # Skip by category
+                if cat == "sports":
+                    continue
+                out.append(m)
+            cursor = data.get("cursor")
+            if not cursor:
+                break
+        except Exception as e:
+            log.warning(f"Error pulling page {page}: {e}")
+            break
+        time.sleep(0.3)
+
+    client.close()
+    log.info(f"Browse-all: {len(out)} non-sports markets from full catalog")
+    return out
+
+
+
+def pull_all_markets(api_key_id, private_key):
+    SKIP = ('KXMVE','KXNCAA','KXNBA','KXNHL','KXMLB','KXNFL','KXMMA','KXSOCCER','KXWNBA','KXPGA','KXNASCAR','KXCFB','KXCBB','KXEPL','KXUFC','KXF1')
+    client = httpx.Client(timeout=30)
+    out, cursor = [], None
+    for page in range(15):
+        path = '/markets'
+        params = {'limit': 200, 'status': 'open'}
+        if cursor:
+            params['cursor'] = cursor
+        headers = kalshi_auth_headers(api_key_id, private_key, 'GET', path)
+        try:
+            r = client.get(f'{KALSHI_BASE}{path}', params=params, headers=headers)
+            if r.status_code == 429:
+                time.sleep(2)
+                headers = kalshi_auth_headers(api_key_id, private_key, 'GET', path)
+                r = client.get(f'{KALSHI_BASE}{path}', params=params, headers=headers)
+            r.raise_for_status()
+            data = r.json()
+            markets = data.get('markets', [])
+            if not markets:
+                break
+            for m in markets:
+                ticker = m.get('ticker', '')
+                event_ticker = m.get('event_ticker', '')
+                cat = str(m.get('category', '')).lower()
+                if any(ticker.startswith(px) or event_ticker.startswith(px) for px in SKIP):
+                    continue
+                if cat == 'sports':
+                    continue
+                out.append(m)
+            cursor = data.get('cursor')
+            if not cursor:
+                break
+        except Exception as e:
+            log.warning(f'Error pulling page {page}: {e}')
+            break
+        time.sleep(0.3)
+    client.close()
+    log.info(f'Browse-all: {len(out)} non-sports markets')
+    return out
+
+
+def pull_all_markets(api_key_id: str, private_key) -> list[dict]:
+    """Pull ALL open markets, drop sports client-side."""
+    SKIP_PREFIXES = (
+        "KXMVE", "KXNCAA", "KXNBA", "KXNHL", "KXMLB", "KXNFL",
+        "KXMMA", "KXSOCCER", "KXWNBA", "KXPGA", "KXNASCAR",
+        "KXCFB", "KXCBB", "KXEPL", "KXUFC", "KXF1",
+    )
+    client = httpx.Client(timeout=30)
+    out, cursor = [], None
+
+    for page in range(15):
+        path = "/markets"
+        params = {"limit": 200, "status": "open"}
+        if cursor:
+            params["cursor"] = cursor
+        headers = kalshi_auth_headers(api_key_id, private_key, "GET", path)
+        try:
+            r = client.get(f"{KALSHI_BASE}{path}", params=params, headers=headers)
+            if r.status_code == 429:
+                time.sleep(2)
+                headers = kalshi_auth_headers(api_key_id, private_key, "GET", path)
+                r = client.get(f"{KALSHI_BASE}{path}", params=params, headers=headers)
+            r.raise_for_status()
+            data = r.json()
+            markets = data.get("markets", [])
+            if not markets:
+                break
+            for m in markets:
+                ticker = m.get("ticker", "")
+                event_ticker = m.get("event_ticker", "")
+                cat = str(m.get("category", "")).lower()
+                if any(ticker.startswith(p) or event_ticker.startswith(p) for p in SKIP_PREFIXES):
+                    continue
+                if cat == "sports":
+                    continue
+                out.append(m)
+            cursor = data.get("cursor")
+            if not cursor:
+                break
+        except Exception as e:
+            log.warning(f"Error pulling page {page}: {e}")
+            break
+        time.sleep(0.3)
+
+    client.close()
+    log.info(f"Browse-all: {len(out)} non-sports markets from full catalog")
+    return out
+
+
+
+def pull_all_markets(api_key_id, private_key):
+    SKIP = ('KXMVE','KXNCAA','KXNBA','KXNHL','KXMLB','KXNFL','KXMMA','KXSOCCER','KXWNBA','KXPGA','KXNASCAR','KXCFB','KXCBB','KXEPL','KXUFC','KXF1')
+    client = httpx.Client(timeout=30)
+    out, cursor = [], None
+    for page in range(15):
+        path = '/markets'
+        params = {'limit': 200, 'status': 'open'}
+        if cursor:
+            params['cursor'] = cursor
+        headers = kalshi_auth_headers(api_key_id, private_key, 'GET', path)
+        try:
+            r = client.get(f'{KALSHI_BASE}{path}', params=params, headers=headers)
+            if r.status_code == 429:
+                time.sleep(2)
+                headers = kalshi_auth_headers(api_key_id, private_key, 'GET', path)
+                r = client.get(f'{KALSHI_BASE}{path}', params=params, headers=headers)
+            r.raise_for_status()
+            data = r.json()
+            markets = data.get('markets', [])
+            if not markets:
+                break
+            for m in markets:
+                ticker = m.get('ticker', '')
+                event_ticker = m.get('event_ticker', '')
+                cat = str(m.get('category', '')).lower()
+                if any(ticker.startswith(px) or event_ticker.startswith(px) for px in SKIP):
+                    continue
+                if cat == 'sports':
+                    continue
+                out.append(m)
+            cursor = data.get('cursor')
+            if not cursor:
+                break
+        except Exception as e:
+            log.warning(f'Error pulling page {page}: {e}')
+            break
+        time.sleep(0.3)
+    client.close()
+    log.info(f'Browse-all: {len(out)} non-sports markets')
+    return out
 
 def filter_and_enrich(markets: list[dict], top_n: int = TOP_N_MARKETS) -> list[dict]:
     """Filter for markets with real orderbooks and pre-compute fields."""
