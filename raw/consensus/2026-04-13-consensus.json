@@ -1,0 +1,177 @@
+{
+  "date": "2026-04-13",
+  "macro_regime_claude": "inflationary",
+  "macro_regime_gemini": "inflationary",
+  "regime_agreement": true,
+  "regime_disagreement_note": null,
+  "consensus_trades": [
+    {
+      "market": "CPI above 0.4% in April 2026",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "NO",
+      "claude_edge": 23,
+      "gemini_edge": 16,
+      "consensus_edge": 16,
+      "aggressive_edge": 23,
+      "claude_prob_range": [
+        0.5,
+        0.65
+      ],
+      "gemini_prob_range": [
+        0.6,
+        0.7
+      ],
+      "conservative_prob_range": [
+        0.6,
+        0.7
+      ],
+      "aggressive_prob_range": [
+        0.5,
+        0.65
+      ],
+      "max_acceptable_price": 0.27,
+      "catalyst": "Base effects from March oil spike and seasonal moderation; expected cooling of inflation due to Fed policy tightening",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-13T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Continued energy price volatility from Middle East situation could drive inflation higher. Current price 0.85 significantly exceeds max_acceptable_price 0.34\u2014entry NOT recommended at current levels.",
+      "grounding_source": "https://www.cnbc.com/2026/04/10/cpi-inflation-report-march-2026.html and Cleveland Fed Inflation Nowcast",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 6,
+      "category": "macro",
+      "poly_price": null,
+      "poly_edge": null,
+      "poly_agrees": null,
+      "poly_version": "v2_no_poly_data"
+    }
+  ],
+  "single_source_trades": [
+    {
+      "market": "Fed rate cuts 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 16,
+      "prob_range": [
+        0.5,
+        0.65
+      ],
+      "max_acceptable_price": 0.425,
+      "reason_other_missed": "Gemini analyzed 'Fed cuts before 2027' (opposite framing) as NO direction with different ticker and probability structure. Claude's zero-cuts contract is more granular and exploits tail hawkishness; Gemini's 'any cuts' formulation is less precise for this regime.",
+      "grounding_source": "https://www.cnbc.com/2026/03/18/dot-plot-fed-still-expects-to-cut-rates-once-this-year-despite-spiking-oil-prices-.html",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 3
+    },
+    {
+      "market": "NYC high temp 78-79\u00b0F on April 13",
+      "ticker": "KXHIGHNY-26APR13-B78.5",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 18,
+      "prob_range": [
+        0.45,
+        0.6
+      ],
+      "max_acceptable_price": 0.4,
+      "reason_other_missed": "Gemini explicitly avoided weather microstates, citing insufficient grounding for precise prediction. Claude took calculated bet with 18% edge and medium conviction. Weather trades below macro/macro-adjacent focus but valid as uncorrelated diversifier.",
+      "grounding_source": "https://www.accuweather.com/en/us/new-york/10021/april-weather/349727",
+      "correlation_cluster_id": "weather_temp",
+      "relative_weight": 1
+    }
+  ],
+  "contradictions": [
+    {
+      "market": "Q1 2026 GDP growth threshold",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "NO",
+      "claude_prob_range": [
+        0.3,
+        0.45
+      ],
+      "gemini_prob_range": [
+        0.55,
+        0.65
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Both agree GDP will miss 2.0% threshold, but Claude targets 2.0% barrier (expecting ~1.3%) with prob_range [0.3, 0.45], while Gemini targets 1.5% barrier (different contract) with prob_range [0.55, 0.65]. These ranges do not overlap and represent different strike levels. Claude's 2.0% contract is more hawkish on growth slowdown. This is a range_mismatch on the same directional thesis but different granularity\u2014skip as not true consensus."
+    }
+  ],
+  "cluster_exposure": [
+    {
+      "cluster_id": "inflation",
+      "total_weight": 6,
+      "over_limit": true,
+      "trades_in_cluster": [
+        "KXCPI-26APR-T0.4"
+      ]
+    },
+    {
+      "cluster_id": "fed_policy",
+      "total_weight": 3,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXRATECUTCOUNT-26DEC31-T0"
+      ]
+    },
+    {
+      "cluster_id": "growth_gdp",
+      "total_weight": 0,
+      "over_limit": false,
+      "trades_in_cluster": []
+    },
+    {
+      "cluster_id": "weather_temp",
+      "total_weight": 1,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXHIGHNY-26APR13-B78.5"
+      ]
+    }
+  ],
+  "portfolio_concentration_warning": "CRITICAL: Consensus CPI trade (KXCPI-26APR-T0.4) assigned weight 6, causing inflation cluster to exceed cap of 5. Current market price 0.85 also SIGNIFICANTLY exceeds max_acceptable_price 0.34 (32.5% unfavorable to limit). RECOMMENDATION: Do NOT enter this trade at current price. If market reprices below 0.35, reduce weight to 4 and rebalance fed_policy down to 2 to stay within cluster limits. Alternatively, scale entire portfolio by 10% to reduce total inflation exposure relative to bankroll. Single-source fed_policy trade (weight 3) is well-grounded but in same cluster; combined fed_policy + potential GDP trades could approach cluster cap if GDP consensus forms.",
+  "no_trades_today": false,
+  "reeval_triggers": [
+    "CPI data release 2026-05-12: If April CPI >0.4% MoM, immediate reversal of consensus trade thesis",
+    "Fed FOMC Minutes or dot plot update: Any shift toward 1+ cuts in 2026 contradicts Claude single-source rate-cut-0 thesis",
+    "Q1 GDP advance estimate 2026-04-30: Resolution of GDP threshold contradiction; if Q1 prints >2.0%, both models wrong",
+    "Energy price spike >$90/bbl WTI: Could invalidate April CPI base-effects narrative",
+    "Labor market deterioration (NFP miss >100k two consecutive months): Could force Fed pivot and trigger rate cuts despite inflation",
+    "Weather forecast revisions for NYC: Resolution of April 13 high temp by 2026-04-14 EOD"
+  ],
+  "poly_disagreed": [],
+  "claude_solo_trades": [
+    {
+      "market": "Fed rate cuts 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 16,
+      "prob_range": [
+        0.5,
+        0.65
+      ],
+      "max_acceptable_price": 0.425,
+      "reason_other_missed": "Gemini analyzed 'Fed cuts before 2027' (opposite framing) as NO direction with different ticker and probability structure. Claude's zero-cuts contract is more granular and exploits tail hawkishness; Gemini's 'any cuts' formulation is less precise for this regime.",
+      "grounding_source": "https://www.cnbc.com/2026/03/18/dot-plot-fed-still-expects-to-cut-rates-once-this-year-despite-spiking-oil-prices-.html",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 3
+    },
+    {
+      "market": "NYC high temp 78-79\u00b0F on April 13",
+      "ticker": "KXHIGHNY-26APR13-B78.5",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 18,
+      "prob_range": [
+        0.45,
+        0.6
+      ],
+      "max_acceptable_price": 0.4,
+      "reason_other_missed": "Gemini explicitly avoided weather microstates, citing insufficient grounding for precise prediction. Claude took calculated bet with 18% edge and medium conviction. Weather trades below macro/macro-adjacent focus but valid as uncorrelated diversifier.",
+      "grounding_source": "https://www.accuweather.com/en/us/new-york/10021/april-weather/349727",
+      "correlation_cluster_id": "weather_temp",
+      "relative_weight": 1
+    }
+  ]
+}

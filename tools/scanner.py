@@ -643,11 +643,12 @@ async def run(args):
     scanner_prompt = build_scanner_prompt(markets_json)
 
     # --- Step 3: Call models in parallel ---
-    claude_raw, grok_raw, gemini_shadow_raw = await asyncio.gather(
+    claude_raw, grok_raw = await asyncio.gather(
         call_claude(scanner_prompt),
         call_gemini(scanner_prompt),
-        call_gemini_shadow(scanner_prompt),
     )
+    # Gemini shadow runs after main models to avoid rate limits
+    gemini_shadow_raw = await call_gemini_shadow(scanner_prompt)
 
     claude_parsed = validate_edge(parse_model_json(claude_raw))
     gemini_parsed = validate_edge(parse_model_json(grok_raw))
