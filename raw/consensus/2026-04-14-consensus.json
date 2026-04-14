@@ -1,0 +1,188 @@
+{
+  "date": "2026-04-14",
+  "macro_regime_claude": "inflationary",
+  "macro_regime_gemini": "inflationary",
+  "regime_agreement": true,
+  "regime_disagreement_note": null,
+  "consensus_trades": [
+    {
+      "market": "April CPI month-over-month above 0.4%",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "claude_edge": 16,
+      "gemini_edge": 12,
+      "consensus_edge": 12,
+      "aggressive_edge": 16,
+      "claude_prob_range": [
+        0.85,
+        0.95
+      ],
+      "gemini_prob_range": [
+        0.8,
+        0.9
+      ],
+      "conservative_prob_range": [
+        0.8,
+        0.9
+      ],
+      "aggressive_prob_range": [
+        0.85,
+        0.95
+      ],
+      "max_acceptable_price": 0.74,
+      "catalyst": "Energy base effects carrying through from March spike; ongoing inflationary pressures from energy and labor costs",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-05-10T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Seasonal adjustment could moderate the reading; potential for sudden disinflationary shock or base effects. Current price 0.74 is at threshold\u2014monitor for entry opportunity.",
+      "grounding_source": "https://blog.truflation.com/trends-driving-us-inflation-april-2026/",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 6,
+      "category": "macro",
+      "poly_price": null,
+      "poly_edge": null,
+      "poly_agrees": null,
+      "poly_version": "v2_no_poly_data"
+    }
+  ],
+  "single_source_trades": [
+    {
+      "market": "CPI inflation above 3.7% YoY for April 2026",
+      "ticker": "KXCPIYOY-26APR-T3.7",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 17,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "max_acceptable_price": 0.58,
+      "reason_other_missed": "Gemini did not analyze YoY inflation threshold specifically; focused on MoM and broader inflation trends. Claude's 17% edge exceeds category threshold and benefits from energy shock catalyst specificity.",
+      "grounding_source": "https://www.cnbc.com/2026/04/10/cpi-inflation-report-march-2026.html",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 5
+    },
+    {
+      "market": "Q1 GDP above 2.0%",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 15,
+      "prob_range": [
+        0.6,
+        0.7
+      ],
+      "max_acceptable_price": 0.52,
+      "reason_other_missed": "Gemini analyzed Q1 GDP at 1.5% threshold (more conservative) with 10% edge; does not meet single-source minimum edge criteria of 20% or strong differentiation. Claude's 2.0% target with 15% edge better aligns with Atlanta Fed GDPNow and St. Louis Fed nowcast catalysts.",
+      "grounding_source": "https://fred.stlouisfed.org/series/GDPNOW",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 4
+    }
+  ],
+  "contradictions": [
+    {
+      "market": "Q1 GDP threshold",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "YES",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.6,
+        0.7
+      ],
+      "gemini_prob_range": [
+        0.75,
+        0.85
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Both models bullish on Q1 GDP but disagree on threshold level. Claude targets 2.0% with conservative midpoint 0.65; Gemini targets 1.5% with aggressive midpoint 0.80. Ranges do not overlap. Claude's 2.0% threshold is more demanding and better reflects current nowcast data (Atlanta Fed GDPNow is tracking above 2.0%). Gemini's 1.5% target is lower conviction. Treat as separate opportunities, not consensus."
+    },
+    {
+      "market": "Fed cuts 0 times in 2026 / Will the Federal Reserve cut rates before 2027?",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "YES",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.5,
+        0.6
+      ],
+      "gemini_prob_range": [
+        0.4,
+        0.5
+      ],
+      "stronger_reasoning": "neither",
+      "explanation": "Python validator caught non-overlapping ranges misclassified as consensus"
+    }
+  ],
+  "cluster_exposure": [
+    {
+      "cluster_id": "inflation",
+      "total_weight": 11,
+      "over_limit": true,
+      "trades_in_cluster": [
+        "KXCPI-26APR-T0.4",
+        "KXCPIYOY-26APR-T3.7"
+      ]
+    },
+    {
+      "cluster_id": "fed_policy",
+      "total_weight": 7,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXRATECUTCOUNT-26DEC31-T0"
+      ]
+    },
+    {
+      "cluster_id": "growth_gdp",
+      "total_weight": 4,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXGDP-26APR30-T2.0"
+      ]
+    }
+  ],
+  "portfolio_concentration_warning": "INFLATION CLUSTER OVER LIMIT. Total weight in inflation cluster is 11 (limit 5). Two of three recommended trades fall in inflation complex: KXCPI-26APR-T0.4 (weight 6) and KXCPIYOY-26APR-T3.7 (weight 5). Recommend: (1) Reduce KXCPI-26APR-T0.4 to weight 3 and KXCPIYOY-26APR-T3.7 to weight 2 to stay within 5-point cluster cap, OR (2) Skip KXCPIYOY-26APR-T3.7 entirely and keep KXCPI-26APR-T0.4 at weight 5. Risk concentration in energy shock narrative. If Iran conflict resolves, both trades face simultaneous adverse pressure. Recommend option (2): prioritize near-term MoM inflation (KXCPI) over YoY (KXCPIYOY) due to higher liquidity and shorter tail risk.",
+  "no_trades_today": false,
+  "reeval_triggers": [
+    "Iran conflict resolution or escalation\u2014both inflation trades highly sensitive to energy price direction",
+    "Fed communications or FOMC meeting before 2026-05-31\u2014impacts KXRATECUTCOUNT conviction",
+    "CPI print on 2026-05-12\u2014resolves both KXCPI and KXCPIYOY; governs Fed policy outlook",
+    "Advance Q1 GDP estimate release on 2026-04-30\u2014removes estimate uncertainty from KXGDP-26APR30-T2.0",
+    "Economic data weakness (jobless claims, PMI, housing starts)\u2014could trigger recession fears and force consensus on Fed cuts despite inflation",
+    "USD strength or commodity price collapse\u2014disinflationary shock scenario reducing inflation cluster edge"
+  ],
+  "poly_disagreed": [],
+  "claude_solo_trades": [
+    {
+      "market": "CPI inflation above 3.7% YoY for April 2026",
+      "ticker": "KXCPIYOY-26APR-T3.7",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 17,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "max_acceptable_price": 0.58,
+      "reason_other_missed": "Gemini did not analyze YoY inflation threshold specifically; focused on MoM and broader inflation trends. Claude's 17% edge exceeds category threshold and benefits from energy shock catalyst specificity.",
+      "grounding_source": "https://www.cnbc.com/2026/04/10/cpi-inflation-report-march-2026.html",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 5
+    },
+    {
+      "market": "Q1 GDP above 2.0%",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 15,
+      "prob_range": [
+        0.6,
+        0.7
+      ],
+      "max_acceptable_price": 0.52,
+      "reason_other_missed": "Gemini analyzed Q1 GDP at 1.5% threshold (more conservative) with 10% edge; does not meet single-source minimum edge criteria of 20% or strong differentiation. Claude's 2.0% target with 15% edge better aligns with Atlanta Fed GDPNow and St. Louis Fed nowcast catalysts.",
+      "grounding_source": "https://fred.stlouisfed.org/series/GDPNOW",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 4
+    }
+  ]
+}

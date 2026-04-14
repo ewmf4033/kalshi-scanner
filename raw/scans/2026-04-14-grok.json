@@ -1,0 +1,84 @@
+{
+  "date": "2026-04-14",
+  "scan_timestamp": "2026-04-14T10:00:18Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 100,
+  "trades": [
+    {
+      "market": "Will real GDP increase by more than 1.5% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "YES",
+      "current_price": 0.71,
+      "implied_prob": 0.703,
+      "prob_range": [
+        0.75,
+        0.85
+      ],
+      "prob_midpoint": 0.8,
+      "edge_pct": 10,
+      "catalyst": "Expected continued economic expansion based on current trends",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-14T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Potential for unexpected economic slowdown or data revisions",
+      "grounding_source": "Bureau of Economic Analysis projections and Cleveland Fed Nowcast",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "NO",
+      "current_price": 0.592,
+      "implied_prob": 0.6055,
+      "prob_range": [
+        0.4,
+        0.5
+      ],
+      "prob_midpoint": 0.45,
+      "edge_pct": 16,
+      "catalyst": "Persistent inflation pressures likely to delay rate cuts",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-14T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Unexpected disinflation or economic weakness could prompt earlier cuts",
+      "grounding_source": "CME FedWatch Tool and FOMC minutes",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will CPI rise more than 0.4% in April 2026?",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "current_price": 0.74,
+      "implied_prob": 0.735,
+      "prob_range": [
+        0.8,
+        0.9
+      ],
+      "prob_midpoint": 0.85,
+      "edge_pct": 12,
+      "catalyst": "Ongoing inflationary pressures from energy and labor costs",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-14T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Potential for sudden disinflationary shock or base effects",
+      "grounding_source": "Bureau of Labor Statistics historical trends and commodity price forecasts",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Weather-related markets for April 14, 2026",
+      "reason": "Insufficient reliable long-term weather forecast data for specific temperature ranges"
+    },
+    {
+      "market": "Various CPI and GDP markets with low volume",
+      "reason": "Volume below $50K threshold or wide spreads reducing trade reliability"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Current macro environment suggests an inflationary regime with persistent price pressures and a hawkish Federal Reserve stance. Strong GDP growth projections reduce recession likelihood, while inflation remains a key concern influencing Fed policy expectations."
+}

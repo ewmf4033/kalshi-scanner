@@ -1,0 +1,126 @@
+{
+  "date": "2026-04-14",
+  "scan_timestamp": "2026-04-14T10:00:18Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 59,
+  "trades": [
+    {
+      "market": "Will the rate of CPI inflation be above 3.6% for the year ending in April 2026?",
+      "ticker": "KXCPIYOY-26APR-T3.6",
+      "direction": "YES",
+      "current_price": 0.7,
+      "implied_prob": 0.685,
+      "prob_range": [
+        0.78,
+        0.88
+      ],
+      "prob_midpoint": 0.83,
+      "edge_pct": 15,
+      "catalyst": "Recent CPI data suggests inflation is stickier than expected, and the market is underpricing the likelihood of inflation remaining above 3.6%.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-15T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected dovish shift from the Fed, significant drop in commodity prices.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will CPI rise more than 0.4% in April 2026?",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "current_price": 0.74,
+      "implied_prob": 0.735,
+      "prob_range": [
+        0.82,
+        0.9
+      ],
+      "prob_midpoint": 0.86,
+      "edge_pct": 12,
+      "catalyst": "Strong economic activity and tight labor market suggest continued upward pressure on prices.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-15T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected drop in energy prices, significant increase in productivity.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the rate of CPI inflation be above 3.7% for the year ending in April 2026?",
+      "ticker": "KXCPIYOY-26APR-T3.7",
+      "direction": "YES",
+      "current_price": 0.54,
+      "implied_prob": 0.525,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "prob_midpoint": 0.7,
+      "edge_pct": 17,
+      "catalyst": "Inflation data continues to surprise to the upside, indicating persistent inflationary pressures.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-15T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "A sudden and unexpected drop in commodity prices could alleviate inflationary pressures.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "NO",
+      "current_price": 0.592,
+      "implied_prob": 0.6055,
+      "prob_range": [
+        0.45,
+        0.52
+      ],
+      "prob_midpoint": 0.485,
+      "edge_pct": 12,
+      "catalyst": "Given the current inflationary environment, the Fed is unlikely to cut rates before 2027.",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-15T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "A significant economic downturn could force the Fed to cut rates.",
+      "grounding_source": "https://www.federalreserve.gov/monetarypolicy.htm",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will CPI rise more than 0.5% in April 2026?",
+      "ticker": "KXCPI-26APR-T0.5",
+      "direction": "YES",
+      "current_price": 0.54,
+      "implied_prob": 0.545,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "prob_midpoint": 0.7,
+      "edge_pct": 15,
+      "catalyst": "Recent economic data suggests that inflation is proving to be more persistent than initially anticipated, making a 0.5% CPI increase in April 2026 more likely.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-15T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "A sudden and unexpected drop in energy prices could alleviate inflationary pressures.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "KXHIGHMIA-26APR14-B83.5",
+      "reason": "Weather forecasts are too uncertain beyond a few days."
+    },
+    {
+      "market": "KXRECSSNBER-26",
+      "reason": "Recession is a complex macro event, and the current market price reflects a reasonable consensus."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "The current macro environment is inflationary, with sticky CPI and a hawkish Fed. The market appears to be underpricing the risk of continued inflation."
+}

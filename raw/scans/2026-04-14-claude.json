@@ -1,0 +1,109 @@
+{
+  "date": "2026-04-14",
+  "scan_timestamp": "2026-04-14T10:00:18Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 87,
+  "trades": [
+    {
+      "market": "Fed cuts 0 times in 2026",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.409,
+      "implied_prob": 0.4005,
+      "prob_range": [
+        0.5,
+        0.6
+      ],
+      "prob_midpoint": 0.55,
+      "edge_pct": 15,
+      "catalyst": "Sustained 3.3% inflation and hawkish Fed positioning",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-05-31T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Economic shock could force cuts despite inflation",
+      "grounding_source": "https://www.foxbusiness.com/economy/federal-reserve-cut-interest-rates-2026",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "CPI inflation above 3.7% YoY for April 2026",
+      "ticker": "KXCPIYOY-26APR-T3.7",
+      "direction": "YES",
+      "current_price": 0.54,
+      "implied_prob": 0.525,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "prob_midpoint": 0.7,
+      "edge_pct": 17,
+      "catalyst": "Energy spike driving inflation trajectory above baseline forecasts",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-05-10T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Energy prices could moderate if Iran conflict resolves",
+      "grounding_source": "https://www.cnbc.com/2026/04/10/cpi-inflation-report-march-2026.html",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "April CPI month-over-month above 0.4%",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "YES",
+      "current_price": 0.74,
+      "implied_prob": 0.735,
+      "prob_range": [
+        0.85,
+        0.95
+      ],
+      "prob_midpoint": 0.9,
+      "edge_pct": 16,
+      "catalyst": "Energy base effects carrying through from March spike",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-05-11T08:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "Seasonal adjustment could moderate the reading",
+      "grounding_source": "https://blog.truflation.com/trends-driving-us-inflation-april-2026/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Q1 GDP above 2.0%",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "YES",
+      "current_price": 0.49,
+      "implied_prob": 0.5,
+      "prob_range": [
+        0.6,
+        0.7
+      ],
+      "prob_midpoint": 0.65,
+      "edge_pct": 15,
+      "catalyst": "Atlanta Fed GDPNow and St. Louis Fed nowcasts above 2%",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-25T12:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "Advance estimate revision risk and data volatility",
+      "grounding_source": "https://fred.stlouisfed.org/series/GDPNOW",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Weather markets (NYC, Miami, Chicago temperatures)",
+      "reason": "Limited historical accuracy edge and wide spread costs"
+    },
+    {
+      "market": "May/June CPI markets",
+      "reason": "Too far from resolution with insufficient edge over current pricing"
+    },
+    {
+      "market": "Recession market",
+      "reason": "Spread too wide (0.01) and pricing appears efficient given current data"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Macro environment classified as inflationary due to persistent 3.3% CPI, energy-driven price pressures, and Fed maintaining restrictive stance. Energy shock from Iran conflict creating tactical opportunities in inflation markets. GDP growth remains solid despite productivity puzzle, creating edge in GDP above 2% threshold. Fed policy markets mispricing dovish expectations given sustained inflation above target."
+}
