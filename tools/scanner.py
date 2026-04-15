@@ -88,6 +88,18 @@ SERIES_TICKERS = [
     "KXZELDIN",
     # Finance
     "KXSP500",
+    # Commodities (new)
+    "KXHOILMON",
+    "KXGOLDMON",
+    "KXNGMON",
+    "KXCOPPERMON",
+    "KXCOFFEEMON",
+    "KXWHEATMON",
+    "KXCORNMON",
+    "KXNICKELMON",
+    "KXSUGARMON",
+    "KXGOLDD",
+    "KXCOPPERD",
     "KXFEDRATE",
 ]
 
@@ -521,7 +533,7 @@ async def call_claude(prompt: str) -> str:
 
     try:
         response = client.messages.create(
-            model="claude-sonnet-4-6-20250217",
+            model="claude-sonnet-4-6",
             max_tokens=8192,
             tools=[{"type": "web_search_20250305", "name": "web_search"}],
             messages=[{"role": "user", "content": prompt}],

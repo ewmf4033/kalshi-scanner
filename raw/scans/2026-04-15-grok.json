@@ -1,0 +1,42 @@
+{
+  "date": "2026-04-15",
+  "scan_timestamp": "2026-04-15T21:28:50Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 132,
+  "trades": [
+    {
+      "market": "Will the Fed cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "YES",
+      "current_price": 0.597,
+      "implied_prob": 0.6105,
+      "prob_range": [
+        0.7,
+        0.8
+      ],
+      "prob_midpoint": 0.75,
+      "edge_pct": 14,
+      "catalyst": "Expected disinflationary pressures by late 2026",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-15T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Persistent inflation could delay Fed action",
+      "grounding_source": "CME FedWatch Tool indicating rate cut expectations",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Will CPI rise more than 0.7% in April 2026?",
+      "reason": "High spread and uncertainty in inflation data"
+    },
+    {
+      "market": "Bitcoin price range on Apr 15, 2026",
+      "reason": "Insufficient edge and high volatility in crypto markets"
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Current macro environment suggests inflationary pressures with potential Fed rate cuts in response to disinflationary signals by late 2026. GDP growth remains robust, reducing recession likelihood."
+}

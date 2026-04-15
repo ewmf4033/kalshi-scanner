@@ -1,0 +1,179 @@
+{
+  "date": "2026-04-15",
+  "scan_timestamp": "2026-04-15T21:28:50Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 89,
+  "trades": [
+    {
+      "market": "Will the Fed cut rates 0 times in 2026?",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.398,
+      "implied_prob": 0.389,
+      "prob_range": [
+        0.55,
+        0.75
+      ],
+      "prob_midpoint": 0.65,
+      "edge_pct": 26,
+      "catalyst": "CME FedWatch as of Apr 15 2026 shows ~77% probability of zero cuts by December; JPMorgan explicitly forecasts zero cuts all of 2026; Fed dot plot (March) median projects only one cut but FOMC language turned hawkish after Iran war-driven energy shock lifted CPI to 3.3% YoY in March; May meeting is 98.9% priced as a hold; Kalshi market is anchored to stale pre-war expectations.",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-22T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "A ceasefire resolution on Iran, energy price normalization, or a sharp labor market deterioration could revive cut expectations. Fed leadership transition (Warsh nomination) adds dovish tail risk. If April CPI surprises low, market could reprice. Long resolution window (Dec 31) leaves significant time for macro environment to shift.",
+      "grounding_source": "https://finance.yahoo.com/economy/policy/articles/fed-may-not-cut-rates-211243390.html (CME FedWatch ~77% no-cut probability); https://www.thestreet.com/fed/jpmorgan-has-a-stark-message-on-the-next-fed-rate-cut (JP Morgan: zero cuts forecast); https://growbeansprout.com/tools/fedwatch (CME FedWatch 98.9% hold at April 29 meeting)",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 2.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "NO",
+      "current_price": 0.5,
+      "implied_prob": 0.498,
+      "prob_range": [
+        0.25,
+        0.4
+      ],
+      "prob_midpoint": 0.325,
+      "edge_pct": 17,
+      "catalyst": "Atlanta Fed GDPNow latest estimate (Apr 9) is 1.3% for Q1 2026 \u2014 well below the 2.0% threshold. The estimate has been declining consistently from 3.1% in February. St. Louis Fed ENI nowcast was 1.7% (Mar 27). BEA advance estimate for Q1 releases April 30. The market still prices >2.0% as a coin-flip, but authoritative nowcasting models put the outcome at 1.3%, creating a large informational edge for the NO side.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-29T12:00:00Z",
+      "confidence": "high",
+      "risk_notes": "GDPNow has historical RMSE of ~1.15pp; a large positive revision in the final data (retail sales, trade) could still push print above 2.0%. The BEA advance estimate can deviate from GDPNow. Tariff-related front-running of imports boosted inventories and could distort some components. Net exports drag (trade deficit widening) is a significant headwind confirmed by separate data.",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow (GDPNow 1.3% as of Apr 9 2026); https://fred.stlouisfed.org/series/GDPNOW (FRED: Q1 2026 = 1.3078%); https://www.atlantafed.org/research-and-data/data/gdpnow/current-and-past-gdpnow-commentaries (commentary Apr 7 and Apr 9 2026)",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 1.5% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "NO",
+      "current_price": 0.65,
+      "implied_prob": 0.6555,
+      "prob_range": [
+        0.4,
+        0.55
+      ],
+      "prob_midpoint": 0.475,
+      "edge_pct": 18,
+      "catalyst": "GDPNow at 1.3% (Apr 9) sits below the 1.5% threshold. The market implies 65.5% chance the print exceeds 1.5%, yet the most current model estimate (which updates through the very data components BEA uses) is 1.3%. Even with a ~0.2pp upside surprise relative to GDPNow, the print would still miss the threshold. Risk-adjusted, NO at 35\u00a2 is well-valued.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-29T12:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "GDPNow's final estimate is not always close to the BEA advance print \u2014 the 1.15pp RMSE means there is a non-trivial probability that the actual print is 1.5%+. The NO trade at >1.5% is less confident than the >2.0% NO because it requires a smaller miss. Tariff import front-loading creates ambiguity in inventory and trade component contributions.",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow (GDPNow 1.3% as of Apr 9 2026); https://fred.stlouisfed.org/series/STLENI (St. Louis ENI: 1.70% as of Mar 27 2026)",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will CPI rise more than 0.4% in April 2026?",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "NO",
+      "current_price": 0.69,
+      "implied_prob": 0.695,
+      "prob_range": [
+        0.35,
+        0.5
+      ],
+      "prob_midpoint": 0.425,
+      "edge_pct": 27,
+      "catalyst": "March CPI surged +0.9% (energy/Iran war shock). April CPI consensus (FactSet via Morningstar) is +0.3%, reflecting expected energy price normalization as US-Iran ceasefire took effect late April. Energy was 10.9% of March spike; a partial reversal in gasoline alone suppresses April headline. Tariff pass-through to April CPI is expected to be modest (core goods only beginning to show). Market at 69.5% YES is anchored to March's outsized print and has not adjusted for base/energy reversal.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-05-11T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Tariff pass-through may be larger and faster than expected (UBS notes April could be first hard data hit). Energy prices are sticky \u2014 if Strait of Hormuz remains disrupted, energy component may not reverse. BLS seasonal adjustment for CPI in single-decimal rounds, so a 0.45% actual rounds to 0.5% (resolves NO for >0.4%) vs 0.44% rounds to 0.4% (also resolves NO). Resolution is on single-decimal reading per contract terms.",
+      "grounding_source": "https://www.bls.gov/news.release/cpi.nr0.htm (BLS March 2026 CPI: +0.9%, +3.3% YoY); https://www.morningstar.com/economy/will-april-cpi-report-show-first-inflation-impacts-tariffs (consensus forecast +0.3% for April); https://www.crfb.org/blogs/inflation-spikes-highest-nearly-two-years (CRFB commentary on March spike)",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the high temp in Chicago be 73-74\u00b0 on Apr 15, 2026?",
+      "ticker": "KXHIGHCHI-26APR15-B73.5",
+      "direction": "YES",
+      "current_price": 0.55,
+      "implied_prob": 0.56,
+      "prob_range": [
+        0.68,
+        0.82
+      ],
+      "prob_midpoint": 0.75,
+      "edge_pct": 19,
+      "catalyst": "NWS forecast for Chicago Midway on Apr 15 shows high near 74\u00b0F (NWS 7-day forecast); Wunderground live reading shows 74\u00b0F high forecast for April 15. AccuWeather monthly for Midway area shows April 14 actual was 82\u00b0F; April 15 is forecasting significant cooldown with rain/storms and high near 74\u00b0F. The 73-74\u00b0 bracket (resolves YES if Midway records 73\u00b0 or 74\u00b0) directly captures the consensus forecast target. Contract closes April 16 05:59Z (day's high already largely determined).",
+      "resolution_date": "2026-04-16",
+      "entry_valid_until": "2026-04-16T05:59:00Z",
+      "confidence": "medium",
+      "risk_notes": "Midway vs. O'Hare can diverge (this contract uses Midway per resolution source). Thunderstorms could either suppress or briefly spike temperatures unpredictably. If temperature peaks earlier in the morning before storm suppression, high could be higher (e.g., 75-76\u00b0). Market closes at 05:59Z (midnight Chicago time) so entry window is already closing \u2014 this is a very near-term trade. Spread of 0.02 is manageable.",
+      "grounding_source": "https://forecast.weather.gov/MapClick.php?textField1=41.837&textField2=-87.685 (NWS: high near 74\u00b0F Apr 15); https://www.wunderground.com/weather/us/il/chicago (Wunderground: Today Apr 15 high 74\u00b0F); https://polymarket.com/event/highest-temperature-in-chicago-on-april-15-2026 (NWS guidance ~82\u00b0F O'Hare, Polymarket commentary 74\u00b0F Midway divergence noted)",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "NO",
+      "current_price": 0.597,
+      "implied_prob": 0.6105,
+      "prob_range": [
+        0.3,
+        0.45
+      ],
+      "prob_midpoint": 0.375,
+      "edge_pct": 24,
+      "catalyst": "Consistent with the 0-cuts thesis: CME FedWatch Apr 15 shows ~77% probability of no cuts by December. JPMorgan forecasts zero cuts; Fed dot plot projects one cut (median) but language has turned hawkish. Iran war energy shock has pushed YoY CPI to 3.3% \u2014 the Fed explicitly cited uncertainty about war's inflation impact as reason to hold. The 'any cut YES' at 61% is mispriced vs. ~23% CME probability of at least one cut.",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-22T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Correlated with the 0-cuts trade \u2014 these two positions are in the same cluster and represent a concentrated fed_policy bet. A ceasefire-driven oil collapse or surprise labor market deterioration would sharply increase cut probability. Resolution covers all of 2026 with multiple FOMC meetings remaining. Spread of 1.9\u00a2 is relatively wide for this market, increasing execution cost.",
+      "grounding_source": "https://finance.yahoo.com/economy/policy/articles/fed-may-not-cut-rates-211243390.html (CME FedWatch 77% no-cut); https://www.thestreet.com/fed/jpmorgan-has-a-stark-message-on-the-next-fed-rate-cut (JPMorgan: zero cuts, potential hike in 2027); https://growbeansprout.com/tools/fedwatch (CME Apr 15: 98.9% hold at April 29 FOMC)",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 1 time in 2026? (KXRATECUTCOUNT-26DEC31-T1)",
+      "reason": "Correlated with the 0-cuts trade; adds concentrated fed_policy exposure without independent edge. Implied prob 22.6% \u2014 my estimate ~15-18% \u2014 edge ~5-7%, below 8% macro threshold."
+    },
+    {
+      "market": "Will the Fed cut rates 2 times in 2026? (KXRATECUTCOUNT-26DEC31-T2)",
+      "reason": "Given current CME pricing (~9.5% odds of 2 cuts per Fox Business), the Kalshi implied 15.75% slightly overstates the probability. Edge only ~6%, below macro threshold; also correlated with other fed_policy trades."
+    },
+    {
+      "market": "Will real GDP increase by more than 1.0% in Q1 2026? (KXGDP-26APR30-T1.0)",
+      "reason": "GDPNow at 1.3% supports YES at 84.5% implied. But GDPNow's 1.15pp RMSE means a <1.0% actual is plausible \u2014 insufficient edge for a NO, and the YES is fairly priced. Skip."
+    },
+    {
+      "market": "Will real GDP increase by more than 2.5% in Q1 2026? (KXGDP-26APR30-T2.5)",
+      "reason": "Already have NO on >2.0% and >1.5%; adding >2.5% NO increases growth_gdp cluster concentration without meaningful new information."
+    },
+    {
+      "market": "CPI YoY April above 3.6% (KXCPIYOY-26APR-T3.6)",
+      "reason": "March YoY was 3.3%. Whether April hits 3.6% depends on both monthly print and base effects. Consensus for April monthly is +0.3% which on current base would bring YoY to ~3.3-3.5%. The 52.5% implied is close to fair value; edge is unclear and below 8% threshold."
+    },
+    {
+      "market": "Chicago high temp <73\u00b0 Apr 15 (KXHIGHCHI-26APR15-T73)",
+      "reason": "Trading NO on this (i.e., high will be \u226573\u00b0) overlaps directly with the 73-74\u00b0 YES trade already selected. Holding both creates logical redundancy and doubles weather_temp cluster exposure."
+    },
+    {
+      "market": "Will there be a recession in 2026? (KXRECSSNBER-26)",
+      "reason": "High volume and interesting, but resolution depends on BEA defining two consecutive quarters of negative GDP \u2014 a very long horizon with enormous uncertainty. GDPNow Q1 at 1.3% is positive; Q2 outlook unclear. The implied 26.5% probability for YES is within plausible range. Cannot establish sufficient edge without clear multi-quarter economic trajectory data. Skip per data discipline."
+    },
+    {
+      "market": "All crypto price range markets (KXBTC, KXETH series)",
+      "reason": "Crypto intraday range markets require real-time price data for edge estimation. Without current BTC/ETH spot prices, cannot establish directional probability. Minimum edge threshold is 12% for crypto. Skip per no-fabricated-sources rule."
+    },
+    {
+      "market": "NYC and Miami weather temperature markets (Apr 16)",
+      "reason": "Low volume (<$4K), very thin open interest, and extremely wide bid-ask spreads on several. Insufficient liquidity to establish reliable edge; weather-temp markets for Apr 16 have insufficient forecast grounding available at scan time."
+    },
+    {
+      "market": "May-November CPI monthly and YoY markets",
+      "reason": "All markets beyond April CPI carry spread > 0.05 on many entries or volume below $50K threshold. Forecasting accuracy for CPI 1-7 months forward is insufficient to meet edge thresholds, particularly given Iran war uncertainty in energy prices."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Macro regime classified as INFLATIONARY. The Iran war (started Feb 28, 2026) is the dominant macro catalyst \u2014 it drove a +0.9% CPI spike in March (YoY 3.3%) and has caused a dramatic hawkish repricing in fed funds futures. CME FedWatch now shows ~77% probability of zero Fed cuts in 2026, vs. Kalshi markets still pricing ~61% chance of at least one cut \u2014 a significant divergence creating the largest edge in today's scan. The Q1 2026 GDP story is also clear: GDPNow has declined from 3.1% (Feb 20) to 1.3% (Apr 9), a 180-degree reversal from the initial outlook that Kalshi GDP markets have not fully absorbed. The two highest-conviction trades are (1) Fed 0 cuts YES \u2014 a 26% edge backed by CME futures and JPMorgan consensus \u2014 and (2) GDP >2.0% NO \u2014 a 17% edge backed by the authoritative GDPNow model. The CPI >0.4% April NO (27% edge) reflects the expected post-March energy reversal, but has more uncertainty around tariff pass-through timing. Note: Fed policy trades (KXRATECUTCOUNT-26DEC31-T0 and KXRATECUT-26DEC31) are correlated; position sizing should reflect joint exposure to the same underlying regime shift."
+}

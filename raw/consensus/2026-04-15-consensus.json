@@ -1,0 +1,297 @@
+{
+  "date": "2026-04-15",
+  "macro_regime_claude": "inflationary",
+  "macro_regime_gemini": "inflationary",
+  "regime_agreement": true,
+  "regime_disagreement_note": null,
+  "consensus_trades": [],
+  "single_source_trades": [
+    {
+      "market": "Will the Fed cut rates 0 times in 2026?",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 26,
+      "prob_range": [
+        0.55,
+        0.75
+      ],
+      "prob_midpoint": 0.65,
+      "current_price": 0.398,
+      "implied_prob": 0.389,
+      "max_acceptable_price": 0.572,
+      "reason_other_missed": "Gemini did not analyze the specific 0-cuts contract; Gemini's single trade on KXRATECUT-26DEC31 (any cut YES) contradicts Claude's zero-cuts thesis. This market is more precise than the 'any cut' market and directly captures the CME consensus (77% probability). Claude's 26% edge is well above 8% macro threshold and grounded in CME FedWatch and JPMorgan consensus.",
+      "grounding_source": "https://finance.yahoo.com/economy/policy/articles/fed-may-not-cut-rates-211243390.html (CME FedWatch as of Apr 15 2026 shows ~77% probability of zero cuts by December); https://www.thestreet.com/fed/jpmorgan-has-a-stark-message-on-the-next-fed-rate-cut (JPMorgan explicitly forecasts zero cuts all of 2026); https://growbeansprout.com/tools/fedwatch (CME FedWatch 98.9% hold at April 29 meeting)",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 7,
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 2.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 17,
+      "prob_range": [
+        0.25,
+        0.4
+      ],
+      "prob_midpoint": 0.325,
+      "current_price": 0.5,
+      "implied_prob": 0.498,
+      "max_acceptable_price": 0.4175,
+      "reason_other_missed": "Gemini did not analyze Q1 2026 GDP markets. Gemini's vague statement that 'GDP growth remains robust' contradicts the concrete data: Atlanta Fed GDPNow is 1.3% as of Apr 9, down from 3.1% in February\u2014a dramatic deterioration. This market resolves Apr 30 (imminent), so the edge is time-sensitive. Claude's 17% edge exceeds macro threshold and is grounded in the most authoritative nowcasting model.",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow (GDPNow 1.3% as of Apr 9 2026); https://fred.stlouisfed.org/series/GDPNOW (FRED: Q1 2026 = 1.3078%)",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 6,
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 1.5% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 18,
+      "prob_range": [
+        0.4,
+        0.55
+      ],
+      "prob_midpoint": 0.475,
+      "current_price": 0.65,
+      "implied_prob": 0.6555,
+      "max_acceptable_price": 0.4575,
+      "reason_other_missed": "Gemini did not analyze this threshold. Claude provides granular analysis of two GDP thresholds; the >1.5% threshold is slightly higher conviction (18% edge) than >2.0% (17% edge) because a smaller miss is required. Both resolve the same date (Apr 30). This is a tighter threshold offering better risk-adjusted entry if >2.0% fills rapidly.",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow (GDPNow 1.3% as of Apr 9 2026); https://fred.stlouisfed.org/series/STLENI (St. Louis ENI: 1.70% as of Mar 27 2026)",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 5,
+      "category": "macro"
+    },
+    {
+      "market": "Will CPI rise more than 0.4% in April 2026?",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 27,
+      "prob_range": [
+        0.35,
+        0.5
+      ],
+      "prob_midpoint": 0.425,
+      "current_price": 0.69,
+      "implied_prob": 0.695,
+      "max_acceptable_price": 0.4725,
+      "reason_other_missed": "Gemini explicitly avoided CPI April >0.7% due to 'high spread and uncertainty,' but did not engage with the >0.4% threshold which Claude identifies as well-grounded in consensus forecasts (+0.3% April vs. +0.9% March). Claude's 27% edge is the highest in the portfolio and reflects the post-March energy reversal. Resolution is May 12. Gemini's avoidance reflects risk aversion rather than contradictory analysis.",
+      "grounding_source": "https://www.bls.gov/news.release/cpi.nr0.htm (BLS March 2026 CPI: +0.9%, +3.3% YoY); https://www.morningstar.com/economy/will-april-cpi-report-show-first-inflation-impacts-tariffs (consensus forecast +0.3% for April)",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 8,
+      "category": "macro"
+    },
+    {
+      "market": "Will the high temp in Chicago be 73-74\u00b0 on Apr 15, 2026?",
+      "ticker": "KXHIGHCHI-26APR15-B73.5",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 19,
+      "prob_range": [
+        0.68,
+        0.82
+      ],
+      "prob_midpoint": 0.75,
+      "current_price": 0.55,
+      "implied_prob": 0.56,
+      "max_acceptable_price": 0.7,
+      "reason_other_missed": "Gemini did not analyze this market. Claude provides detailed weather forecasting grounding (NWS, Wunderground, AccuWeather) supporting a 75% probability, vs. market 56%. This is a weather category trade (5% edge threshold) with 19% edge. However, this trade is TIMING-SENSITIVE: entry_valid_until is 2026-04-16T05:59:00Z, which is 8 hours from scan time. By the time this cross-validation completes, the entry window may have closed. Current price 0.55 is below max_acceptable_price 0.70, so entry is viable if executed immediately.",
+      "grounding_source": "https://forecast.weather.gov/MapClick.php?textField1=41.837&textField2=-87.685 (NWS: high near 74\u00b0F Apr 15); https://www.wunderground.com/weather/us/il/chicago (Wunderground: Today Apr 15 high 74\u00b0F)",
+      "correlation_cluster_id": "weather_temp",
+      "relative_weight": 2,
+      "category": "weather"
+    }
+  ],
+  "contradictions": [
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "YES",
+      "claude_prob_range": [
+        0.3,
+        0.45
+      ],
+      "gemini_prob_range": [
+        0.7,
+        0.8
+      ],
+      "stronger_reasoning": "claude",
+      "explanation": "Claude and Gemini BOTH picked KXRATECUT-26DEC31 but in opposite directions with NON-OVERLAPPING probability ranges. Claude estimates 30-45% probability of at least one rate cut (supporting NO at current price 0.597), grounded in CME FedWatch (77% no-cut), JPMorgan consensus (zero cuts), and Fed hawkish pivot post-Iran war. Gemini estimates 70-80% probability of at least one cut (supporting YES), grounded only in vague assertion of 'expected disinflationary pressures by late 2026' with no cited evidence. Claude's reasoning is vastly stronger: it cites real-time CME data, explicit JPMorgan forecast, and FOMC language shift. Gemini's 'disinflationary pressures' are speculative and contradicted by current CPI reading of 3.3% YoY (March) and Fed hawkish stance. Claude's evidence is concrete, timestamped, and recent. This is a fundamental disagreement on macro direction. RECOMMENDATION: SKIP the 'both directions' consensus trade. Proceed only with Claude's NO thesis via single-source trade on KXRATECUTCOUNT-26DEC31-T0 (zero cuts YES), which is more precise and avoids the range conflict."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "contradiction_type": "range_mismatch",
+      "claude_direction": "NO",
+      "gemini_direction": "NO",
+      "claude_prob_range": [
+        0.3,
+        0.45
+      ],
+      "gemini_prob_range": [
+        0.7,
+        0.8
+      ],
+      "stronger_reasoning": "neither",
+      "explanation": "Python validator caught non-overlapping ranges misclassified as consensus"
+    }
+  ],
+  "cluster_exposure": [
+    {
+      "cluster_id": "fed_policy",
+      "total_weight": 7,
+      "over_limit": true,
+      "trades_in_cluster": [
+        "KXRATECUTCOUNT-26DEC31-T0"
+      ],
+      "note": "Single trade on zero-cuts with weight 7 does not exceed cluster limit of 5 per se, but if we include the contradicted KXRATECUT-26DEC31 trade at weight 0 (downgraded due to contradiction), total is 7. FLAG: Fed policy exposure is highly concentrated. Macro regime is 'inflationary' with Iran war as dominant catalyst. If ceasefire occurs suddenly or energy prices collapse, the entire fed_policy cluster reverses. Consider limiting cumulative fed_policy weight to 5 max by sizing KXRATECUTCOUNT-26DEC31-T0 at 5 instead of 7."
+    },
+    {
+      "cluster_id": "growth_gdp",
+      "total_weight": 11,
+      "over_limit": true,
+      "trades_in_cluster": [
+        "KXGDP-26APR30-T2.0",
+        "KXGDP-26APR30-T1.5"
+      ],
+      "note": "Two correlated GDP thresholds (both NO, both resolution Apr 30, both depend on GDPNow estimate of 1.3%). Combined weight 6 + 5 = 11, EXCEEDING cluster limit of 5. Both resolve the same date. RECOMMENDATION: Reduce relative_weight on KXGDP-26APR30-T1.5 from 5 to 2 to bring cluster total to 8, or DROP the >1.5% threshold entirely and keep only >2.0% (tighter thesis). Current portfolio sizes both, creating redundant exposure to the same underlying GDPNow model risk."
+    },
+    {
+      "cluster_id": "inflation",
+      "total_weight": 8,
+      "over_limit": true,
+      "trades_in_cluster": [
+        "KXCPI-26APR-T0.4"
+      ],
+      "note": "Single CPI trade at weight 8 alone does not exceed limit of 5. However, if macro regime remains 'inflationary' and Iran war energy shock persists, CPI volatility is HIGH. This single trade carries outsized cluster risk. The 27% edge is attractive, but position sizing should account for potential tariff pass-through acceleration (noted as risk). Cap weight at 5 max."
+    },
+    {
+      "cluster_id": "weather_temp",
+      "total_weight": 2,
+      "over_limit": false,
+      "trades_in_cluster": [
+        "KXHIGHCHI-26APR15-B73.5"
+      ]
+    }
+  ],
+  "portfolio_concentration_warning": "CRITICAL WARNINGS: (1) FED POLICY CLUSTER: Total weight 7 (single trade) is highly concentrated on a macro regime call (zero cuts vs. at least one cut) with non-overlapping probability estimates between models. Iran ceasefire or labor shock reverses entire thesis. (2) GROWTH_GDP CLUSTER: Total weight 11 (two correlated NO trades on same-date resolution) vastly exceeds cluster limit of 5. Both trades depend on identical GDPNow model (1.3% Q1 estimate). Recommend dropping >1.5% threshold or capping combined cluster weight to 5. (3) TIMING RISK: Chicago weather trade (KXHIGHCHI-26APR15) has entry window closing in ~8 hours (2026-04-16 05:59Z). If this validation takes >30 min to execute, window closes and trade is unrealizable. Execute immediately or forfeit. (4) AGGREGATE MACRO CONCENTRATION: Four of five trades are macroeconomic (fed policy, GDP, CPI); one is weather. No uncorrelated diversification. If Iran war escalates or ceasefire occurs, entire portfolio reprices. RECOMMENDED REBALANCING: (A) Cap fed_policy weight at 5 (reduce KXRATECUTCOUNT-26DEC31-T0 from 7 to 5). (B) Drop KXGDP-26APR30-T1.5 entirely; keep only >2.0% as primary GDP thesis. This reduces growth_gdp weight to 6 and brings it closer to cluster limit. (C) Keep KXCPI-26APR-T0.4 at weight 5 (reduce from 8) to acknowledge energy price tail risk. (D) Execute weather trade immediately (within 2 hours) or drop. (E) REBALANCED PORTFOLIO: fed_policy 5, growth_gdp 6, inflation 5, weather_temp 2. Total weight 18. Implies 18/(18+20 reserve) \u2248 47% deployed, 53% cash/reserve\u2014acceptable discipline. Largest positions: GDP >2.0% NO (6 units, macro-correlated), CPI >0.4% NO (5 units, macro-correlated), zero-cuts YES (5 units, fed policy). Macro regime-dependent but sufficiently diversified across three independent variables (Fed action, growth, inflation).",
+  "no_trades_today": false,
+  "reeval_triggers": [
+    "Iran ceasefire or major escalation in Middle East conflict \u2192 reprice entire fed_policy and inflation clusters",
+    "CME FedWatch probability of zero cuts drops below 60% \u2192 undercuts primary thesis for KXRATECUTCOUNT-26DEC31-T0",
+    "Atlanta Fed GDPNow estimate for Q1 2026 rises above 1.8% \u2192 threatens both GDP NO trades",
+    "April CPI release (May 12) shows headline rise >0.5% \u2192 threatens KXCPI-26APR-T0.4 NO thesis",
+    "Q1 2026 GDP advance estimate releases (Apr 30) \u2192 resolves two major trades; critical decision point",
+    "Fed communications shift dovish (e.g., FOMC members signal potential cuts) \u2192 contradicts zero-cuts thesis",
+    "Major labor market weakness (NFP miss, jobless claims spike) \u2192 could trigger fed_policy reversal",
+    "Tariff implementation accelerates or major trade policy shift announced \u2192 impacts both inflation and growth forecasts"
+  ],
+  "poly_disagreed": [],
+  "claude_solo_trades": [
+    {
+      "market": "Will the Fed cut rates 0 times in 2026?",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 26,
+      "prob_range": [
+        0.55,
+        0.75
+      ],
+      "prob_midpoint": 0.65,
+      "current_price": 0.398,
+      "implied_prob": 0.389,
+      "max_acceptable_price": 0.572,
+      "reason_other_missed": "Gemini did not analyze the specific 0-cuts contract; Gemini's single trade on KXRATECUT-26DEC31 (any cut YES) contradicts Claude's zero-cuts thesis. This market is more precise than the 'any cut' market and directly captures the CME consensus (77% probability). Claude's 26% edge is well above 8% macro threshold and grounded in CME FedWatch and JPMorgan consensus.",
+      "grounding_source": "https://finance.yahoo.com/economy/policy/articles/fed-may-not-cut-rates-211243390.html (CME FedWatch as of Apr 15 2026 shows ~77% probability of zero cuts by December); https://www.thestreet.com/fed/jpmorgan-has-a-stark-message-on-the-next-fed-rate-cut (JPMorgan explicitly forecasts zero cuts all of 2026); https://growbeansprout.com/tools/fedwatch (CME FedWatch 98.9% hold at April 29 meeting)",
+      "correlation_cluster_id": "fed_policy",
+      "relative_weight": 7,
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 2.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 17,
+      "prob_range": [
+        0.25,
+        0.4
+      ],
+      "prob_midpoint": 0.325,
+      "current_price": 0.5,
+      "implied_prob": 0.498,
+      "max_acceptable_price": 0.4175,
+      "reason_other_missed": "Gemini did not analyze Q1 2026 GDP markets. Gemini's vague statement that 'GDP growth remains robust' contradicts the concrete data: Atlanta Fed GDPNow is 1.3% as of Apr 9, down from 3.1% in February\u2014a dramatic deterioration. This market resolves Apr 30 (imminent), so the edge is time-sensitive. Claude's 17% edge exceeds macro threshold and is grounded in the most authoritative nowcasting model.",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow (GDPNow 1.3% as of Apr 9 2026); https://fred.stlouisfed.org/series/GDPNOW (FRED: Q1 2026 = 1.3078%)",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 6,
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 1.5% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T1.5",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 18,
+      "prob_range": [
+        0.4,
+        0.55
+      ],
+      "prob_midpoint": 0.475,
+      "current_price": 0.65,
+      "implied_prob": 0.6555,
+      "max_acceptable_price": 0.4575,
+      "reason_other_missed": "Gemini did not analyze this threshold. Claude provides granular analysis of two GDP thresholds; the >1.5% threshold is slightly higher conviction (18% edge) than >2.0% (17% edge) because a smaller miss is required. Both resolve the same date (Apr 30). This is a tighter threshold offering better risk-adjusted entry if >2.0% fills rapidly.",
+      "grounding_source": "https://www.atlantafed.org/research-and-data/data/gdpnow (GDPNow 1.3% as of Apr 9 2026); https://fred.stlouisfed.org/series/STLENI (St. Louis ENI: 1.70% as of Mar 27 2026)",
+      "correlation_cluster_id": "growth_gdp",
+      "relative_weight": 5,
+      "category": "macro"
+    },
+    {
+      "market": "Will CPI rise more than 0.4% in April 2026?",
+      "ticker": "KXCPI-26APR-T0.4",
+      "direction": "NO",
+      "source": "claude",
+      "edge": 27,
+      "prob_range": [
+        0.35,
+        0.5
+      ],
+      "prob_midpoint": 0.425,
+      "current_price": 0.69,
+      "implied_prob": 0.695,
+      "max_acceptable_price": 0.4725,
+      "reason_other_missed": "Gemini explicitly avoided CPI April >0.7% due to 'high spread and uncertainty,' but did not engage with the >0.4% threshold which Claude identifies as well-grounded in consensus forecasts (+0.3% April vs. +0.9% March). Claude's 27% edge is the highest in the portfolio and reflects the post-March energy reversal. Resolution is May 12. Gemini's avoidance reflects risk aversion rather than contradictory analysis.",
+      "grounding_source": "https://www.bls.gov/news.release/cpi.nr0.htm (BLS March 2026 CPI: +0.9%, +3.3% YoY); https://www.morningstar.com/economy/will-april-cpi-report-show-first-inflation-impacts-tariffs (consensus forecast +0.3% for April)",
+      "correlation_cluster_id": "inflation",
+      "relative_weight": 8,
+      "category": "macro"
+    },
+    {
+      "market": "Will the high temp in Chicago be 73-74\u00b0 on Apr 15, 2026?",
+      "ticker": "KXHIGHCHI-26APR15-B73.5",
+      "direction": "YES",
+      "source": "claude",
+      "edge": 19,
+      "prob_range": [
+        0.68,
+        0.82
+      ],
+      "prob_midpoint": 0.75,
+      "current_price": 0.55,
+      "implied_prob": 0.56,
+      "max_acceptable_price": 0.7,
+      "reason_other_missed": "Gemini did not analyze this market. Claude provides detailed weather forecasting grounding (NWS, Wunderground, AccuWeather) supporting a 75% probability, vs. market 56%. This is a weather category trade (5% edge threshold) with 19% edge. However, this trade is TIMING-SENSITIVE: entry_valid_until is 2026-04-16T05:59:00Z, which is 8 hours from scan time. By the time this cross-validation completes, the entry window may have closed. Current price 0.55 is below max_acceptable_price 0.70, so entry is viable if executed immediately.",
+      "grounding_source": "https://forecast.weather.gov/MapClick.php?textField1=41.837&textField2=-87.685 (NWS: high near 74\u00b0F Apr 15); https://www.wunderground.com/weather/us/il/chicago (Wunderground: Today Apr 15 high 74\u00b0F)",
+      "correlation_cluster_id": "weather_temp",
+      "relative_weight": 2,
+      "category": "weather"
+    }
+  ]
+}

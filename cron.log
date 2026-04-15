@@ -66,3 +66,68 @@
 10:02:58 [INFO] Claude solo trades to alert: 2
 10:02:58 [INFO] Saved: /root/kalshi-scanner/raw/consensus/2026-04-14-consensus.json
 10:02:58 [INFO] Done.
+10:00:03 [INFO] Loading Kalshi key from /root/kalshi_private.key
+10:00:04 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXCPI "HTTP/1.1 200 OK"
+10:00:04 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXCPIYOY "HTTP/1.1 200 OK"
+10:00:05 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXRATECUT "HTTP/1.1 200 OK"
+10:00:05 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXRATECUTCOUNT "HTTP/1.1 200 OK"
+10:00:05 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXRECSSNBER "HTTP/1.1 200 OK"
+10:00:06 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXGDP "HTTP/1.1 200 OK"
+10:00:06 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXNFP "HTTP/1.1 200 OK"
+10:00:06 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXPCE "HTTP/1.1 200 OK"
+10:00:07 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXUNRATE "HTTP/1.1 200 OK"
+10:00:07 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXPPI "HTTP/1.1 200 OK"
+10:00:07 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXINITCLAIMS "HTTP/1.1 200 OK"
+10:00:08 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXBTC "HTTP/1.1 200 OK"
+10:00:08 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXETH "HTTP/1.1 200 OK"
+10:00:09 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXOILWTI "HTTP/1.1 200 OK"
+10:00:09 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXOIL "HTTP/1.1 200 OK"
+10:00:09 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXGOLD "HTTP/1.1 200 OK"
+10:00:10 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXGAS "HTTP/1.1 200 OK"
+10:00:10 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHIGHNY "HTTP/1.1 200 OK"
+10:00:10 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHIGHCHI "HTTP/1.1 200 OK"
+10:00:11 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHIGHLA "HTTP/1.1 200 OK"
+10:00:11 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHIGHMIA "HTTP/1.1 200 OK"
+10:00:11 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHIGHHOU "HTTP/1.1 200 OK"
+10:00:12 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHURRICANE "HTTP/1.1 200 OK"
+10:00:12 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXTRUMP "HTTP/1.1 200 OK"
+10:00:12 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXAPPROVAL "HTTP/1.1 200 OK"
+10:00:13 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHOUSEREP "HTTP/1.1 200 OK"
+10:00:13 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHOUSEDEMS "HTTP/1.1 200 OK"
+10:00:14 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXSENATEREP "HTTP/1.1 200 OK"
+10:00:14 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXSENATEDEMS "HTTP/1.1 200 OK"
+10:00:14 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXFBI "HTTP/1.1 200 OK"
+10:00:15 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXCABINET "HTTP/1.1 200 OK"
+10:00:15 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXINAUGCABINET "HTTP/1.1 200 OK"
+10:00:15 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXCEASEFIRE "HTTP/1.1 200 OK"
+10:00:16 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXIRAN "HTTP/1.1 200 OK"
+10:00:16 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXHORMUZ "HTTP/1.1 200 OK"
+10:00:17 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXDHSSHUTDOWN "HTTP/1.1 200 OK"
+10:00:17 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXSHUTDOWN "HTTP/1.1 200 OK"
+10:00:17 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXAG "HTTP/1.1 200 OK"
+10:00:18 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXAIMODEL "HTTP/1.1 200 OK"
+10:00:18 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXAILMMSYS "HTTP/1.1 200 OK"
+10:00:18 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXZELDIN "HTTP/1.1 200 OK"
+10:00:19 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXSP500 "HTTP/1.1 200 OK"
+10:00:19 [INFO] HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?limit=200&status=open&series_ticker=KXFEDRATE "HTTP/1.1 200 OK"
+10:00:19 [INFO] Pulled 542 markets from 11/43 series
+10:00:19 [INFO] Filtered to 84 markets with real orderbooks (spread<20c) from 84 candidates
+10:00:19 [INFO] Saved: /root/kalshi-scanner/raw/snapshots/2026-04-15-markets.json
+10:00:21 [INFO] Calling Claude...
+10:00:22 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 404 Not Found"
+10:00:22 [ERROR] Claude API error: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-sonnet-4-6-20250217'}, 'request_id': 'req_011Ca5Mxhq4YPQ9ftehiMqjz'}
+10:00:22 [INFO] Calling Grok...
+10:00:38 [INFO] Grok responded (3625 chars)
+10:00:38 [INFO] Calling Gemini (shadow)...
+10:00:49 [INFO] Gemini responded (5500 chars)
+10:00:49 [WARNING] Dropped 2 trade(s) due to direction inversion
+10:00:49 [INFO] Saved: /root/kalshi-scanner/raw/scans/2026-04-15-claude.json
+10:00:49 [INFO] Saved: /root/kalshi-scanner/raw/scans/2026-04-15-grok.json
+10:00:49 [INFO] Saved: /root/kalshi-scanner/raw/scans/2026-04-15-gemini-shadow.json
+10:00:49 [INFO] Gemini shadow: 6 trades (read-only)
+10:00:49 [INFO] Waiting 65s for rate limit cooldown...
+10:01:54 [INFO] Running synthesizer...
+10:02:02 [INFO] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+10:02:03 [INFO] Synthesizer responded (3109 chars)
+10:02:03 [INFO] Saved: /root/kalshi-scanner/raw/consensus/2026-04-15-consensus.json
+10:02:03 [INFO] Done.

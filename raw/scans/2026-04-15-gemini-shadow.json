@@ -1,0 +1,105 @@
+{
+  "date": "2026-04-15",
+  "scan_timestamp": "2026-04-15T21:28:50Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 59,
+  "trades": [
+    {
+      "market": "Will the rate of CPI inflation be above 3.5% for the year ending in April 2026?",
+      "ticker": "KXCPIYOY-26APR-T3.5",
+      "direction": "YES",
+      "current_price": 0.82,
+      "implied_prob": 0.78,
+      "prob_range": [
+        0.85,
+        0.9
+      ],
+      "prob_midpoint": 0.875,
+      "edge_pct": 9,
+      "catalyst": "Stronger than expected inflation data in March, sticky core inflation.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-16T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected drop in energy prices or a significant downward revision to previous CPI data.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the rate of CPI inflation be above 3.4% for the year ending in May 2026?",
+      "ticker": "KXCPIYOY-26MAY-T3.4",
+      "direction": "YES",
+      "current_price": 0.83,
+      "implied_prob": 0.845,
+      "prob_range": [
+        0.9,
+        0.95
+      ],
+      "prob_midpoint": 0.925,
+      "edge_pct": 8,
+      "catalyst": "Persistent inflationary pressures, strong consumer spending.",
+      "resolution_date": "2026-06-10",
+      "entry_valid_until": "2026-04-16T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected dovish turn by the Fed, significant decrease in demand.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will **real GDP** increase by more than 1.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T1.0",
+      "direction": "NO",
+      "current_price": 0.849,
+      "implied_prob": 0.8455,
+      "prob_range": [
+        0.7,
+        0.75
+      ],
+      "prob_midpoint": 0.725,
+      "edge_pct": 12,
+      "catalyst": "Recent data suggests a slowdown in economic activity, Cleveland Fed Nowcast.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-22T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected surge in consumer spending or business investment.",
+      "grounding_source": "https://www.clevelandfed.org/indicators-and-data/nowcasting",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will the high temp in Chicago be <73\u00b0 on Apr 15, 2026?",
+      "ticker": "KXHIGHCHI-26APR15-T73",
+      "direction": "NO",
+      "current_price": 0.41,
+      "implied_prob": 0.42,
+      "prob_range": [
+        0.3,
+        0.35
+      ],
+      "prob_midpoint": 0.325,
+      "edge_pct": 10,
+      "catalyst": "Weather forecasts indicate a high of 75 degrees Fahrenheit in Chicago today.",
+      "resolution_date": "2026-04-16",
+      "entry_valid_until": "2026-04-16T05:59:00Z",
+      "confidence": "high",
+      "risk_notes": "Unexpected change in weather patterns.",
+      "grounding_source": "https://www.weather.gov/lot/",
+      "correlation_cluster_id": "weather_temp",
+      "category": "weather"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "KXETH-26APR1717-B2370",
+      "reason": "Wide spread and low volume."
+    },
+    {
+      "market": "KXCPI-26NOV-T0.5",
+      "reason": "Wide spread and low volume."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Inflation remains sticky, and the Fed is likely to maintain its hawkish stance. GDP growth is showing signs of slowing down."
+}
