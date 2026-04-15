@@ -100,6 +100,12 @@ SERIES_TICKERS = [
     "KXSUGARMON",
     "KXGOLDD",
     "KXCOPPERD",
+    "KXWTIW",
+    "KXBRENTMON",
+    "KXBRENTD",
+    "KXBRENTW",
+    "KXLITHIUMMON",
+    "KXSILVERMON",
     "KXFEDRATE",
 ]
 
