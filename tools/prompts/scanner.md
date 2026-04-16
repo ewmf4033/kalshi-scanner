@@ -110,7 +110,7 @@ Valid JSON only. No markdown, no code fences, no prose, no preamble.
 {
   "date": "YYYY-MM-DD",
   "scan_timestamp": "ISO-8601",
-  "model": "claude|gemini",
+  "model": "SET_BY_CODE",
   "macro_regime": "inflationary|disinflationary|recession|neutral",
   "markets_analyzed": <integer>,
   "trades": [

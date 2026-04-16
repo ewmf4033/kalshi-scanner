@@ -1,7 +1,7 @@
 {
   "date": "2026-04-12",
   "scan_timestamp": "2026-04-12T10:00:17Z",
-  "model": "claude",
+  "model": "grok",
   "macro_regime": "inflationary",
   "markets_analyzed": 50,
   "trades": [

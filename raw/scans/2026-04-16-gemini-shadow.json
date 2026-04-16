@@ -1,0 +1,151 @@
+{
+  "date": "2026-04-16",
+  "scan_timestamp": "2026-04-16T14:05:57Z",
+  "model": "gemini_shadow",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 59,
+  "trades": [
+    {
+      "market": "Will the rate of CPI inflation be above 3.5% for the year ending in April 2026?",
+      "ticker": "KXCPIYOY-26APR-T3.5",
+      "direction": "YES",
+      "current_price": 0.76,
+      "implied_prob": 0.745,
+      "prob_range": [
+        0.83,
+        0.93
+      ],
+      "prob_midpoint": 0.88,
+      "edge_pct": 14,
+      "catalyst": "Upcoming CPI data release; current inflation trends suggest stickiness.",
+      "resolution_date": "2026-05-12",
+      "entry_valid_until": "2026-04-17T23:59:59Z",
+      "confidence": "high",
+      "risk_notes": "Unexpected drop in CPI; revisions to previous data.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the rate of CPI inflation be above 3.4% for the year ending in May 2026?",
+      "ticker": "KXCPIYOY-26MAY-T3.4",
+      "direction": "YES",
+      "current_price": 0.74,
+      "implied_prob": 0.745,
+      "prob_range": [
+        0.82,
+        0.92
+      ],
+      "prob_midpoint": 0.87,
+      "edge_pct": 12,
+      "catalyst": "Anticipation of continued inflationary pressures; May CPI data release.",
+      "resolution_date": "2026-06-10",
+      "entry_valid_until": "2026-04-17T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected dovish shift by the Fed; significant supply-side improvements.",
+      "grounding_source": "https://www.bls.gov/cpi/",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the gold close price be above $4506.99 on Apr 30, 2026 at 5pm EDT?",
+      "ticker": "KXGOLDMON-26APR3017-T4506.99",
+      "direction": "YES",
+      "current_price": 0.87,
+      "implied_prob": 0.815,
+      "prob_range": [
+        0.88,
+        0.94
+      ],
+      "prob_midpoint": 0.91,
+      "edge_pct": 9,
+      "catalyst": "Inflationary environment and geopolitical tensions driving gold prices higher.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-17T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Sharp rise in interest rates; unexpected resolution of geopolitical conflicts.",
+      "grounding_source": "https://www.kitco.com/gold.london.html",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the brent crude oil close price be above $84.99 on Apr 30, 2026 at 5pm EDT?",
+      "ticker": "KXBRENTMON-26APR3017-T84.99",
+      "direction": "YES",
+      "current_price": 0.8,
+      "implied_prob": 0.805,
+      "prob_range": [
+        0.88,
+        0.94
+      ],
+      "prob_midpoint": 0.91,
+      "edge_pct": 10,
+      "catalyst": "Geopolitical tensions and supply constraints.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-17T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Increased oil production; unexpected drop in demand.",
+      "grounding_source": "https://www.eia.gov/petroleum/weekly/",
+      "correlation_cluster_id": "oil_energy",
+      "category": "macro"
+    },
+    {
+      "market": "Will the gold close price be above 4794  USD/t.oz on Apr 16, 2026 at 5pm EDT?",
+      "ticker": "KXGOLDD-26APR1617-T4794",
+      "direction": "YES",
+      "current_price": 0.89,
+      "implied_prob": 0.545,
+      "prob_range": [
+        0.68,
+        0.78
+      ],
+      "prob_midpoint": 0.73,
+      "edge_pct": 18,
+      "catalyst": "Current gold price trends and market momentum.",
+      "resolution_date": "2026-04-16",
+      "entry_valid_until": "2026-04-16T21:00:00Z",
+      "confidence": "high",
+      "risk_notes": "Unexpected market correction; significant dollar strength.",
+      "grounding_source": "https://www.kitco.com/gold.london.html",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    },
+    {
+      "market": "Will the gold close price be above 4764  USD/t.oz on Apr 16, 2026 at 5pm EDT?",
+      "ticker": "KXGOLDD-26APR1617-T4764",
+      "direction": "NO",
+      "current_price": 0.95,
+      "implied_prob": 0.785,
+      "prob_range": [
+        0.65,
+        0.75
+      ],
+      "prob_midpoint": 0.7,
+      "edge_pct": 9,
+      "catalyst": "Current gold price trends and market momentum.",
+      "resolution_date": "2026-04-16",
+      "entry_valid_until": "2026-04-16T21:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "Unexpected market correction; significant dollar strength.",
+      "grounding_source": "https://www.kitco.com/gold.london.html",
+      "correlation_cluster_id": "inflation",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "KXRECSSNBER-26",
+      "reason": "Recession market has a wide range of possible outcomes and is difficult to predict with certainty."
+    },
+    {
+      "market": "KXHIGHNY-26APR16-B90.5",
+      "reason": "Weather predictions are inherently uncertain beyond a short timeframe."
+    },
+    {
+      "market": "KXRATECUTCOUNT-26DEC31-T0",
+      "reason": "Fed policy is difficult to predict with certainty."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "The current macro environment is inflationary, with commodity prices showing upward pressure. CPI data is expected to remain elevated. Geopolitical risks are also contributing to uncertainty."
+}

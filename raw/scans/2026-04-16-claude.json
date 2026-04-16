@@ -1,0 +1,188 @@
+{
+  "date": "2026-04-16",
+  "scan_timestamp": "2026-04-16T14:05:57Z",
+  "model": "claude",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 79,
+  "trades": [
+    {
+      "market": "Will real GDP increase by more than 2.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T2.0",
+      "direction": "NO",
+      "current_price": 0.494,
+      "implied_prob": 0.502,
+      "prob_range": [
+        0.24,
+        0.34
+      ],
+      "prob_midpoint": 0.29,
+      "edge_pct": 21,
+      "catalyst": "Atlanta Fed GDPNow most recent estimate (Apr 9) is 1.3% for Q1 2026, well below the 2.0% threshold. Trend has been sharply downward from 3.1% (Feb 20) to 1.3%, driven by weaker PCE and net exports drag.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-21T12:00:00Z",
+      "confidence": "high",
+      "risk_notes": "GDPNow updates again Apr 21 \u2014 a sharp upward revision could narrow edge. Advance BEA estimate on Apr 30 may diverge from GDPNow. Net exports component is volatile due to Hormuz disruption.",
+      "grounding_source": "Federal Reserve Bank of Atlanta GDPNow, FRED series GDPNOW, Apr 9 2026: 1.3078%. https://fred.stlouisfed.org/series/GDPNOW",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will real GDP increase by more than 1.0% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T1.0",
+      "direction": "NO",
+      "current_price": 0.846,
+      "implied_prob": 0.8415,
+      "prob_range": [
+        0.62,
+        0.72
+      ],
+      "prob_midpoint": 0.67,
+      "edge_pct": 17,
+      "catalyst": "GDPNow Q1 2026 estimate is 1.3%, meaning GDP is tracking only slightly above the 1.0% threshold. With the advance BEA estimate subject to revision, and the trend declining (was 3.1% in February, 1.3% by April 9), there is meaningful probability of a sub-1.0% print.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-21T12:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "GDPNow at 1.3% implies more than 1.0% \u2014 the edge relies on model error and a downward surprise. The threshold is 30bps below the nowcast, so this is a tail risk trade. BEA advance estimate can diverge meaningfully from GDPNow.",
+      "grounding_source": "Atlanta Fed GDPNow Commentary, Apr 9 2026: 'GDPNow model estimate for real GDP growth in Q1 2026 is 1.3 percent.' https://www.atlantafed.org/research-and-data/data/gdpnow/current-and-past-gdpnow-commentaries",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    },
+    {
+      "market": "Will the Fed cut rates 0 times in 2026?",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "YES",
+      "current_price": 0.36,
+      "implied_prob": 0.38,
+      "prob_range": [
+        0.46,
+        0.56
+      ],
+      "prob_midpoint": 0.51,
+      "edge_pct": 13,
+      "catalyst": "CME FedWatch shows 51.3% probability that rates remain at their current range through the December meeting, with near-zero probability of a cut at the upcoming Apr 29 FOMC. The Fed held at March meeting, signaling caution. Stubborn inflation (March CPI +3.3% YoY) and the Iran war supply shock are keeping the Fed on hold.",
+      "resolution_date": "2027-01-01",
+      "entry_valid_until": "2026-04-29T17:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "If Hormuz reopens and oil falls sharply, inflation could moderate, opening the door to cuts in H2. Fox Business/CME data shows 35.7% chance of exactly one cut \u2014 the 0-cut scenario dominates only if inflation stays elevated all year. Wide spread (0.04) adds transaction cost.",
+      "grounding_source": "Fox Business / CME FedWatch, March 2026: '51.3% chance of rates being at their current range after the Fed's December meeting.' https://www.foxbusiness.com/economy/federal-reserve-cut-interest-rates-2026",
+      "correlation_cluster_id": "fed_policy",
+      "category": "macro"
+    },
+    {
+      "market": "Will the gold close price be above $4,626.99 on Apr 30, 2026 at 5pm EDT?",
+      "ticker": "KXGOLDMON-26APR3017-T4626.99",
+      "direction": "YES",
+      "current_price": 0.75,
+      "implied_prob": 0.725,
+      "prob_range": [
+        0.84,
+        0.92
+      ],
+      "prob_midpoint": 0.88,
+      "edge_pct": 16,
+      "catalyst": "Gold is currently trading at approximately $4,794\u2013$4,822/oz (Apr 16 spot price). The target strike of $4,627 is ~$175\u2013195 below current price. With 14 days to resolution and only a ~4% decline needed to breach, the probability of staying above $4,627 is very high. Gold remains supported by dollar weakness, geopolitical risk, and central bank buying.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-28T20:00:00Z",
+      "confidence": "high",
+      "risk_notes": "A sharp ceasefire/peace deal in Iran could trigger rapid gold selloff. Gold has already fallen ~10% since the Iran conflict began per TradingEconomics. A 4%+ decline in 14 days is possible but historically less probable given current $4,800 level.",
+      "grounding_source": "Bullion.com spot price Apr 16 2026 at 8:48 AM ET: Bid $4,788.40 / Ask $4,833.40. https://www.bullion.com/spotprices/gold-price",
+      "correlation_cluster_id": "oil_energy",
+      "category": "other"
+    },
+    {
+      "market": "Will the gold close price be above $4,706.99 on Apr 30, 2026 at 5pm EDT?",
+      "ticker": "KXGOLDMON-26APR3017-T4706.99",
+      "direction": "YES",
+      "current_price": 0.63,
+      "implied_prob": 0.605,
+      "prob_range": [
+        0.72,
+        0.82
+      ],
+      "prob_midpoint": 0.77,
+      "edge_pct": 17,
+      "catalyst": "Gold at ~$4,800 needs to remain above $4,707 \u2014 a gap of ~$95 (2% below spot). With 14 days to resolution, central bank buying support, geopolitical uncertainty, and dollar weakness, this target is well inside the current range.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-28T20:00:00Z",
+      "confidence": "high",
+      "risk_notes": "Rapid Iran peace deal resolution or surprise hawkish Fed pivot could accelerate gold decline. Spread is 0.03 \u2014 acceptable. The 3% downside buffer makes the risk manageable.",
+      "grounding_source": "150currency.com gold price Apr 16 2026: $4,821.96 USD/oz. https://www.150currency.com/gold-price/united_states/",
+      "correlation_cluster_id": "oil_energy",
+      "category": "other"
+    },
+    {
+      "market": "Will the brent crude oil close price be above $84.99 on Apr 30, 2026 at 5pm EDT?",
+      "ticker": "KXBRENTMON-26APR3017-T84.99",
+      "direction": "YES",
+      "current_price": 0.8,
+      "implied_prob": 0.805,
+      "prob_range": [
+        0.88,
+        0.95
+      ],
+      "prob_midpoint": 0.915,
+      "edge_pct": 11,
+      "catalyst": "Brent crude is currently at ~$94.66\u2013$95.86 (Apr 16). The $85 strike requires a ~10\u201311% decline in 14 days. Even under a best-case ceasefire scenario, such a rapid and sustained drop is historically unlikely given the ongoing Hormuz blockade, US troop deployments, and logistical constraints on supply recovery.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-29T20:00:00Z",
+      "confidence": "medium",
+      "risk_notes": "A full ceasefire agreement and rapid Hormuz reopening could push Brent toward $80\u201385. WTI has already fallen from $117 high to $91 \u2014 trend is downward. The 10% buffer is the main protection here.",
+      "grounding_source": "TradingEconomics Brent price Apr 16 2026: $94.89 USD/Bbl. https://tradingeconomics.com/commodity/brent-crude-oil",
+      "correlation_cluster_id": "oil_energy",
+      "category": "other"
+    },
+    {
+      "market": "Will real GDP increase by more than 2.5% in Q1 2026?",
+      "ticker": "KXGDP-26APR30-T2.5",
+      "direction": "NO",
+      "current_price": 0.301,
+      "implied_prob": 0.3005,
+      "prob_range": [
+        0.1,
+        0.18
+      ],
+      "prob_midpoint": 0.14,
+      "edge_pct": 16,
+      "catalyst": "GDPNow at 1.3% (Apr 9) is 120bps below the 2.5% threshold. Market is pricing a 30% chance of exceeding 2.5%, which appears significantly overpriced given the trajectory from 3.1% in February to 1.3% in early April. The downward trend in nowcast reflects weakening PCE and net export drag.",
+      "resolution_date": "2026-04-30",
+      "entry_valid_until": "2026-04-21T12:00:00Z",
+      "confidence": "high",
+      "risk_notes": "GDPNow next update Apr 21 could revise upward, though the trend has been persistently lower. BEA advance estimate is independently computed and could diverge from Atlanta Fed model. Spread is very tight (0.001), minimizing transaction cost.",
+      "grounding_source": "Federal Reserve Bank of Atlanta GDPNow, FRED series GDPNOW, updated Apr 9 2026: 1.3078%. https://fred.stlouisfed.org/series/GDPNOW",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "KXWTIW-26APR17-T91.00 (WTI <$91 on Apr 17)",
+      "reason": "WTI currently $91.62\u2013$92.53 with today's range $90.54\u2013$93.00. While a settlement below $91 is possible, extreme intraday volatility from Hormuz/Iran headlines makes probability estimation unreliable. True P(YES) overlaps too closely with implied 35.5% \u2014 no clean edge exceeding 8% threshold with confidence."
+    },
+    {
+      "market": "KXCPI-26APR-T0.4 (CPI rise >0.4% in April 2026)",
+      "reason": "March CPI came in at +3.3% YoY with +1.0% NSA monthly. April CPI is heavily dependent on oil price trajectory in April (which has been volatile) and tariff pass-through timing. Resolution is May 12. Market implies 68.5%. With oil falling from highs, SA monthly print is uncertain. No clean directional edge with specific data backing."
+    },
+    {
+      "market": "KXRECSSNBER-26 (Recession in 2026)",
+      "reason": "Long-dated (resolves Jan 2027), based on two consecutive quarters of negative GDP growth. Q1 GDPNow at 1.3% is positive, and recession requires Q1 AND Q2 negative. Spread is acceptable but the binary requires a very specific NBER-adjacent sequence of events that is hard to nowcast with edge > 8% at this point."
+    },
+    {
+      "market": "KXHIGHNY-26APR16 and KXHIGHCHI-26APR16 (NYC/Chicago temp today)",
+      "reason": "Markets close at 04:59 UTC Apr 17. Today's temperatures are either already known or will be known very soon. Without a current NWS hourly observation, no verifiable edge can be established \u2014 data would be fabricated. Skip per 'no fabricated sources' rule."
+    },
+    {
+      "market": "All Brent contracts >$92.99, >$94.99, >$96.99 on Apr 30",
+      "reason": "Brent at $95 is at or near these strikes. With 14 days of Hormuz/Iran headline risk and a recent range of $84\u2013$120, probability estimates within \u00b110% of spot are too uncertain to establish reliable edge beyond the 8% macro threshold."
+    },
+    {
+      "market": "KXCPIYOY-26APR-T3.6 and T3.7 (April YoY CPI)",
+      "reason": "March YoY was 3.3%. Getting to 3.6%+ requires a meaningful acceleration. While oil shock and tariffs support upside, the ceasefire and oil decline in April are countervailing. Wide spread (0.04\u20130.06) and high uncertainty around exactly where April YoY lands relative to 3.6% vs 3.7% thresholds make edge estimation unreliable."
+    },
+    {
+      "market": "KXETH-26APR1617-B2320 (ETH $2,300-$2,340 on Apr 16)",
+      "reason": "Crypto range bucket market \u2014 resolves today at 5 PM EDT. No real-time ETH price data was retrieved. Required 12% edge minimum for crypto category. Cannot establish edge without current ETH price."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Macro regime is INFLATIONARY: March CPI printed +3.3% YoY with ISM Manufacturing Prices at the highest since June 2022, driven by Iran war energy shock and tariff pass-through. The US-Iran conflict has caused a major Strait of Hormuz supply disruption but peace talks are advancing (ceasefire extension being discussed). Oil has fallen from $117 peak to ~$92 WTI / ~$95 Brent as of Apr 16, on ceasefire hopes. Gold is ~$4,800 \u2014 high but off the $5,200+ peak. The Fed held at its March 2026 meeting (rate 3.50\u20133.75%), with CME FedWatch showing 98.9% hold at the upcoming Apr 29 meeting. The Atlanta Fed GDPNow has declined sharply from 3.1% to 1.3% for Q1 2026, making GDP overshoot markets the clearest source of edge. Key upcoming catalysts: Atlanta Fed GDPNow update Apr 21; BEA advance Q1 GDP estimate Apr 30; April CPI release May 12."
+}

@@ -1,7 +1,7 @@
 {
   "date": "2026-04-14",
   "scan_timestamp": "2026-04-14T10:00:18Z",
-  "model": "claude",
+  "model": "gemini_shadow",
   "macro_regime": "inflationary",
   "markets_analyzed": 59,
   "trades": [

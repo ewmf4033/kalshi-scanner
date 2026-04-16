@@ -855,21 +855,21 @@ async def run(args):
     gemini_shadow_raw = await call_gemini_shadow(scanner_prompt)
 
     claude_parsed = validate_edge(parse_model_json(claude_raw))
-    gemini_parsed = validate_edge(parse_model_json(grok_raw))
-    claude_parsed.setdefault("model", "claude")
-    gemini_parsed.setdefault("model", "gemini")
+    grok_parsed = validate_edge(parse_model_json(grok_raw))
+    claude_parsed["model"] = "claude"
+    grok_parsed["model"] = "grok"
 
     save_raw(RAW_SCANS, f"{date}-claude.json", claude_parsed)
-    save_raw(RAW_SCANS, f"{date}-grok.json", gemini_parsed)
+    save_raw(RAW_SCANS, f"{date}-grok.json", grok_parsed)
 
     # Gemini shadow: save for resolve.py scoring, never enters synthesizer
     gemini_shadow_parsed = validate_edge(parse_model_json(gemini_shadow_raw))
-    gemini_shadow_parsed.setdefault("model", "gemini_shadow")
+    gemini_shadow_parsed["model"] = "gemini_shadow"
     save_raw(RAW_SCANS, f"{date}-gemini-shadow.json", gemini_shadow_parsed)
     log.info(f"Gemini shadow: {len(gemini_shadow_parsed.get('trades', []))} trades (read-only)")
 
     # --- Step 4: Short-circuit if both empty ---
-    if claude_parsed.get("no_trades_today") and gemini_parsed.get("no_trades_today"):
+    if claude_parsed.get("no_trades_today") and grok_parsed.get("no_trades_today"):
         log.info("Both models: no trades today.")
         consensus = {"date": date, "no_trades_today": True, "consensus_trades": []}
         save_raw(RAW_CONSENSUS, f"{date}-consensus.json", consensus)
@@ -879,8 +879,8 @@ async def run(args):
         return
 
     # --- Step 5: Synthesize (abort if either model failed) ---
-    if claude_parsed.get("error") or gemini_parsed.get("error"):
-        log.error(f"Model failure detected. Claude: {claude_parsed.get('error','ok')} Gemini: {gemini_parsed.get('error','ok')}. Skipping synthesizer.")
+    if claude_parsed.get("error") or grok_parsed.get("error"):
+        log.error(f"Model failure detected. Claude: {claude_parsed.get('error','ok')} Grok: {grok_parsed.get('error','ok')}. Skipping synthesizer.")
         consensus = {"date": date, "consensus_trades": [], "single_source_trades": [], "no_trades_today": True, "notes": "Aborted: model failure"}
         save_raw(RAW_CONSENSUS, f'{date}-consensus.json', consensus)
         msg = format_telegram_alert(consensus)
@@ -895,7 +895,7 @@ async def run(args):
     import time as _t; _t.sleep(65)
     synth_raw = await call_synthesizer(
         json.dumps(claude_parsed, indent=2),
-        json.dumps(gemini_parsed, indent=2),
+        json.dumps(grok_parsed, indent=2),
     )
     consensus = parse_model_json(synth_raw)
 
@@ -996,7 +996,7 @@ async def run(args):
 
     # --- Step 6: Log ---
     n_c = len(claude_parsed.get("trades", []))
-    n_g = len(gemini_parsed.get("trades", []))
+    n_g = len(grok_parsed.get("trades", []))
     n_con = len(consensus.get("consensus_trades", []))
     append_log(
         f"## [{date}] scan | Daily Scan\n"
