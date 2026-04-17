@@ -1,0 +1,38 @@
+{
+  "claude__high": {
+    "n": 11,
+    "avg_brier": 0.0698,
+    "avg_market_brier": 0.1149,
+    "brier_edge": 0.0451
+  },
+  "claude__medium": {
+    "n": 18,
+    "avg_brier": 0.2328,
+    "avg_market_brier": 0.2472,
+    "brier_edge": 0.0145
+  },
+  "gemini__high": {
+    "n": 1,
+    "avg_brier": 0.09,
+    "avg_market_brier": 0.0272,
+    "brier_edge": -0.0628
+  },
+  "gemini__medium": {
+    "n": 16,
+    "avg_brier": 0.3214,
+    "avg_market_brier": 0.1811,
+    "brier_edge": -0.1404
+  },
+  "gemini_shadow__high": {
+    "n": 2,
+    "avg_brier": 0.3193,
+    "avg_market_brier": 0.2367,
+    "brier_edge": -0.0826
+  },
+  "gemini_shadow__medium": {
+    "n": 1,
+    "avg_brier": 0.09,
+    "avg_market_brier": 0.0462,
+    "brier_edge": -0.0438
+  }
+}
