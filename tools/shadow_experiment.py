@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
+"""Pre-registered no-search GPT-5.6 / Fable 5 shadow experiment.
+
+Fail-closed design:
+- Must be launched through run_shadow_experiment.py, which sets SHADOW_NO_SEARCH_ENFORCED=1.
+- Track A is price-visible but external-search instructions are explicitly removed with a drift assertion.
+- Track B is price-blind, whitelist-only, chunked, and mechanically selected after forecasts lock.
+- API payloads are audited to contain no tools/search/retrieval fields.
+- All outputs are shadow-only and never enter Haiku or execution.
 """
-Shadow-only GPT-5.6 / Fable 5 experiment runner.
-
-This runner is isolated from the legacy live scanner. It reuses one saved
-canonical market snapshot, never changes execution, and never enters Haiku.
-
-Track A: existing price-visible prompt path.
-Track B: price-blind, no-search forecasts in 25-market chunks, followed by
- deterministic post-hoc selection against the exact canonical snapshot.
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -17,6 +15,7 @@ import hashlib
 import json
 import logging
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -28,17 +27,24 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from tools.scanner import build_scanner_prompt, load_prompt, today_str  # noqa: E402
-
 RAW_SNAPSHOTS = ROOT / "raw" / "snapshots"
 RAW_SCANS = ROOT / "raw" / "scans"
 RAW_BATCHES = ROOT / "raw" / "batches"
+PROMPTS_DIR = ROOT / "tools" / "prompts"
 
 OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses"
 ANTHROPIC_BATCHES_URL = "https://api.anthropic.com/v1/messages/batches"
 BLIND_CHUNK_SIZE = 25
 
-# Track B payload is whitelist-only. New Kalshi fields cannot leak in by default.
+LEGACY_SEARCH_NEEDLE = (
+    "- Use search to find grounding data: CME FedWatch, Cleveland Fed Nowcast, "
+    "NOAA, BLS, polling aggregators, institutional research"
+)
+NO_SEARCH_REPLACEMENT = (
+    "- Do not use external search, browsing, retrieval, tools, or external APIs. "
+    "Forecast only from the supplied contract data and internal knowledge."
+)
+
 BLIND_FIELD_WHITELIST = (
     "ticker",
     "title",
@@ -57,7 +63,6 @@ EDGE_THRESHOLDS = {
     "other": 0.10,
 }
 
-# Deterministic category ownership. Models never assign category in Track B.
 CATEGORY_PREFIXES: dict[str, tuple[str, ...]] = {
     "macro": (
         "KXCPI", "KXCPIYOY", "KXRATECUT", "KXRATECUTCOUNT", "KXRECSSNBER",
@@ -86,6 +91,10 @@ logging.basicConfig(
 log = logging.getLogger("shadow_experiment")
 
 
+def today_str() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
 def now_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -93,6 +102,13 @@ def now_iso() -> str:
 def ensure_dirs() -> None:
     for directory in (RAW_SNAPSHOTS, RAW_SCANS, RAW_BATCHES):
         directory.mkdir(parents=True, exist_ok=True)
+
+
+def load_prompt(name: str) -> str:
+    path = PROMPTS_DIR / name
+    if not path.exists():
+        raise FileNotFoundError(f"Prompt file missing: {path}")
+    return path.read_text()
 
 
 def canonical_json(data: Any) -> str:
@@ -113,8 +129,30 @@ def load_snapshot(date: str) -> list[dict]:
     return data
 
 
+def build_track_a_prompt(markets: list[dict]) -> str:
+    """Build price-visible Track A prompt with fail-loud no-search enforcement."""
+    prompt = load_prompt("scanner.md")
+    if LEGACY_SEARCH_NEEDLE not in prompt:
+        raise RuntimeError(
+            "Legacy search instruction not found — prompt drifted; refusing to run Track A"
+        )
+    prompt = prompt.replace(LEGACY_SEARCH_NEEDLE, NO_SEARCH_REPLACEMENT, 1)
+    if LEGACY_SEARCH_NEEDLE in prompt:
+        raise RuntimeError("Search instruction still present after replacement")
+    prompt = prompt.replace("{{DATE}}", today_str())
+    prompt = prompt.replace("{{SCAN_TIMESTAMP_UTC}}", now_iso())
+    prompt = prompt.replace("{{INJECTED_KALSHI_API_JSON}}", json.dumps(markets, indent=2))
+    prompt = re.sub(
+        r"\{\{#if INJECTED_SPORTS_ODDS_JSON\}\}.*?\{\{/if\}\}",
+        "",
+        prompt,
+        flags=re.DOTALL,
+    )
+    return prompt
+
+
 def blind_payload(markets: list[dict]) -> list[dict]:
-    """Whitelist-only blind payload. Unknown/new Kalshi fields are excluded."""
+    """Whitelist-only payload: unknown/new Kalshi fields cannot leak by default."""
     return [
         {key: market.get(key, "") for key in BLIND_FIELD_WHITELIST}
         for market in markets
@@ -123,14 +161,6 @@ def blind_payload(markets: list[dict]) -> list[dict]:
 
 def chunk_markets(markets: list[dict], size: int = BLIND_CHUNK_SIZE) -> list[list[dict]]:
     return [markets[i : i + size] for i in range(0, len(markets), size)]
-
-
-def category_from_ticker(ticker: str) -> str:
-    ticker = str(ticker or "").upper()
-    for category, prefixes in CATEGORY_PREFIXES.items():
-        if any(ticker.startswith(prefix) for prefix in prefixes):
-            return category
-    return "other"
 
 
 def build_blind_prompt(markets: list[dict], snap_id: str, chunk_id: str) -> str:
@@ -144,6 +174,14 @@ def build_blind_prompt(markets: list[dict], snap_id: str, chunk_id: str) -> str:
     )
 
 
+def category_from_ticker(ticker: str) -> str:
+    ticker = str(ticker or "").upper()
+    for category, prefixes in CATEGORY_PREFIXES.items():
+        if any(ticker.startswith(prefix) for prefix in prefixes):
+            return category
+    return "other"
+
+
 def parse_json_object(raw: str) -> dict:
     text = (raw or "").strip()
     if text.startswith("```"):
@@ -153,7 +191,7 @@ def parse_json_object(raw: str) -> dict:
     start = text.find("{")
     end = text.rfind("}") + 1
     if start < 0 or end <= 0:
-        raise ValueError("No complete JSON object found in model output; possible truncation")
+        raise ValueError("No complete JSON object found; possible truncation")
     try:
         return json.loads(text[start:end])
     except json.JSONDecodeError as exc:
@@ -163,6 +201,14 @@ def parse_json_object(raw: str) -> dict:
 def save_json(path: Path, data: dict) -> None:
     path.write_text(json.dumps(data, indent=2, sort_keys=False))
     log.info("Saved %s", path)
+
+
+def assert_no_search_payload(provider: str, payload: dict) -> None:
+    """Fail loud if request payload exposes search/tool/retrieval capabilities."""
+    forbidden = {"tools", "tool_choice", "web_search", "search", "retrieval"}
+    present = sorted(key for key in forbidden if key in payload)
+    if present:
+        raise RuntimeError(f"{provider} payload exposes forbidden search/tool fields: {present}")
 
 
 def extract_openai_output_text(payload: dict) -> str:
@@ -183,22 +229,45 @@ def call_openai(prompt: str, model: str, max_output_tokens: int = 8192) -> tuple
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY is not set")
+    payload = {
+        "model": model,
+        "input": prompt,
+        "max_output_tokens": max_output_tokens,
+    }
+    assert_no_search_payload("OpenAI", payload)
     response = requests.post(
         OPENAI_RESPONSES_URL,
         headers={
             "Authorization": f"Bearer {api_key}",
             "Content-Type": "application/json",
         },
-        json={
-            "model": model,
-            "input": prompt,
-            "max_output_tokens": max_output_tokens,
-        },
+        json=payload,
         timeout=600,
     )
     response.raise_for_status()
-    payload = response.json()
-    return parse_json_object(extract_openai_output_text(payload)), payload.get("usage", {}) or {}
+    body = response.json()
+    return parse_json_object(extract_openai_output_text(body)), body.get("usage", {}) or {}
+
+
+def anthropic_headers() -> dict:
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        raise RuntimeError("ANTHROPIC_API_KEY is not set")
+    return {
+        "x-api-key": api_key,
+        "anthropic-version": "2023-06-01",
+        "content-type": "application/json",
+    }
+
+
+def anthropic_request_params(model: str, prompt: str, max_tokens: int = 8192) -> dict:
+    params = {
+        "model": model,
+        "max_tokens": max_tokens,
+        "messages": [{"role": "user", "content": prompt}],
+    }
+    assert_no_search_payload("Anthropic", params)
+    return params
 
 
 def normalize_blind_forecasts(
@@ -207,7 +276,6 @@ def normalize_blind_forecasts(
     *,
     source: str,
 ) -> tuple[list[dict], list[dict]]:
-    """Validate forecasts, recompute arithmetic, assign code-owned categories."""
     market_by_ticker = {m.get("ticker"): m for m in canonical_markets}
     normalized: list[dict] = []
     warnings: list[dict] = []
@@ -266,12 +334,9 @@ def normalize_blind_forecasts(
     return normalized, warnings
 
 
-def mechanical_track_b_selection(
-    forecasts: list[dict], canonical_markets: list[dict]
-) -> list[dict]:
+def mechanical_track_b_selection(forecasts: list[dict], canonical_markets: list[dict]) -> list[dict]:
     market_by_ticker = {m.get("ticker"): m for m in canonical_markets}
     selected: list[dict] = []
-
     for forecast in forecasts:
         ticker = forecast["ticker"]
         market = market_by_ticker[ticker]
@@ -281,7 +346,6 @@ def mechanical_track_b_selection(
         edge = abs(midpoint - implied)
         if edge < EDGE_THRESHOLDS[category]:
             continue
-
         selected.append({
             "market": market.get("title", ""),
             "ticker": ticker,
@@ -294,19 +358,21 @@ def mechanical_track_b_selection(
             "confidence": forecast.get("confidence", "medium"),
             "category": category,
         })
-
     selected.sort(key=lambda item: item["edge_pct"], reverse=True)
     return selected[:7]
 
 
 def decorate_track_a(parsed: dict, *, model_label: str, snap_id: str, usage: Any) -> dict:
     parsed = dict(parsed)
-    parsed["model"] = model_label
-    parsed["track"] = "A"
-    parsed["snapshot_id"] = snap_id
-    parsed["api_usage"] = usage
-    parsed["shadow_only"] = True
-    parsed["external_search_enabled"] = False
+    parsed.update({
+        "model": model_label,
+        "track": "A",
+        "snapshot_id": snap_id,
+        "api_usage": usage,
+        "shadow_only": True,
+        "external_search_enabled": False,
+        "prompt_builder": "explicit_no_search_track_a_v2",
+    })
     return parsed
 
 
@@ -354,6 +420,7 @@ def graceful_gap(model_label: str, track: str, snap_id: str, error: Exception) -
         "track": track,
         "snapshot_id": snap_id,
         "shadow_only": True,
+        "external_search_enabled": False,
         "gap": True,
         "error": str(error),
         "trades": [],
@@ -361,71 +428,55 @@ def graceful_gap(model_label: str, track: str, snap_id: str, error: Exception) -
     }
 
 
-def run_openai_track_b(markets: list[dict], snap_id: str, model: str) -> dict:
-    all_forecasts: list[dict] = []
-    warnings: list[dict] = []
-    partial_failures: list[dict] = []
-    usages: list[dict] = []
-
-    for index, chunk in enumerate(chunk_markets(markets)):
-        chunk_id = f"c{index:02d}"
-        try:
-            parsed, usage = call_openai(build_blind_prompt(chunk, snap_id, chunk_id), model)
-            normalized, chunk_warnings = normalize_blind_forecasts(
-                parsed.get("forecasts", []), chunk, source=chunk_id
-            )
-            all_forecasts.extend(normalized)
-            warnings.extend(chunk_warnings)
-            usages.append({"chunk_id": chunk_id, "usage": usage})
-        except Exception as exc:
-            log.exception("GPT-5.6 Track B partial failure %s: %s", chunk_id, exc)
-            partial_failures.append({"chunk_id": chunk_id, "error": str(exc)})
-
-    if not all_forecasts:
-        raise RuntimeError(f"All Track B chunks failed: {partial_failures}")
-
-    return decorate_track_b(
-        all_forecasts,
-        model_label="gpt56_track_b",
-        snap_id=snap_id,
-        usage=usages,
-        canonical_markets=markets,
-        warnings=warnings,
-        partial_failures=partial_failures,
-    )
-
-
 def run_openai(date: str) -> None:
     markets = load_snapshot(date)
     snap_id = snapshot_id(markets)
     model = os.environ.get("OPENAI_SHADOW_MODEL", "gpt-5.6")
 
-    # Track A remains one price-visible call. No external tools/search are enabled.
     try:
-        parsed_a, usage_a = call_openai(build_scanner_prompt(json.dumps(markets, indent=2)), model)
+        prompt_a = build_track_a_prompt(markets)
+        parsed_a, usage_a = call_openai(prompt_a, model)
         output_a = decorate_track_a(parsed_a, model_label="gpt56_track_a", snap_id=snap_id, usage=usage_a)
     except Exception as exc:
         log.exception("GPT-5.6 Track A gap: %s", exc)
         output_a = graceful_gap("gpt56_track_a", "A", snap_id, exc)
     save_json(RAW_SCANS / f"{date}-gpt56-track-a.json", output_a)
 
-    try:
-        output_b = run_openai_track_b(markets, snap_id, model)
-    except Exception as exc:
-        log.exception("GPT-5.6 Track B gap: %s", exc)
-        output_b = graceful_gap("gpt56_track_b", "B", snap_id, exc)
+    all_forecasts: list[dict] = []
+    warnings: list[dict] = []
+    partial_failures: list[dict] = []
+    usages: list[dict] = []
+    for index, chunk in enumerate(chunk_markets(markets), start=1):
+        chunk_id = f"{date}-gpt56-track-b-{index:02d}"
+        try:
+            prompt_b = build_blind_prompt(chunk, snap_id, chunk_id)
+            parsed, usage = call_openai(prompt_b, model)
+            normalized, chunk_warnings = normalize_blind_forecasts(
+                parsed.get("forecasts", []), markets, source=chunk_id
+            )
+            all_forecasts.extend(normalized)
+            warnings.extend(chunk_warnings)
+            usages.append(usage)
+        except Exception as exc:
+            log.exception("GPT-5.6 Track B chunk gap %s: %s", chunk_id, exc)
+            partial_failures.append({"chunk_id": chunk_id, "error": str(exc)})
+
+    if all_forecasts:
+        output_b = decorate_track_b(
+            all_forecasts,
+            model_label="gpt56_track_b",
+            snap_id=snap_id,
+            usage=usages,
+            canonical_markets=markets,
+            warnings=warnings,
+            partial_failures=partial_failures,
+        )
+    else:
+        output_b = graceful_gap(
+            "gpt56_track_b", "B", snap_id,
+            RuntimeError(f"No successful Track B chunks; failures={partial_failures}"),
+        )
     save_json(RAW_SCANS / f"{date}-gpt56-track-b.json", output_b)
-
-
-def anthropic_headers() -> dict:
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise RuntimeError("ANTHROPIC_API_KEY is not set")
-    return {
-        "x-api-key": api_key,
-        "anthropic-version": "2023-06-01",
-        "content-type": "application/json",
-    }
 
 
 def submit_fable_batch(date: str) -> None:
@@ -433,27 +484,21 @@ def submit_fable_batch(date: str) -> None:
     snap_id = snapshot_id(markets)
     model = os.environ.get("FABLE_SHADOW_MODEL", "claude-fable-5")
 
-    requests_payload = [
+    requests_payload: list[dict] = [
         {
             "custom_id": f"{date}-fable5-track-a",
-            "params": {
-                "model": model,
-                "max_tokens": 8192,
-                "messages": [{"role": "user", "content": build_scanner_prompt(json.dumps(markets, indent=2))}],
-            },
+            "params": anthropic_request_params(model, build_track_a_prompt(markets)),
         }
     ]
-
-    for index, chunk in enumerate(chunk_markets(markets)):
-        chunk_id = f"c{index:02d}"
+    for index, chunk in enumerate(chunk_markets(markets), start=1):
+        chunk_id = f"{date}-fable5-track-b-{index:02d}"
         requests_payload.append({
-            "custom_id": f"{date}-fable5-track-b-{chunk_id}",
-            "params": {
-                "model": model,
-                "max_tokens": 8192,
-                "messages": [{"role": "user", "content": build_blind_prompt(chunk, snap_id, chunk_id)}],
-            },
+            "custom_id": chunk_id,
+            "params": anthropic_request_params(model, build_blind_prompt(chunk, snap_id, chunk_id)),
         })
+
+    payload = {"requests": requests_payload}
+    assert_no_search_payload("Anthropic batch root", payload)
 
     state_path = RAW_BATCHES / f"{date}-fable5.json"
     if state_path.exists():
@@ -465,7 +510,7 @@ def submit_fable_batch(date: str) -> None:
     response = requests.post(
         ANTHROPIC_BATCHES_URL,
         headers=anthropic_headers(),
-        json={"requests": requests_payload},
+        json=payload,
         timeout=120,
     )
     response.raise_for_status()
@@ -477,7 +522,7 @@ def submit_fable_batch(date: str) -> None:
         "processing_status": body.get("processing_status"),
         "submitted_at": now_iso(),
         "model": model,
-        "expected_custom_ids": [item["custom_id"] for item in requests_payload],
+        "request_count": len(requests_payload),
     })
 
 
@@ -496,25 +541,23 @@ def poll_fable_batch(date: str) -> None:
     if not state_path.exists():
         log.warning("No Fable batch state for %s", date)
         return
-
     state = json.loads(state_path.read_text())
     batch_id = state.get("batch_id")
     snap_id = state.get("snapshot_id")
     if not batch_id:
-        log.warning("Fable batch state missing batch_id: %s", state_path)
-        return
+        raise RuntimeError(f"Fable batch state missing batch_id: {state_path}")
 
     status_response = requests.get(
-        f"{ANTHROPIC_BATCHES_URL}/{batch_id}", headers=anthropic_headers(), timeout=60
+        f"{ANTHROPIC_BATCHES_URL}/{batch_id}",
+        headers=anthropic_headers(),
+        timeout=60,
     )
     status_response.raise_for_status()
     status = status_response.json()
     state["processing_status"] = status.get("processing_status")
     state["last_polled_at"] = now_iso()
     save_json(state_path, state)
-
     if status.get("processing_status") != "ended":
-        log.info("Fable batch %s not ended yet: %s", batch_id, status.get("processing_status"))
         return
 
     results_response = requests.get(
@@ -525,67 +568,49 @@ def poll_fable_batch(date: str) -> None:
     results_response.raise_for_status()
 
     markets = load_snapshot(date)
-    chunks_by_id = {f"c{i:02d}": chunk for i, chunk in enumerate(chunk_markets(markets))}
+    fable_a: dict | None = None
+    fable_a_usage: dict = {}
     all_forecasts: list[dict] = []
     warnings: list[dict] = []
     partial_failures: list[dict] = []
     usages: list[dict] = []
-    seen: set[str] = set()
-    track_a_saved = False
 
     for line in results_response.text.splitlines():
         if not line.strip():
             continue
         row = json.loads(line)
         custom_id = row.get("custom_id", "")
-        seen.add(custom_id)
         result = row.get("result", {}) or {}
-
         try:
             if result.get("type") != "succeeded":
                 raise RuntimeError(f"Anthropic batch result type={result.get('type')}")
             message = result.get("message", {}) or {}
             parsed = parse_json_object(extract_anthropic_message_text(message))
             usage = message.get("usage", {}) or {}
-
-            if custom_id == f"{date}-fable5-track-a":
-                save_json(
-                    RAW_SCANS / f"{date}-fable5-track-a.json",
-                    decorate_track_a(parsed, model_label="fable5_track_a", snap_id=snap_id, usage=usage),
-                )
-                track_a_saved = True
-            elif "-fable5-track-b-" in custom_id:
-                chunk_id = custom_id.rsplit("-", 1)[-1]
-                chunk = chunks_by_id.get(chunk_id)
-                if chunk is None:
-                    raise RuntimeError(f"Unknown Track B chunk id {chunk_id}")
+            if custom_id.endswith("track-a"):
+                fable_a = parsed
+                fable_a_usage = usage
+            elif "track-b-" in custom_id:
                 normalized, chunk_warnings = normalize_blind_forecasts(
-                    parsed.get("forecasts", []), chunk, source=chunk_id
+                    parsed.get("forecasts", []), markets, source=custom_id
                 )
                 all_forecasts.extend(normalized)
                 warnings.extend(chunk_warnings)
-                usages.append({"chunk_id": chunk_id, "usage": usage})
+                usages.append(usage)
         except Exception as exc:
             log.exception("Fable result gap %s: %s", custom_id, exc)
-            if custom_id == f"{date}-fable5-track-a":
-                save_json(
-                    RAW_SCANS / f"{date}-fable5-track-a.json",
-                    graceful_gap("fable5_track_a", "A", snap_id, exc),
-                )
-                track_a_saved = True
-            else:
-                partial_failures.append({"custom_id": custom_id, "error": str(exc)})
+            partial_failures.append({"custom_id": custom_id, "error": str(exc)})
 
-    expected = set(state.get("expected_custom_ids", []))
-    for missing in sorted(expected - seen):
-        if missing == f"{date}-fable5-track-a":
-            if not track_a_saved:
-                save_json(
-                    RAW_SCANS / f"{date}-fable5-track-a.json",
-                    graceful_gap("fable5_track_a", "A", snap_id, RuntimeError("Missing Track A result row")),
-                )
-        else:
-            partial_failures.append({"custom_id": missing, "error": "missing_result_row"})
+    if fable_a is not None:
+        output_a = decorate_track_a(
+            fable_a, model_label="fable5_track_a", snap_id=snap_id, usage=fable_a_usage
+        )
+    else:
+        output_a = graceful_gap(
+            "fable5_track_a", "A", snap_id,
+            RuntimeError("Missing or failed Fable Track A result"),
+        )
+    save_json(RAW_SCANS / f"{date}-fable5-track-a.json", output_a)
 
     if all_forecasts:
         output_b = decorate_track_b(
@@ -599,46 +624,82 @@ def poll_fable_batch(date: str) -> None:
         )
     else:
         output_b = graceful_gap(
-            "fable5_track_b",
-            "B",
-            snap_id,
-            RuntimeError(f"No successful Track B chunks; failures={partial_failures}"),
+            "fable5_track_b", "B", snap_id,
+            RuntimeError(f"No successful Fable Track B chunks; failures={partial_failures}"),
         )
     save_json(RAW_SCANS / f"{date}-fable5-track-b.json", output_b)
 
 
+def self_test_failure_path() -> None:
+    """Deliberately exercise truncation and arithmetic-recompute paths without API calls."""
+    try:
+        parse_json_object('{"forecasts": [')
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("Truncated JSON did not fail as expected")
+
+    sample_markets = [{
+        "ticker": "KXCPI-TEST",
+        "title": "Test",
+        "subtitle": "",
+        "close_time": "",
+        "resolution_source": "",
+        "implied_prob": 0.40,
+        "yes_price": 0.40,
+    }]
+    normalized, warnings = normalize_blind_forecasts(
+        [{"ticker": "KXCPI-TEST", "prob_range": [0.5, 0.7], "prob_midpoint": 0.99}],
+        sample_markets,
+        source="self-test",
+    )
+    if normalized[0]["prob_midpoint"] != 0.6:
+        raise AssertionError("Midpoint recomputation failed")
+    if not any(w.get("type") == "midpoint_mismatch_recomputed" for w in warnings):
+        raise AssertionError("Midpoint mismatch warning missing")
+    log.info("Failure-path self-test passed")
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Run pre-registered shadow model experiment")
+    if os.environ.get("SHADOW_NO_SEARCH_ENFORCED") != "1":
+        raise SystemExit(
+            "Refusing to run: launch via run_shadow_experiment.py so no-search enforcement is active"
+        )
+
+    parser = argparse.ArgumentParser(description="Run pre-registered no-search shadow experiment")
     parser.add_argument("--date", default=today_str())
     parser.add_argument("--run-openai", action="store_true")
     parser.add_argument("--submit-fable-batch", action="store_true")
     parser.add_argument("--poll-fable-batch", action="store_true")
+    parser.add_argument("--self-test-failure-path", action="store_true")
     parser.add_argument("--all", action="store_true")
     args = parser.parse_args()
 
     ensure_dirs()
     did_work = False
-
+    if args.self_test_failure_path:
+        self_test_failure_path()
+        did_work = True
     if args.run_openai or args.all:
         run_openai(args.date)
         did_work = True
-
     if args.submit_fable_batch or args.all:
         try:
             submit_fable_batch(args.date)
         except Exception as exc:
             log.exception("Fable batch submission gap: %s", exc)
         did_work = True
-
     if args.poll_fable_batch:
         try:
             poll_fable_batch(args.date)
         except Exception as exc:
             log.exception("Fable batch poll gap: %s", exc)
         did_work = True
-
     if not did_work:
-        parser.error("Choose --run-openai, --submit-fable-batch, --poll-fable-batch, or --all")
+        parser.error(
+            "Choose --run-openai, --submit-fable-batch, --poll-fable-batch, "
+            "--self-test-failure-path, or --all"
+        )
 
 
 if __name__ == "__main__":
