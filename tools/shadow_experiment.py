@@ -225,7 +225,7 @@ def extract_openai_output_text(payload: dict) -> str:
     return "\n".join(chunks)
 
 
-def call_openai(prompt: str, model: str, max_output_tokens: int = 8192) -> tuple[dict, dict]:
+def call_openai(prompt: str, model: str, max_output_tokens: int = 4096) -> tuple[dict, dict]:
     api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("OPENAI_API_KEY is not set")
