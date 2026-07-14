@@ -1,0 +1,77 @@
+{
+  "date": "2026-07-14",
+  "scan_timestamp": "2026-07-14T04:24:28Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 95,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Long-dated; no independent grounding for remaining 2026 FOMC path beyond market-implied higher-for-longer; cannot fabricate CME FedWatch or SEP sources"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Complement of zero-cut market; same lack of current real-time FOMC probability data or minutes to justify edge over 22.6% implied"
+    },
+    {
+      "market": "CPI YoY June 2026 above 3.7%/3.8% (KXCPIYOY-26JUN-T3.7 / T3.8)",
+      "reason": "Resolves today on BLS release; no access to advance estimates, Cleveland Fed nowcast, or consensus to diverge from 70%/27% implied without fabricating"
+    },
+    {
+      "market": "June 2026 CPI m/m above -0.2% (KXCPI-26JUN-T-0.2)",
+      "reason": "Same-day BLS print; internal knowledge pre-dates 2026; cannot ground independent forecast"
+    },
+    {
+      "market": "Recession 2027 (KXRECSSNBER-27)",
+      "reason": "Far-dated NBER/GDP definition; volume marginal, no specific BEA or Blue Chip forecast edge over 39.5%"
+    },
+    {
+      "market": "All GDP Q2/Q3 thresholds (KXGDP-*)",
+      "reason": "Volumes mostly <50k or insufficient; no current Atlanta Fed GDPNow or BEA advance data available to estimate"
+    },
+    {
+      "market": "All WTI/Brent/gold/silver/copper daily and monthly strikes",
+      "reason": "Require live futures settlement and curve data not in supplied feed; cannot invent current spot or options-implied vol for edge"
+    },
+    {
+      "market": "NYC/Chicago/Miami high-temp bins Jul 14",
+      "reason": "Same-day weather; no NWS forecast, model ensemble, or climatology update accessible; spreads and volumes insufficient for blind weather edge"
+    },
+    {
+      "market": "BTC/ETH range markets",
+      "reason": "Crypto category requires >=12% edge plus live CF Benchmarks or spot; no current price or options data; volumes low"
+    },
+    {
+      "market": "Hurricane counts Central/Eastern Pacific",
+      "reason": "Season-long; no NOAA outlook or current ACE data; wide spreads and low volume"
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Sticky-but-not-accelerating inflation regime with market pricing higher-for-longer Fed (zero 2026 cuts ~78%) and moderate growth. Only 6 contracts clear volume >=50k and spread <=0.10 filters; all lack independent, non-fabricated grounding sources for probability estimates that clear category edge thresholds. Same-day CPI, oil, metals, crypto, and temperature markets are untradeable without live data. Zero trades is the correct output.",
+  "track": "A",
+  "snapshot_id": "01a9efe5447e68bb093a65d01b70fb897f9b11331fc7fb9ffb7fd969bbec7e9a",
+  "api_usage": {
+    "prompt_tokens": 28430,
+    "completion_tokens": 799,
+    "total_tokens": 31072,
+    "prompt_tokens_details": {
+      "text_tokens": 28430,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1843,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 725200000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}

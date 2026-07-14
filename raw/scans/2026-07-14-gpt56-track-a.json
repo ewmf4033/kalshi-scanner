@@ -1,0 +1,53 @@
+{
+  "date": "2026-07-14",
+  "scan_timestamp": "2026-07-14T03:16:28Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 6,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "The roughly 78% probability of zero cuts is consistent with the elevated near-term inflation distribution. No independently supportable 8-point macro edge is available from the supplied data."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "The 22.6% implied probability is broadly consistent with the complementary zero-cut market. The contracts have slightly different covered periods, preventing treatment as a strict arbitrage."
+    },
+    {
+      "market": "June 2026 CPI inflation above 3.7% (KXCPIYOY-26JUN-T3.7)",
+      "reason": "Resolution is imminent, and the supplied data provide no independent CPI components or nowcast capable of overcoming the market's informational advantage by the required 8 points."
+    },
+    {
+      "market": "June 2026 CPI inflation above 3.8% (KXCPIYOY-26JUN-T3.8)",
+      "reason": "The adjacent CPI thresholds imply substantial probability concentrated at the reported 3.8% outcome, but there is no independent release-level evidence supporting a threshold-sized deviation."
+    },
+    {
+      "market": "June 2026 CPI above -0.2% month over month (KXCPI-26JUN-T-0.2)",
+      "reason": "The unusual deflationary threshold suggests event-specific information not contained in the dataset. Trading against the 44.5% implied probability without CPI component data would be speculative."
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "The contract uses two consecutive negative-GDP quarters rather than the NBER recession definition. The long horizon and mixed implications of persistent inflation, restrictive policy, and growth risk do not support an 8-point edge."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "The eligible market set points to an inflationary, hawkish regime: June year-over-year CPI is priced near 3.8%, while markets assign roughly three-quarters probability to no Fed cuts in 2026. However, the imminent CPI release, internally consistent Fed pricing, and absence of independent release-level inputs leave no qualifying risk-adjusted edge. All other supplied markets failed the minimum $50K volume filter.",
+  "track": "A",
+  "snapshot_id": "01a9efe5447e68bb093a65d01b70fb897f9b11331fc7fb9ffb7fd969bbec7e9a",
+  "api_usage": {
+    "input_tokens": 26604,
+    "input_tokens_details": {
+      "cache_write_tokens": 26601,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1314,
+    "output_tokens_details": {
+      "reasoning_tokens": 697
+    },
+    "total_tokens": 27918
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

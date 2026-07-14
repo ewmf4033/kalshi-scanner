@@ -1,0 +1,49 @@
+{
+  "date": "2026-07-13",
+  "scan_timestamp": "2026-07-13T03:53:24Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 9,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Q1 2026 real GDP threshold markets",
+      "reason": "The listed close time of 2026-04-30 predates the scan, making these stale or otherwise unsuitable for a new entry."
+    },
+    {
+      "market": "2026 Fed rate-cut count markets",
+      "reason": "Prices are internally plausible, but the supplied data contains no current inflation, labor, policy, or futures evidence supporting a credible edge of at least 8%."
+    },
+    {
+      "market": "Federal Reserve cut rates before 2027",
+      "reason": "The contract's February 26 start date differs from the full-year cut-count contracts, limiting direct comparison; no sufficiently grounded 8% edge is identifiable."
+    },
+    {
+      "market": "Recession in 2026",
+      "reason": "The market uses a specific two-consecutive-negative-quarters rule rather than an NBER recession determination. Supplied data does not establish a sufficiently grounded 8% pricing error."
+    },
+    {
+      "market": "Weather, CPI, cryptocurrency, and Q2 GDP markets",
+      "reason": "These markets fail the required $50K minimum-volume filter."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "The eligible markets imply low technical-recession risk, moderate growth, and meaningful but uncertain odds of Fed easing. Signals are mixed rather than decisively inflationary, disinflationary, or recessionary. Several contracts have close times before the scan date, and the remaining eligible markets lack enough current fundamental evidence to justify the required macro edge.",
+  "track": "A",
+  "snapshot_id": "63e1c732473715eba5c77d9bc12e7be7e3fb46e2c7ac680078dc240c592fb0cc",
+  "api_usage": {
+    "input_tokens": 13135,
+    "input_tokens_details": {
+      "cache_write_tokens": 13132,
+      "cached_tokens": 0
+    },
+    "output_tokens": 932,
+    "output_tokens_details": {
+      "reasoning_tokens": 516
+    },
+    "total_tokens": 14067
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}
