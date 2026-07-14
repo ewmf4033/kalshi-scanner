@@ -841,33 +841,52 @@ def main() -> None:
 
     ensure_dirs()
     did_work = False
+    lane_failures = 0
+
     if args.self_test_failure_path:
         self_test_failure_path()
         did_work = True
+
     if args.run_openai or args.all:
-        run_openai(args.date)
+        try:
+            run_openai(args.date)
+        except Exception as exc:
+            lane_failures += 1
+            log.exception("OpenAI shadow lane gap: %s", exc)
         did_work = True
+
     if args.run_grok or args.all:
-        run_grok(args.date)
+        try:
+            run_grok(args.date)
+        except Exception as exc:
+            lane_failures += 1
+            log.exception("Grok shadow lane gap: %s", exc)
         did_work = True
+
     if args.submit_fable_batch or args.all:
         try:
             submit_fable_batch(args.date)
         except Exception as exc:
+            lane_failures += 1
             log.exception("Fable batch submission gap: %s", exc)
         did_work = True
+
     if args.poll_fable_batch:
         try:
             poll_fable_batch(args.date)
         except Exception as exc:
+            lane_failures += 1
             log.exception("Fable batch poll gap: %s", exc)
         did_work = True
+
     if not did_work:
         parser.error(
             "Choose --run-openai, --run-grok, --submit-fable-batch, "
             "--poll-fable-batch, --self-test-failure-path, or --all"
         )
 
+    if lane_failures:
+        raise SystemExit(1)
 
 if __name__ == "__main__":
     main()
