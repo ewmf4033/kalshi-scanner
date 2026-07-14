@@ -34,6 +34,7 @@ PROMPTS_DIR = ROOT / "tools" / "prompts"
 
 OPENAI_RESPONSES_URL = "https://api.openai.com/v1/responses"
 ANTHROPIC_BATCHES_URL = "https://api.anthropic.com/v1/messages/batches"
+XAI_CHAT_COMPLETIONS_URL = "https://api.x.ai/v1/chat/completions"
 BLIND_CHUNK_SIZE = 25
 
 LEGACY_SEARCH_NEEDLE = (
@@ -285,6 +286,45 @@ def call_openai(prompt: str, model: str, max_output_tokens: int = 4096) -> tuple
     return parse_json_object(extract_openai_output_text(body)), body.get("usage", {}) or {}
 
 
+def call_xai(
+    prompt: str,
+    model: str,
+    max_tokens: int = 4096,
+) -> tuple[dict, dict]:
+    api_key = os.environ.get("XAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("XAI_API_KEY is not set")
+
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        "max_tokens": max_tokens,
+    }
+
+    assert_no_search_payload("xAI", payload)
+
+    response = requests.post(
+        XAI_CHAT_COMPLETIONS_URL,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        },
+        json=payload,
+        timeout=600,
+    )
+    response.raise_for_status()
+
+    body = response.json()
+    choices = body.get("choices", []) or []
+    if not choices:
+        raise ValueError("xAI response contained no choices")
+
+    raw_text = choices[0].get("message", {}).get("content", "")
+    parsed = parse_json_object(raw_text)
+
+    return parsed, body.get("usage", {}) or {}
+
+
 def anthropic_headers() -> dict:
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
@@ -515,6 +555,88 @@ def run_openai(date: str) -> None:
     save_experiment_json(RAW_SCANS / f"{date}-gpt56-track-b.json", output_b)
 
 
+def run_grok(date: str) -> None:
+    markets = load_snapshot(date)
+    snap_id = snapshot_id(markets)
+    model = os.environ.get("GROK_SHADOW_MODEL", "grok-4.5")
+
+    try:
+        prompt_a = build_track_a_prompt(markets)
+        parsed_a, usage_a = call_xai(prompt_a, model)
+        output_a = decorate_track_a(
+            parsed_a,
+            model_label="grok_track_a",
+            snap_id=snap_id,
+            usage=usage_a,
+        )
+        output_a["provider_model"] = model
+    except Exception as exc:
+        log.exception("Grok Track A gap: %s", exc)
+        output_a = graceful_gap("grok_track_a", "A", snap_id, exc)
+        output_a["provider_model"] = model
+
+    save_experiment_json(
+        RAW_SCANS / f"{date}-grok-track-a.json",
+        output_a,
+    )
+
+    all_forecasts: list[dict] = []
+    warnings: list[dict] = []
+    partial_failures: list[dict] = []
+    usages: list[dict] = []
+
+    for index, chunk in enumerate(chunk_markets(markets), start=1):
+        chunk_id = f"{date}-grok-track-b-{index:02d}"
+
+        try:
+            prompt_b = build_blind_prompt(chunk, snap_id, chunk_id)
+            parsed, usage = call_xai(prompt_b, model)
+
+            normalized, chunk_warnings = normalize_blind_forecasts(
+                parsed.get("forecasts", []),
+                markets,
+                source=chunk_id,
+            )
+
+            all_forecasts.extend(normalized)
+            warnings.extend(chunk_warnings)
+            usages.append(usage)
+
+        except Exception as exc:
+            log.exception("Grok Track B chunk gap %s: %s", chunk_id, exc)
+            partial_failures.append({
+                "chunk_id": chunk_id,
+                "error": str(exc),
+            })
+
+    if all_forecasts:
+        output_b = decorate_track_b(
+            all_forecasts,
+            model_label="grok_track_b",
+            snap_id=snap_id,
+            usage=usages,
+            canonical_markets=markets,
+            warnings=warnings,
+            partial_failures=partial_failures,
+        )
+        output_b["provider_model"] = model
+    else:
+        output_b = graceful_gap(
+            "grok_track_b",
+            "B",
+            snap_id,
+            RuntimeError(
+                f"No successful Grok Track B chunks; failures={partial_failures}"
+            ),
+        )
+        output_b["provider_model"] = model
+
+    save_experiment_json(
+        RAW_SCANS / f"{date}-grok-track-b.json",
+        output_b,
+    )
+
+
 def submit_fable_batch(date: str) -> None:
     markets = load_snapshot(date)
     snap_id = snapshot_id(markets)
@@ -710,6 +832,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Run pre-registered no-search shadow experiment")
     parser.add_argument("--date", default=today_str())
     parser.add_argument("--run-openai", action="store_true")
+    parser.add_argument("--run-grok", action="store_true")
     parser.add_argument("--submit-fable-batch", action="store_true")
     parser.add_argument("--poll-fable-batch", action="store_true")
     parser.add_argument("--self-test-failure-path", action="store_true")
@@ -723,6 +846,9 @@ def main() -> None:
         did_work = True
     if args.run_openai or args.all:
         run_openai(args.date)
+        did_work = True
+    if args.run_grok or args.all:
+        run_grok(args.date)
         did_work = True
     if args.submit_fable_batch or args.all:
         try:
@@ -738,8 +864,8 @@ def main() -> None:
         did_work = True
     if not did_work:
         parser.error(
-            "Choose --run-openai, --submit-fable-batch, --poll-fable-batch, "
-            "--self-test-failure-path, or --all"
+            "Choose --run-openai, --run-grok, --submit-fable-batch, "
+            "--poll-fable-batch, --self-test-failure-path, or --all"
         )
 
 
