@@ -1,0 +1,26 @@
+{
+  "historical_reference": {
+    "canonical_clean_n": 14,
+    "contaminated_rows_permanently_excluded": {
+      "start": "2026-04-11",
+      "end": "2026-04-16"
+    },
+    "experiment_dates_permanently_excluded": [
+      "2026-04-10"
+    ],
+    "note": "Historical reference is not a perfectly controlled contemporary no-search arm if its historical tool path used search."
+  },
+  "metric_hierarchy": [
+    "full_coverage_track_b_brier_skill_score",
+    "selected_top7_track_b_brier_skill_score",
+    "calibration_diagnostics",
+    "log_loss",
+    "simulated_top7_roi_theoretical_pnl",
+    "track_a_secondary_applied_evidence"
+  ],
+  "selected_lanes": {},
+  "full_coverage_track_b_lanes": {},
+  "all_experiment_lanes": {},
+  "paired_same_ticker_same_snapshot_selected": {},
+  "paired_same_ticker_same_snapshot_full_coverage": {}
+}
