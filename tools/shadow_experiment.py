@@ -203,6 +203,42 @@ def save_json(path: Path, data: dict) -> None:
     log.info("Saved %s", path)
 
 
+def save_experiment_json(path: Path, data: dict) -> None:
+    """Protect final experiment outputs from accidental overwrite."""
+    if path.exists():
+        try:
+            existing = json.loads(path.read_text())
+        except Exception as exc:
+            raise RuntimeError(
+                f"Refusing to overwrite unreadable existing experiment output: {path}"
+            ) from exc
+
+        existing_is_gap = existing.get("gap") is True
+        new_is_gap = data.get("gap") is True
+        allow_gap_retry = os.environ.get("SHADOW_ALLOW_GAP_RETRY") == "1"
+
+        if not existing_is_gap:
+            raise FileExistsError(
+                f"Refusing to overwrite existing successful experiment output: {path}"
+            )
+
+        if new_is_gap:
+            raise FileExistsError(
+                f"Refusing to replace existing gap with another gap: {path}"
+            )
+
+        if not allow_gap_retry:
+            raise FileExistsError(
+                "Existing experiment output is a gap. "
+                "To explicitly replace it with a successful retry, set "
+                f"SHADOW_ALLOW_GAP_RETRY=1. Path: {path}"
+            )
+
+        log.warning("Explicitly replacing prior gap with successful retry: %s", path)
+
+    save_json(path, data)
+
+
 def assert_no_search_payload(provider: str, payload: dict) -> None:
     """Fail loud if request payload exposes search/tool/retrieval capabilities."""
     forbidden = {"tools", "tool_choice", "web_search", "search", "retrieval"}
@@ -440,7 +476,7 @@ def run_openai(date: str) -> None:
     except Exception as exc:
         log.exception("GPT-5.6 Track A gap: %s", exc)
         output_a = graceful_gap("gpt56_track_a", "A", snap_id, exc)
-    save_json(RAW_SCANS / f"{date}-gpt56-track-a.json", output_a)
+    save_experiment_json(RAW_SCANS / f"{date}-gpt56-track-a.json", output_a)
 
     all_forecasts: list[dict] = []
     warnings: list[dict] = []
@@ -476,7 +512,7 @@ def run_openai(date: str) -> None:
             "gpt56_track_b", "B", snap_id,
             RuntimeError(f"No successful Track B chunks; failures={partial_failures}"),
         )
-    save_json(RAW_SCANS / f"{date}-gpt56-track-b.json", output_b)
+    save_experiment_json(RAW_SCANS / f"{date}-gpt56-track-b.json", output_b)
 
 
 def submit_fable_batch(date: str) -> None:
@@ -615,7 +651,7 @@ def poll_fable_batch(date: str) -> None:
             "fable5_track_a", "A", snap_id,
             RuntimeError("Missing or failed Fable Track A result"),
         )
-    save_json(RAW_SCANS / f"{date}-fable5-track-a.json", output_a)
+    save_experiment_json(RAW_SCANS / f"{date}-fable5-track-a.json", output_a)
 
     if all_forecasts:
         output_b = decorate_track_b(
@@ -632,7 +668,7 @@ def poll_fable_batch(date: str) -> None:
             "fable5_track_b", "B", snap_id,
             RuntimeError(f"No successful Fable Track B chunks; failures={track_b_failures}"),
         )
-    save_json(RAW_SCANS / f"{date}-fable5-track-b.json", output_b)
+    save_experiment_json(RAW_SCANS / f"{date}-fable5-track-b.json", output_b)
 
 
 def self_test_failure_path() -> None:
