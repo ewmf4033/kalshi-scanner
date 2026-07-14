@@ -570,9 +570,10 @@ def poll_fable_batch(date: str) -> None:
     markets = load_snapshot(date)
     fable_a: dict | None = None
     fable_a_usage: dict = {}
+    fable_a_failure: dict | None = None
     all_forecasts: list[dict] = []
     warnings: list[dict] = []
-    partial_failures: list[dict] = []
+    track_b_failures: list[dict] = []
     usages: list[dict] = []
 
     for line in results_response.text.splitlines():
@@ -599,7 +600,11 @@ def poll_fable_batch(date: str) -> None:
                 usages.append(usage)
         except Exception as exc:
             log.exception("Fable result gap %s: %s", custom_id, exc)
-            partial_failures.append({"custom_id": custom_id, "error": str(exc)})
+            failure = {"custom_id": custom_id, "error": str(exc)}
+            if custom_id.endswith("track-a"):
+                fable_a_failure = failure
+            else:
+                track_b_failures.append(failure)
 
     if fable_a is not None:
         output_a = decorate_track_a(
@@ -620,12 +625,12 @@ def poll_fable_batch(date: str) -> None:
             usage=usages,
             canonical_markets=markets,
             warnings=warnings,
-            partial_failures=partial_failures,
+            partial_failures=track_b_failures,
         )
     else:
         output_b = graceful_gap(
             "fable5_track_b", "B", snap_id,
-            RuntimeError(f"No successful Fable Track B chunks; failures={partial_failures}"),
+            RuntimeError(f"No successful Fable Track B chunks; failures={track_b_failures}"),
         )
     save_json(RAW_SCANS / f"{date}-fable5-track-b.json", output_b)
 
