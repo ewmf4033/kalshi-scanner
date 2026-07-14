@@ -24,6 +24,10 @@ EXPERIMENT_MODELS = {
 CONTAMINATED_START = "2026-04-11"
 CONTAMINATED_END = "2026-04-16"
 
+EXCLUDED_EXPERIMENT_DATES = {
+    "2026-04-10",  # Historical technical dry run executed later with hindsight risk.
+}
+
 
 def load_scan_metadata() -> dict[tuple[str, str, str], dict]:
     """Map (scan_date, ticker, model) to snapshot/track metadata."""
@@ -143,7 +147,11 @@ def paired_diagnostics(rows: list[dict], scan_meta: dict) -> dict:
 def main() -> None:
     scan_meta = load_scan_metadata()
     all_rows = load_resolutions()
-    experiment_rows = [r for r in all_rows if r.get("model") in EXPERIMENT_MODELS]
+    experiment_rows = [
+        r for r in all_rows
+        if r.get("model") in EXPERIMENT_MODELS
+        and r.get("scan_date") not in EXCLUDED_EXPERIMENT_DATES
+    ]
 
     by_model: dict[str, list[dict]] = defaultdict(list)
     for row in experiment_rows:
@@ -156,6 +164,7 @@ def main() -> None:
                 "start": CONTAMINATED_START,
                 "end": CONTAMINATED_END,
             },
+            "experiment_dates_permanently_excluded": sorted(EXCLUDED_EXPERIMENT_DATES),
             "note": "Historical reference is not a perfectly controlled contemporary no-search arm if its historical tool path used search.",
         },
         "metric_hierarchy": [
