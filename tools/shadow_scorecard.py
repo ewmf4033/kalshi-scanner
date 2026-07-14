@@ -14,12 +14,25 @@ RAW_RESOLVED = ROOT / "raw" / "resolved"
 OUT_DIR = ROOT / "research" / "output"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-EXPERIMENT_MODELS = {
+SELECTED_EXPERIMENT_MODELS = {
     "gpt56_track_a",
     "gpt56_track_b",
     "fable5_track_a",
     "fable5_track_b",
+    "grok_track_a",
+    "grok_track_b",
 }
+
+FULL_COVERAGE_TRACK_B_MODELS = {
+    "gpt56_track_b_full_coverage",
+    "fable5_track_b_full_coverage",
+    "grok_track_b_full_coverage",
+}
+
+EXPERIMENT_MODELS = (
+    SELECTED_EXPERIMENT_MODELS
+    | FULL_COVERAGE_TRACK_B_MODELS
+)
 
 CONTAMINATED_START = "2026-04-11"
 CONTAMINATED_END = "2026-04-16"
@@ -33,6 +46,9 @@ def load_scan_metadata() -> dict[tuple[str, str, str], dict]:
     """Map (scan_date, ticker, model) to snapshot/track metadata."""
     out: dict[tuple[str, str, str], dict] = {}
     for path in sorted(RAW_SCANS.glob("*.json")):
+        if ".FIRST_VALID_FORWARD_BACKUP." in path.name:
+            continue
+
         try:
             data = json.loads(path.read_text())
         except Exception:
@@ -45,12 +61,31 @@ def load_scan_metadata() -> dict[tuple[str, str, str], dict]:
             ticker = trade.get("ticker")
             if not ticker:
                 continue
+
             out[(date, ticker, model)] = {
                 "snapshot_id": data.get("snapshot_id"),
                 "track": data.get("track"),
                 "shadow_only": data.get("shadow_only", False),
                 "partial": data.get("partial", False),
+                "prediction_scope": "selected_top7",
             }
+
+        if data.get("track") == "B":
+            full_model = f"{model}_full_coverage"
+
+            if full_model in FULL_COVERAGE_TRACK_B_MODELS:
+                for forecast in data.get("forecasts", []) or []:
+                    ticker = forecast.get("ticker")
+                    if not ticker:
+                        continue
+
+                    out[(date, ticker, full_model)] = {
+                        "snapshot_id": data.get("snapshot_id"),
+                        "track": "B",
+                        "shadow_only": data.get("shadow_only", False),
+                        "partial": data.get("partial", False),
+                        "prediction_scope": "full_coverage_track_b",
+                    }
     return out
 
 
@@ -157,6 +192,24 @@ def main() -> None:
     for row in experiment_rows:
         by_model[row["model"]].append(row)
 
+    selected_rows = [
+        r for r in experiment_rows
+        if r.get("model") in SELECTED_EXPERIMENT_MODELS
+    ]
+
+    full_coverage_rows = [
+        r for r in experiment_rows
+        if r.get("model") in FULL_COVERAGE_TRACK_B_MODELS
+    ]
+
+    selected_by_model: dict[str, list[dict]] = defaultdict(list)
+    for row in selected_rows:
+        selected_by_model[row["model"]].append(row)
+
+    full_coverage_by_model: dict[str, list[dict]] = defaultdict(list)
+    for row in full_coverage_rows:
+        full_coverage_by_model[row["model"]].append(row)
+
     report = {
         "historical_reference": {
             "canonical_clean_n": 14,
@@ -168,16 +221,33 @@ def main() -> None:
             "note": "Historical reference is not a perfectly controlled contemporary no-search arm if its historical tool path used search.",
         },
         "metric_hierarchy": [
-            "lane_specific_brier_skill_score",
+            "full_coverage_track_b_brier_skill_score",
+            "selected_top7_track_b_brier_skill_score",
             "calibration_diagnostics",
             "log_loss",
-            "simulated_roi_theoretical_pnl",
+            "simulated_top7_roi_theoretical_pnl",
+            "track_a_secondary_applied_evidence",
         ],
-        "lanes": {
+        "selected_lanes": {
+            model: summarize_lane(rows)
+            for model, rows in sorted(selected_by_model.items())
+        },
+        "full_coverage_track_b_lanes": {
+            model: summarize_lane(rows)
+            for model, rows in sorted(full_coverage_by_model.items())
+        },
+        "all_experiment_lanes": {
             model: summarize_lane(rows)
             for model, rows in sorted(by_model.items())
         },
-        "paired_same_ticker_same_snapshot": paired_diagnostics(experiment_rows, scan_meta),
+        "paired_same_ticker_same_snapshot_selected": paired_diagnostics(
+            selected_rows,
+            scan_meta,
+        ),
+        "paired_same_ticker_same_snapshot_full_coverage": paired_diagnostics(
+            full_coverage_rows,
+            scan_meta,
+        ),
     }
 
     out_path = OUT_DIR / "shadow_experiment_scorecard.json"

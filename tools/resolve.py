@@ -22,7 +22,18 @@ BASE = Path(__file__).resolve().parent.parent
 RAW_SCANS = BASE / "raw" / "scans"
 RAW_CONSENSUS = BASE / "raw" / "consensus"
 RAW_RESOLVED = BASE / "raw" / "resolved"
+RAW_SNAPSHOTS = BASE / "raw" / "snapshots"
 RAW_RESOLVED.mkdir(exist_ok=True)
+
+FULL_COVERAGE_TRACK_B_MODELS = {
+    "gpt56_track_b",
+    "fable5_track_b",
+    "grok_track_b",
+}
+
+FULL_COVERAGE_EXCLUDED_DATES = {
+    "2026-04-10",  # Historical technical dry run with hindsight risk.
+}
 
 # --- Kalshi API auth (same as scanner.py) ---
 from cryptography.hazmat.primitives import serialization, hashes
@@ -103,22 +114,59 @@ def theoretical_pnl(direction, price_at_scan, outcome_yes):
 
 
 # --- Load all predictions ---
+def load_snapshot_market_map(scan_date):
+    """Load contemporaneous canonical snapshot keyed by ticker."""
+    path = RAW_SNAPSHOTS / f"{scan_date}-markets.json"
+    if not path.exists():
+        return {}
+
+    try:
+        markets = json.loads(path.read_text())
+    except Exception:
+        return {}
+
+    if not isinstance(markets, list):
+        return {}
+
+    return {
+        m.get("ticker"): m
+        for m in markets
+        if m.get("ticker")
+    }
+
+
 def load_all_predictions():
-    """Load every trade from every scan file, keyed by ticker+date."""
+    """
+    Load original selected trades plus separate full-coverage Track B forecasts.
+
+    Selected top-7 rows keep their original model labels.
+    Full-coverage Track B rows use a distinct *_full_coverage model label so the
+    two analyses remain separate and cannot collide in resolution deduplication.
+    """
     predictions = []
+
     for f in sorted(RAW_SCANS.glob("*.json")):
+        # Never treat read-only backup copies as separate predictions.
+        if ".FIRST_VALID_FORWARD_BACKUP." in f.name:
+            continue
+
         try:
             data = json.loads(f.read_text())
-        except:
+        except Exception:
             continue
+
         if data.get("error"):
             continue
+
         model = data.get("model", "unknown")
         scan_date = data.get("date", f.stem[:10])
+
+        # Original selected-trade analysis remains unchanged.
         for trade in data.get("trades", []):
             predictions.append({
                 "scan_date": scan_date,
                 "model": model,
+                "prediction_scope": "selected_top7",
                 "ticker": trade.get("ticker"),
                 "direction": trade.get("direction"),
                 "current_price": trade.get("current_price"),
@@ -131,6 +179,68 @@ def load_all_predictions():
                 "correlation_cluster_id": trade.get("correlation_cluster_id"),
                 "resolution_date": trade.get("resolution_date"),
             })
+
+        # Separate full-coverage Track B forecasting diagnostic.
+        # Restrict this diagnostic to the prospectively registered experiment
+        # lanes and preserve all historical date exclusions.
+        if data.get("track") != "B":
+            continue
+
+        if model not in FULL_COVERAGE_TRACK_B_MODELS:
+            continue
+
+        if scan_date in FULL_COVERAGE_EXCLUDED_DATES:
+            continue
+
+        forecasts = data.get("forecasts", []) or []
+        if not forecasts:
+            continue
+
+        snapshot_map = load_snapshot_market_map(scan_date)
+
+        for forecast in forecasts:
+            ticker = forecast.get("ticker")
+            market = snapshot_map.get(ticker)
+
+            if not ticker or not market:
+                log.warning(
+                    "Skipping full-coverage forecast without canonical snapshot market: "
+                    f"{scan_date} {model} {ticker}"
+                )
+                continue
+
+            midpoint = forecast.get("prob_midpoint")
+            implied = market.get("implied_prob")
+
+            if midpoint is None or implied is None:
+                log.warning(
+                    "Skipping full-coverage forecast missing probability data: "
+                    f"{scan_date} {model} {ticker}"
+                )
+                continue
+
+            midpoint = float(midpoint)
+            implied = float(implied)
+
+            predictions.append({
+                "scan_date": scan_date,
+                "model": f"{model}_full_coverage",
+                "source_model": model,
+                "prediction_scope": "full_coverage_track_b",
+                "ticker": ticker,
+                "direction": "YES" if midpoint > implied else "NO",
+                "current_price": market.get("yes_price"),
+                "implied_prob": implied,
+                "prob_range": forecast.get("prob_range"),
+                "prob_midpoint": midpoint,
+                "edge_pct": round(abs(midpoint - implied) * 100),
+                "confidence": forecast.get("confidence"),
+                "category": forecast.get("category"),
+                "correlation_cluster_id": None,
+                "resolution_date": None,
+                "snapshot_id": data.get("snapshot_id"),
+            })
+
     return predictions
 
 
@@ -215,6 +325,8 @@ def main():
                 "ticker": ticker,
                 "scan_date": p["scan_date"],
                 "model": p["model"],
+                "source_model": p.get("source_model"),
+                "prediction_scope": p.get("prediction_scope", "selected_top7"),
                 "direction": direction,
                 "prob_midpoint": midpoint,
                 "implied_prob": p.get("implied_prob"),
