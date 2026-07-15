@@ -1,0 +1,49 @@
+{
+  "date": "2026-07-15",
+  "scan_timestamp": "2026-07-15T13:02:39Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Fed cuts 0 times in 2026",
+      "reason": "The 77.45% implied probability is broadly consistent with the inflationary signals in the supplied CPI, energy, and rate markets; no credible 8-point macro edge."
+    },
+    {
+      "market": "Federal Reserve cuts rates before 2027",
+      "reason": "The 28.45% implied probability is compatible with the zero-cut market after accounting for differing start dates; insufficient independent evidence for an 8-point edge."
+    },
+    {
+      "market": "Fed cuts exactly 1 time in 2026",
+      "reason": "The 15.4% implied probability is internally consistent with the broader rate-cut curve, and the supplied data do not support a threshold-sized edge."
+    },
+    {
+      "market": "Recession in 2027",
+      "reason": "The contract uses a custom two-consecutive-negative-quarter definition across a long horizon. Without current labor, credit, and leading-indicator data, a sufficiently precise 8-point edge is not defensible."
+    },
+    {
+      "market": "WTI September 2026 settlement above $77.99 on July 17",
+      "reason": "No contemporaneous September WTI futures quote, options surface, inventory report, or volatility input was supplied, so the short-dated 65.5% probability cannot be independently validated."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "The supplied curve indicates an inflationary regime: markets heavily favor no Fed cuts, near-term oil thresholds imply elevated crude prices, and the broader CPI curve centers inflation near the mid-3% range. Only five markets passed the $50K volume and 10-cent maximum-spread filters. None had enough specific grounding to establish the required category edge without stretching.",
+  "track": "A",
+  "snapshot_id": "f5dbbacadeef3553c34a6153bb772fa1145a083f4e4426e14a412def545e9511",
+  "api_usage": {
+    "input_tokens": 26342,
+    "input_tokens_details": {
+      "cache_write_tokens": 26339,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1705,
+    "output_tokens_details": {
+      "reasoning_tokens": 1239
+    },
+    "total_tokens": 28047
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

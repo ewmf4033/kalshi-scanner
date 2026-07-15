@@ -1,0 +1,65 @@
+{
+  "date": "2026-07-15",
+  "scan_timestamp": "2026-07-15T13:07:11Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "No independent real-time Fed path, inflation trajectory, or FOMC projections available for mid-2026; cannot ground edge vs 77% implied without fabricating sources"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Same as zero-cut market; slight resolution window difference but still requires current 2026 macro data unavailable offline"
+    },
+    {
+      "market": "Will the Fed cut rates 1 times? (KXRATECUTCOUNT-26DEC31-T1)",
+      "reason": "Count distribution cannot be independently estimated without current funds rate, SEP dots, and inflation prints"
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "Two-quarter GDP rule for 2027 too distant; no current leading indicators or BEA path for edge over 42.5%"
+    },
+    {
+      "market": "Will the WTI crude oil settlement price be above 77.99 USD/Bbl on Jul 17, 2026? (KXWTIW-26JUL1714-T77.99)",
+      "reason": "Requires live WTI futures level and 2-day volatility; no current price data, inventory, or EIA report accessible"
+    },
+    {
+      "market": "All weather temperature contracts (NYC/CHI/MIA highs)",
+      "reason": "Volume below $50k filter or requires NWS forecast models for same-day highs; no grounding possible"
+    },
+    {
+      "market": "All near-term oil/gold/silver/ETH/CPI/GDP contracts",
+      "reason": "Either volume < $50k, spread > 0.10, or depend on unobservable live spot prices / upcoming BEA/BLS prints; cannot fabricate sources or edges"
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Only five markets cleared volume >= $50k and spread <= 0.10 filters (three Fed-cut variants, 2027 recession, one WTI binary). All are either multi-month macro paths or 2-day commodity settlements that require live 2026 data releases, futures levels, or weather models unavailable under no-search constraint. Market-implied probabilities already embed consensus; no credible independent source exists for material edge. Zero trades is the disciplined outcome.",
+  "track": "A",
+  "snapshot_id": "f5dbbacadeef3553c34a6153bb772fa1145a083f4e4426e14a412def545e9511",
+  "api_usage": {
+    "prompt_tokens": 28136,
+    "completion_tokens": 648,
+    "total_tokens": 30873,
+    "prompt_tokens_details": {
+      "text_tokens": 28136,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2089,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 725020000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}
