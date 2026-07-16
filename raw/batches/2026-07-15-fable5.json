@@ -2,8 +2,9 @@
   "date": "2026-07-15",
   "snapshot_id": "f5dbbacadeef3553c34a6153bb772fa1145a083f4e4426e14a412def545e9511",
   "batch_id": "msgbatch_01PeRQgFhvkzJHKogQaFXzUM",
-  "processing_status": "in_progress",
+  "processing_status": "ended",
   "submitted_at": "2026-07-15T13:10:24Z",
   "model": "claude-fable-5",
-  "request_count": 5
+  "request_count": 5,
+  "last_polled_at": "2026-07-15T16:00:01Z"
 }

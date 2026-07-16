@@ -1,0 +1,13 @@
+{
+  "date": "2026-07-15",
+  "scan_timestamp": "2026-07-15T16:00:03Z",
+  "model": "fable5_track_a",
+  "track": "A",
+  "snapshot_id": "f5dbbacadeef3553c34a6153bb772fa1145a083f4e4426e14a412def545e9511",
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "gap": true,
+  "error": "Missing or failed Fable Track A result",
+  "trades": [],
+  "no_trades_today": true
+}
