@@ -1,0 +1,72 @@
+{
+  "date": "2026-07-16",
+  "scan_timestamp": "2026-07-16T10:07:42Z",
+  "model": "fable5_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 68,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Fed rate cut cluster (KXRATECUTCOUNT-26DEC31-T0 / KXRATECUT-26DEC31 / KXRATECUTCOUNT-26DEC31-T1)",
+      "reason": "Internal cross-market consistency check shows P(0 cuts) + P(>=1 cut) = 0.789 + 0.265 = 1.054, implying only ~5% relative mispricing \u2014 below the 8% macro edge threshold. The divergence is further muddied by mismatched resolution windows (T0 counts from Jan 1; KXRATECUT counts only from Feb 26). No independent grounding on 2026 FOMC path available without external data. Skip."
+    },
+    {
+      "market": "WTI crude above $77.99 on Jul 17 (KXWTIW-26JUL1714-T77.99)",
+      "reason": "Passes liquidity filters, but no verifiable, current spot/futures reference available to independently price a 1-day oil settlement. Any probability estimate would be fabricated. Skip."
+    },
+    {
+      "market": "Recession in 2027 (KXRECSSNBER-27)",
+      "reason": "18-month horizon, no credible basis to outperform a liquid market's 41.5% prior on 2027 GDP prints. Capital lockup until 2028 also degrades risk-adjusted return. Skip."
+    },
+    {
+      "market": "All Brent/WTI daily and monthly strike ladders",
+      "reason": "Every contract fails the $50K volume filter except the single WTI weekly; strike ladders are internally consistent (monotonic, well-ordered), offering no arbitrage. No spot reference to ground directional views."
+    },
+    {
+      "market": "Gold, silver, copper daily/monthly strikes",
+      "reason": "All fail the $50K volume filter. Same-day 5:00 PM close markets require live spot data that is unavailable; no defensible edge."
+    },
+    {
+      "market": "NYC/Chicago/Miami high-temp markets (Jul 16)",
+      "reason": "All fail the $50K volume filter, and no NWS point forecast or hourly obs data available to ground an estimate. Bucket probabilities sum to ~0.94-1.00, showing no structural mispricing."
+    },
+    {
+      "market": "Ethereum price buckets (Jul 16-17)",
+      "reason": "Fail volume filter; narrow $40 buckets on same/next-day crypto close require live spot and realized-vol data. Crypto threshold of 12% cannot be credibly cleared."
+    },
+    {
+      "market": "GDP Q2/Q3 2026 threshold ladder",
+      "reason": "Q2 advance estimate (Jul 30) is the catalyst, but all except the T2.5 contract fail the volume filter (T2.5 itself is $47.1K, marginally below), and without current nowcast data (GDPNow/NY Fed) any deviation from the market-implied ~1.8-2.0% central estimate would be ungrounded."
+    },
+    {
+      "market": "CPI July 2026 markets (MoM and YoY)",
+      "reason": "Fail volume filter; resolution not until Aug 12 release. No current inflation nowcast available to justify deviating from market pricing."
+    },
+    {
+      "market": "Pacific hurricane count markets",
+      "reason": "Fail volume filter by wide margin, wide spreads, and season-total outcomes require current NHC/CPHC season data unavailable internally for 2026."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Regime classified as inflationary: markets price ~79% probability of zero Fed cuts in 2026, ~26% chance of YoY CPI above 3.5%, Brent near $84, and gold near $4,040 \u2014 consistent with sticky inflation and a hawkish Fed hold. After applying the spread (<=0.10) and volume (>=$50K) filters, only five markets qualify: the three Fed rate-cut contracts, the WTI weekly, and the 2027 recession contract. The rate-cut cluster shows a modest ~5% internal inconsistency (probabilities sum to ~1.054), which is below the 8% macro edge threshold and partially explained by mismatched resolution windows. The remaining qualifiers require live spot prices or nowcast data that cannot be credibly sourced without external retrieval; estimating them would violate the no-fabricated-sources rule. Zero trades is the correct disciplined output for this scan. Re-evaluate around the Q2 GDP advance estimate (2026-07-30) and July CPI release (2026-08-12) if fresh nowcast data becomes available.",
+  "track": "A",
+  "snapshot_id": "692073ffdafbdf580eb70fedb2e549821448d7caf5ad8b8aaaad4b566d7d0278",
+  "api_usage": {
+    "input_tokens": 25046,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 4038,
+    "output_tokens_details": {
+      "thinking_tokens": 2359
+    },
+    "service_tier": "batch",
+    "inference_geo": "global"
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

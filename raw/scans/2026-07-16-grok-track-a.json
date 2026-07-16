@@ -1,0 +1,61 @@
+{
+  "date": "2026-07-16",
+  "scan_timestamp": "2026-07-16T10:05:14Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "High volume and tight spread but no independent edge vs market; cannot ground 2026 Fed path without current FOMC projections, inflation trajectory, or labor data releases beyond supplied prices"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Implied ~26.5% consistent with 0-cut market after definition differences (Jan vs Feb start); no credible specific catalyst or source for material divergence"
+    },
+    {
+      "market": "Will the Fed cut rates 1 times? (KXRATECUTCOUNT-26DEC31-T1)",
+      "reason": "Low standalone edge; residual probability after 0-cut market leaves little room and no independent forecast source available"
+    },
+    {
+      "market": "Will the WTI crude oil settlement price be above 77.99 USD/Bbl on Jul 17, 2026? (KXWTIW-26JUL1714-T77.99)",
+      "reason": "Passes volume/spread filter but no current WTI futures price, inventory data, or EIA report accessible; cannot form grounded prob without fabricating source"
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "41.5% mid is plausible for distant NBER-window risk but historical base rates and GDP markets do not yield >=8% edge with specific grounding source"
+    },
+    {
+      "market": "All weather (NYC/Chicago/Miami high temp Jul 16), gold, Brent, copper, ETH, silver, CPI, GDP, hurricane markets",
+      "reason": "Fail volume < $50k filter and/or lack real-time forecast/price data required for non-fabricated grounding; short-dated commodity and weather contracts especially untradeable under rules"
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Neutral regime: market pricing of zero 2026 cuts (~79%) coexists with moderate Q2 GDP expectations (~1.5-2.5% range from lower-volume markets) and subdued July CPI prints. Strict filters (volume >=50k, spread <=0.10, category edge thresholds, mandatory non-fabricated grounding source, no external data) eliminate all candidates. Zero trades is the correct output; no edge stretching or invented sources.",
+  "track": "A",
+  "snapshot_id": "692073ffdafbdf580eb70fedb2e549821448d7caf5ad8b8aaaad4b566d7d0278",
+  "api_usage": {
+    "prompt_tokens": 19709,
+    "completion_tokens": 635,
+    "total_tokens": 22317,
+    "prompt_tokens_details": {
+      "text_tokens": 19709,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1973,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 548740000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}

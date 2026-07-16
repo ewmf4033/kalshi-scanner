@@ -1,0 +1,49 @@
+{
+  "date": "2026-07-16",
+  "scan_timestamp": "2026-07-16T10:00:22Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times?",
+      "reason": "The supplied markets favor a hawkish outcome, but no contemporaneous inflation, labor, or FOMC projection data is provided to establish an independent edge of at least 8%."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "reason": "Overlaps heavily with the zero-cuts contract. Their modest probability inconsistency is below the macro edge threshold and does not establish sufficient standalone expected value."
+    },
+    {
+      "market": "Will the Fed cut rates exactly 1 time?",
+      "reason": "Exact-count forecasting is highly sensitive to the timing and sequencing of economic data. No credible edge above the 8% macro threshold can be established from the supplied information."
+    },
+    {
+      "market": "Will the WTI crude oil settlement price be above $77.99 on July 17, 2026?",
+      "reason": "No contemporaneous September 2026 WTI futures price, volatility, or options distribution is supplied, preventing a defensible independent probability estimate."
+    },
+    {
+      "market": "Will there be a recession in 2027?",
+      "reason": "The contract uses a strict two-consecutive-negative-quarters rule and has a long forecast horizon. Current GDP, labor, yield-curve, and leading-indicator data are absent, so the apparent valuation cannot be challenged credibly."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "The qualifying markets give mixed signals: strong no-cut pricing and elevated oil thresholds suggest persistent nominal pressure, while substantial 2027 contraction risk points toward growth concerns. This supports a neutral regime classification. Markets below $50,000 in volume were excluded, and no qualifying market had enough supplied real-world data to support a threshold-clearing independent edge without fabrication.",
+  "track": "A",
+  "snapshot_id": "692073ffdafbdf580eb70fedb2e549821448d7caf5ad8b8aaaad4b566d7d0278",
+  "api_usage": {
+    "input_tokens": 18405,
+    "input_tokens_details": {
+      "cache_write_tokens": 18402,
+      "cached_tokens": 0
+    },
+    "output_tokens": 3175,
+    "output_tokens_details": {
+      "reasoning_tokens": 2703
+    },
+    "total_tokens": 21580
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}
