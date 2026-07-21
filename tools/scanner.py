@@ -489,7 +489,7 @@ def filter_and_enrich(markets: list[dict], top_n: int = TOP_N_MARKETS) -> list[d
     # Sort by volume descending, take top N
     enriched.sort(key=lambda x: x["volume"], reverse=True)
     result = enriched[:top_n]
-    log.info(f"Filtered to {len(result)} markets with real orderbooks (spread<20c) from {len(enriched)} candidates")
+    log.info(f"Filtered to {len(result)} markets with real orderbooks (spread<10c) from {len(enriched)} candidates")
     return result
 
 
