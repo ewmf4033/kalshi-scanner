@@ -1,0 +1,67 @@
+{
+  "date": "2026-07-21",
+  "scan_timestamp": "2026-07-21T10:00:23Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 5,
+  "trades": [
+    {
+      "market": "Two consecutive quarters of negative real GDP during Q4 2026 through Q4 2027",
+      "ticker": "KXRECSSNBER-27",
+      "direction": "NO",
+      "current_price": 0.57,
+      "implied_prob": 0.425,
+      "prob_range": [
+        0.24,
+        0.36
+      ],
+      "prob_midpoint": 0.3,
+      "edge_pct": 13,
+      "catalyst": "The July 30 Q2 2026 advance GDP estimate will update economic momentum before the contract's measurement window begins; subsequent quarterly BEA releases are the decisive catalysts.",
+      "resolution_date": "2028-01-31",
+      "entry_valid_until": "2026-07-21T23:59:59Z",
+      "confidence": "medium",
+      "risk_notes": "Persistently restrictive Fed policy, an energy shock, or synchronized contraction could produce consecutive negative quarters. The contract uses a mechanical GDP definition rather than an NBER recession designation, and downside outcomes are highly correlated across quarters.",
+      "grounding_source": "BEA Gross Domestic Product data: https://www.bea.gov/data/gdp/gross-domestic-product; historical quarterly real-GDP growth series: https://fred.stlouisfed.org/series/A191RL1Q225SBEA",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "2026 Federal Reserve rate-cut markets",
+      "reason": "The zero-cut and at-least-one-cut prices are nearly complementary, while their measurement windows differ. The supplied data do not support an independent edge of at least 8%."
+    },
+    {
+      "market": "July 2026 CPI above 3.4% year over year",
+      "reason": "The inflationary regime raises upside risk, but the related monthly CPI pricing signals weak July inflation. Without contemporaneous CPI components, the estimated edge is not robust enough."
+    },
+    {
+      "market": "Q2 2026 real GDP above 2.5%",
+      "reason": "The threshold ladder implies a tightly centered growth distribution, and no credible deviation of at least 8% from the 30.5% implied probability is supported."
+    },
+    {
+      "market": "All remaining supplied contracts",
+      "reason": "They fail the required minimum $50,000 volume filter."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Market pricing indicates an inflationary regime: rate cuts before 2027 are assigned low probability, inflation remains elevated, and energy and precious-metal contracts reflect commodity pressure. Growth pricing remains positive, making a 42.5% probability of consecutive negative-GDP quarters in the specified 2027 window appear elevated relative to historical frequency.",
+  "track": "A",
+  "snapshot_id": "dd03cb442ca7cfa6ebdfec797d0cb1b978490197726d0c0793496b44ae35916e",
+  "api_usage": {
+    "input_tokens": 26618,
+    "input_tokens_details": {
+      "cache_write_tokens": 26615,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2614,
+    "output_tokens_details": {
+      "reasoning_tokens": 1923
+    },
+    "total_tokens": 29232
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

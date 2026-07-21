@@ -1,0 +1,69 @@
+{
+  "date": "2026-07-21",
+  "scan_timestamp": "2026-07-21T10:04:21Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Passes volume/spread filters but no independent 2026 data path (FOMC minutes, SEP dots, GDPNow, claims) available without external retrieval; market already prices ~82% no-cut \u2014 cannot establish \u22658% macro edge with citable source"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Near-complement of zero-cut contract; same lack of groundable real-time macro inputs; implied ~19% already tight to hold-through-2026 consensus priced in-market"
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "Long-dated binary; resolution window through 2027; 42.5% mid is plausible prior with wide uncertainty \u2014 no specific BEA/NBER-trackable catalyst today for \u22658% edge"
+    },
+    {
+      "market": "CPI YoY July 2026 above 3.4% (KXCPIYOY-26JUL-T3.4)",
+      "reason": "July CPI month still in progress (data releases mid-Aug); without BLS nowcast or Cleveland Fed inflation nowcast print cannot ground edge vs 31.5% implied"
+    },
+    {
+      "market": "Real GDP Q2 2026 above 2.5% (KXGDP-26JUL30-T2.5)",
+      "reason": "Advance estimate due ~Jul 30; no accessible GDPNow/Blue Chip tracking print in-session to disagree with 30.5% implied; would be fabrication to invent a nowcast"
+    },
+    {
+      "market": "Same-day NYC/Chicago/Miami high temp contracts",
+      "reason": "Volume under $50K filter threshold despite tight spreads and same-day resolution"
+    },
+    {
+      "market": "Same-day / weekly Brent, gold, silver, copper thresholds",
+      "reason": "Almost all volume < $50K; several spreads wide; no live spot/tape provided to arb vs mid \u2014 skip per rules"
+    },
+    {
+      "market": "Q3 2026 GDP ladder and hurricane season binaries",
+      "reason": "Materially below volume threshold and/or wide spreads; insufficient liquidity for risk-adjusted entry"
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Regime read from curve shape only: markets price sticky ~3.3% CPI, ~2% Q2 growth, and ~80%+ odds of zero 2026 cuts with gold/oil elevated \u2014 consistent with neutral-to-mildly-inflationary hold. Strict filters leave five liquid macros; none offer a citable, non-fabricated disagreement \u2265 category edge vs provided mids. Zero trades is the correct output when grounding_source cannot be produced from supplied data alone.",
+  "track": "A",
+  "snapshot_id": "dd03cb442ca7cfa6ebdfec797d0cb1b978490197726d0c0793496b44ae35916e",
+  "api_usage": {
+    "prompt_tokens": 28431,
+    "completion_tokens": 750,
+    "total_tokens": 31121,
+    "prompt_tokens_details": {
+      "text_tokens": 28431,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1940,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 727844000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}
