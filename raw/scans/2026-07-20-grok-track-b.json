@@ -1,0 +1,1205 @@
+{
+  "date": "2026-07-20",
+  "scan_timestamp": "2026-07-20T10:08:30Z",
+  "model": "grok_track_b",
+  "track": "B",
+  "snapshot_id": "56206b8d1764a492c8cb25a89049ddf3ce487a21e72ff0f405e4efadfaba0361",
+  "markets_expected": 100,
+  "markets_analyzed": 100,
+  "missing_tickers": [],
+  "forecasts": [
+    {
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "prob_range": [
+        0.18,
+        0.38
+      ],
+      "prob_midpoint": 0.28,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXRATECUT-26DEC31",
+      "prob_range": [
+        0.62,
+        0.82
+      ],
+      "prob_midpoint": 0.72,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXRECSSNBER-27",
+      "prob_range": [
+        0.16,
+        0.34
+      ],
+      "prob_midpoint": 0.25,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXCPIYOY-26JUL-T3.5",
+      "prob_range": [
+        0.22,
+        0.42
+      ],
+      "prob_midpoint": 0.32,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXGDP-26JUL30-T2.5",
+      "prob_range": [
+        0.38,
+        0.58
+      ],
+      "prob_midpoint": 0.48,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXCPIYOY-26JUL-T3.4",
+      "prob_range": [
+        0.28,
+        0.48
+      ],
+      "prob_midpoint": 0.38,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXCPI-26JUL-T0.2",
+      "prob_range": [
+        0.42,
+        0.62
+      ],
+      "prob_midpoint": 0.52,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXCPI-26JUL-T0.1",
+      "prob_range": [
+        0.58,
+        0.78
+      ],
+      "prob_midpoint": 0.68,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXGDP-26JUL30-T2.0",
+      "prob_range": [
+        0.52,
+        0.72
+      ],
+      "prob_midpoint": 0.62,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXCPIYOY-26JUL-T3.3",
+      "prob_range": [
+        0.34,
+        0.54
+      ],
+      "prob_midpoint": 0.44,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXBRENTMON-26JUL3117-T88.99",
+      "prob_range": [
+        0.35,
+        0.55
+      ],
+      "prob_midpoint": 0.45,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXCPI-26JUL-T0.0",
+      "prob_range": [
+        0.72,
+        0.88
+      ],
+      "prob_midpoint": 0.8,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T90.00",
+      "prob_range": [
+        0.28,
+        0.48
+      ],
+      "prob_midpoint": 0.38,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T89.50",
+      "prob_range": [
+        0.33,
+        0.53
+      ],
+      "prob_midpoint": 0.43,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGDP-26JUL30-T3.0",
+      "prob_range": [
+        0.22,
+        0.42
+      ],
+      "prob_midpoint": 0.32,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T88.50",
+      "prob_range": [
+        0.42,
+        0.62
+      ],
+      "prob_midpoint": 0.52,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTMON-26JUL3117-T86.99",
+      "prob_range": [
+        0.52,
+        0.72
+      ],
+      "prob_midpoint": 0.62,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTW-26JUL2417-T88.99",
+      "prob_range": [
+        0.36,
+        0.56
+      ],
+      "prob_midpoint": 0.46,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTMON-26JUL3117-T82.99",
+      "prob_range": [
+        0.68,
+        0.85
+      ],
+      "prob_midpoint": 0.765,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T4008",
+      "prob_range": [
+        0.38,
+        0.58
+      ],
+      "prob_midpoint": 0.48,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T87",
+      "prob_range": [
+        0.52,
+        0.72
+      ],
+      "prob_midpoint": 0.62,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T4018",
+      "prob_range": [
+        0.32,
+        0.52
+      ],
+      "prob_midpoint": 0.42,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHIGHNY-26JUL20-B81.5",
+      "prob_range": [
+        0.12,
+        0.28
+      ],
+      "prob_midpoint": 0.2,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T90.50",
+      "prob_range": [
+        0.24,
+        0.44
+      ],
+      "prob_midpoint": 0.34,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T89",
+      "prob_range": [
+        0.38,
+        0.58
+      ],
+      "prob_midpoint": 0.48,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHIGHNY-26JUL20-B79.5",
+      "prob_range": [
+        0.1,
+        0.22
+      ],
+      "prob_midpoint": 0.16,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T91.00",
+      "prob_range": [
+        0.22,
+        0.42
+      ],
+      "prob_midpoint": 0.32,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTMON-26JUL3117-T80.99",
+      "prob_range": [
+        0.8,
+        0.95
+      ],
+      "prob_midpoint": 0.875,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHIGHCHI-26JUL20-B83.5",
+      "prob_range": [
+        0.16,
+        0.28
+      ],
+      "prob_midpoint": 0.22,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T88",
+      "prob_range": [
+        0.48,
+        0.68
+      ],
+      "prob_midpoint": 0.58,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTW-26JUL2417-T92.99",
+      "prob_range": [
+        0.25,
+        0.45
+      ],
+      "prob_midpoint": 0.35,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T4028",
+      "prob_range": [
+        0.35,
+        0.55
+      ],
+      "prob_midpoint": 0.45,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTMON-26JUL3117-T84.99",
+      "prob_range": [
+        0.65,
+        0.85
+      ],
+      "prob_midpoint": 0.75,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHIGHMIA-26JUL20-B91.5",
+      "prob_range": [
+        0.2,
+        0.35
+      ],
+      "prob_midpoint": 0.275,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXHIGHCHI-26JUL20-B85.5",
+      "prob_range": [
+        0.17,
+        0.29
+      ],
+      "prob_midpoint": 0.23,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T87.50",
+      "prob_range": [
+        0.52,
+        0.72
+      ],
+      "prob_midpoint": 0.62,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T4031.99",
+      "prob_range": [
+        0.45,
+        0.65
+      ],
+      "prob_midpoint": 0.55,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T91.50",
+      "prob_range": [
+        0.18,
+        0.38
+      ],
+      "prob_midpoint": 0.28,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTW-26JUL2417-T90.99",
+      "prob_range": [
+        0.35,
+        0.55
+      ],
+      "prob_midpoint": 0.45,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHIGHCHI-26JUL20-B87.5",
+      "prob_range": [
+        0.14,
+        0.26
+      ],
+      "prob_midpoint": 0.2,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T3998",
+      "prob_range": [
+        0.5,
+        0.7
+      ],
+      "prob_midpoint": 0.6,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHIGHMIA-26JUL20-B93.5",
+      "prob_range": [
+        0.15,
+        0.28
+      ],
+      "prob_midpoint": 0.215,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.24",
+      "prob_range": [
+        0.3,
+        0.55
+      ],
+      "prob_midpoint": 0.425,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T86.50",
+      "prob_range": [
+        0.6,
+        0.8
+      ],
+      "prob_midpoint": 0.7,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T3988",
+      "prob_range": [
+        0.55,
+        0.75
+      ],
+      "prob_midpoint": 0.65,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T56.99",
+      "prob_range": [
+        0.45,
+        0.7
+      ],
+      "prob_midpoint": 0.575,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTD-26JUL2017-T86",
+      "prob_range": [
+        0.65,
+        0.85
+      ],
+      "prob_midpoint": 0.75,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T4151.99",
+      "prob_range": [
+        0.15,
+        0.35
+      ],
+      "prob_midpoint": 0.25,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T60.99",
+      "prob_range": [
+        0.25,
+        0.45
+      ],
+      "prob_midpoint": 0.35,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T59.99",
+      "prob_range": [
+        0.3,
+        0.5
+      ],
+      "prob_midpoint": 0.4,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T4038",
+      "prob_range": [
+        0.55,
+        0.78
+      ],
+      "prob_midpoint": 0.665,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTW-26JUL2417-T86.99",
+      "prob_range": [
+        0.28,
+        0.52
+      ],
+      "prob_midpoint": 0.4,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T4071.99",
+      "prob_range": [
+        0.3,
+        0.55
+      ],
+      "prob_midpoint": 0.425,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T3991.99",
+      "prob_range": [
+        0.55,
+        0.78
+      ],
+      "prob_midpoint": 0.665,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T4058",
+      "prob_range": [
+        0.25,
+        0.48
+      ],
+      "prob_midpoint": 0.365,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.26",
+      "prob_range": [
+        0.28,
+        0.52
+      ],
+      "prob_midpoint": 0.4,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T3911.99",
+      "prob_range": [
+        0.78,
+        0.92
+      ],
+      "prob_midpoint": 0.85,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2017-T4048",
+      "prob_range": [
+        0.4,
+        0.65
+      ],
+      "prob_midpoint": 0.525,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTW-26JUL2417-T84.99",
+      "prob_range": [
+        0.48,
+        0.72
+      ],
+      "prob_midpoint": 0.6,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.20",
+      "prob_range": [
+        0.62,
+        0.85
+      ],
+      "prob_midpoint": 0.735,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T58.99",
+      "prob_range": [
+        0.12,
+        0.35
+      ],
+      "prob_midpoint": 0.235,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T53.99",
+      "prob_range": [
+        0.58,
+        0.8
+      ],
+      "prob_midpoint": 0.69,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T3951.99",
+      "prob_range": [
+        0.68,
+        0.88
+      ],
+      "prob_midpoint": 0.78,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T61.99",
+      "prob_range": [
+        0.03,
+        0.18
+      ],
+      "prob_midpoint": 0.105,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01CPACTOT-2",
+      "prob_range": [
+        0.12,
+        0.32
+      ],
+      "prob_midpoint": 0.22,
+      "confidence": "low",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T55.99",
+      "prob_range": [
+        0.38,
+        0.62
+      ],
+      "prob_midpoint": 0.5,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01EPACMAJ-6",
+      "prob_range": [
+        0.06,
+        0.22
+      ],
+      "prob_midpoint": 0.14,
+      "confidence": "low",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T57.99",
+      "prob_range": [
+        0.18,
+        0.42
+      ],
+      "prob_midpoint": 0.3,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGDP-26OCT30-T2.5",
+      "prob_range": [
+        0.28,
+        0.55
+      ],
+      "prob_midpoint": 0.415,
+      "confidence": "low",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T4111.99",
+      "prob_range": [
+        0.18,
+        0.42
+      ],
+      "prob_midpoint": 0.3,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.28",
+      "prob_range": [
+        0.18,
+        0.4
+      ],
+      "prob_midpoint": 0.29,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01EPACMAJ-5",
+      "prob_range": [
+        0.14,
+        0.35
+      ],
+      "prob_midpoint": 0.245,
+      "confidence": "low",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01CPACTOT-3",
+      "prob_range": [
+        0.04,
+        0.18
+      ],
+      "prob_midpoint": 0.11,
+      "confidence": "low",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T52.99",
+      "prob_range": [
+        0.68,
+        0.88
+      ],
+      "prob_midpoint": 0.78,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXSILVERMON-26JUL3117-T54.99",
+      "prob_range": [
+        0.48,
+        0.72
+      ],
+      "prob_midpoint": 0.6,
+      "confidence": "medium",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGDP-26OCT30-T1.0",
+      "prob_range": [
+        0.72,
+        0.88
+      ],
+      "prob_midpoint": 0.8,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.22",
+      "prob_range": [
+        0.82,
+        0.95
+      ],
+      "prob_midpoint": 0.885,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01EPACMAJ-4",
+      "prob_range": [
+        0.32,
+        0.52
+      ],
+      "prob_midpoint": 0.42,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T3871.99",
+      "prob_range": [
+        0.35,
+        0.65
+      ],
+      "prob_midpoint": 0.5,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXBRENTW-26JUL2417-T82.99",
+      "prob_range": [
+        0.38,
+        0.62
+      ],
+      "prob_midpoint": 0.5,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01CPACTOT-4",
+      "prob_range": [
+        0.02,
+        0.12
+      ],
+      "prob_midpoint": 0.07,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.36",
+      "prob_range": [
+        0.22,
+        0.45
+      ],
+      "prob_midpoint": 0.335,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.34",
+      "prob_range": [
+        0.28,
+        0.52
+      ],
+      "prob_midpoint": 0.4,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXCPIYOY-26SEP-T3.3",
+      "prob_range": [
+        0.18,
+        0.38
+      ],
+      "prob_midpoint": 0.28,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXGDP-26OCT30-T2.0",
+      "prob_range": [
+        0.32,
+        0.55
+      ],
+      "prob_midpoint": 0.435,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01EPACMAJ-7",
+      "prob_range": [
+        0.08,
+        0.22
+      ],
+      "prob_midpoint": 0.15,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.30",
+      "prob_range": [
+        0.42,
+        0.68
+      ],
+      "prob_midpoint": 0.55,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGDP-26OCT30-T1.5",
+      "prob_range": [
+        0.52,
+        0.75
+      ],
+      "prob_midpoint": 0.635,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01CPACMAJ-1",
+      "prob_range": [
+        0.06,
+        0.22
+      ],
+      "prob_midpoint": 0.14,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXGOLDMON-26JUL3117-T3831.99",
+      "prob_range": [
+        0.45,
+        0.75
+      ],
+      "prob_midpoint": 0.6,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.38",
+      "prob_range": [
+        0.15,
+        0.38
+      ],
+      "prob_midpoint": 0.265,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01EPACMAJ-8",
+      "prob_range": [
+        0.04,
+        0.15
+      ],
+      "prob_midpoint": 0.095,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01EPACTOT-12",
+      "prob_range": [
+        0.1,
+        0.28
+      ],
+      "prob_midpoint": 0.19,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01EPACMAJ-3",
+      "prob_range": [
+        0.48,
+        0.68
+      ],
+      "prob_midpoint": 0.58,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01CPACTOT-1",
+      "prob_range": [
+        0.28,
+        0.52
+      ],
+      "prob_midpoint": 0.4,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXCOPPERD-26JUL2017-T6.32",
+      "prob_range": [
+        0.35,
+        0.6
+      ],
+      "prob_midpoint": 0.475,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXHURRICANE-26DEC01CPACMAJ-0",
+      "prob_range": [
+        0.22,
+        0.45
+      ],
+      "prob_midpoint": 0.335,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2117-T4082",
+      "prob_range": [
+        0.18,
+        0.42
+      ],
+      "prob_midpoint": 0.3,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2117-T4072",
+      "prob_range": [
+        0.25,
+        0.5
+      ],
+      "prob_midpoint": 0.375,
+      "confidence": "low",
+      "category": "other"
+    },
+    {
+      "ticker": "KXGOLDD-26JUL2117-T4062",
+      "prob_range": [
+        0.32,
+        0.58
+      ],
+      "prob_midpoint": 0.45,
+      "confidence": "low",
+      "category": "other"
+    }
+  ],
+  "trades": [
+    {
+      "market": "Will the Fed cut rates 0 times?",
+      "ticker": "KXRATECUTCOUNT-26DEC31-T0",
+      "direction": "NO",
+      "current_price": 0.8,
+      "implied_prob": 0.8085,
+      "prob_range": [
+        0.18,
+        0.38
+      ],
+      "prob_midpoint": 0.28,
+      "edge_pct": 53,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "ticker": "KXRATECUT-26DEC31",
+      "direction": "YES",
+      "current_price": 0.195,
+      "implied_prob": 0.194,
+      "prob_range": [
+        0.62,
+        0.82
+      ],
+      "prob_midpoint": 0.72,
+      "edge_pct": 53,
+      "confidence": "medium",
+      "category": "macro"
+    },
+    {
+      "market": "Will there be more than 6 hurricanes of category 3 or above in the Eastern Pacific in 2026?",
+      "ticker": "KXHURRICANE-26DEC01EPACMAJ-6",
+      "direction": "NO",
+      "current_price": 0.53,
+      "implied_prob": 0.595,
+      "prob_range": [
+        0.06,
+        0.22
+      ],
+      "prob_midpoint": 0.14,
+      "edge_pct": 45,
+      "confidence": "low",
+      "category": "weather"
+    },
+    {
+      "market": "Will there be more than 0 hurricanes of category 3 or above in the Central Pacific in 2026?",
+      "ticker": "KXHURRICANE-26DEC01CPACMAJ-0",
+      "direction": "NO",
+      "current_price": 0.31,
+      "implied_prob": 0.785,
+      "prob_range": [
+        0.22,
+        0.45
+      ],
+      "prob_midpoint": 0.335,
+      "edge_pct": 45,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "market": "Will there be more than 1 hurricane of category 1 or above in the Central Pacific in 2026?",
+      "ticker": "KXHURRICANE-26DEC01CPACTOT-1",
+      "direction": "NO",
+      "current_price": 0.88,
+      "implied_prob": 0.805,
+      "prob_range": [
+        0.28,
+        0.52
+      ],
+      "prob_midpoint": 0.4,
+      "edge_pct": 40,
+      "confidence": "medium",
+      "category": "weather"
+    },
+    {
+      "market": "Will there be more than 2 hurricanes of category 1 or above in the Central Pacific in 2026?",
+      "ticker": "KXHURRICANE-26DEC01CPACTOT-2",
+      "direction": "NO",
+      "current_price": 0.72,
+      "implied_prob": 0.605,
+      "prob_range": [
+        0.12,
+        0.32
+      ],
+      "prob_midpoint": 0.22,
+      "edge_pct": 38,
+      "confidence": "low",
+      "category": "weather"
+    },
+    {
+      "market": "Will there be more than 1 hurricane of category 3 or above in the Central Pacific in 2026?",
+      "ticker": "KXHURRICANE-26DEC01CPACMAJ-1",
+      "direction": "NO",
+      "current_price": 0.52,
+      "implied_prob": 0.495,
+      "prob_range": [
+        0.06,
+        0.22
+      ],
+      "prob_midpoint": 0.14,
+      "edge_pct": 36,
+      "confidence": "medium",
+      "category": "weather"
+    }
+  ],
+  "no_trades_today": false,
+  "api_usage": [
+    {
+      "prompt_tokens": 4395,
+      "completion_tokens": 1326,
+      "total_tokens": 7998,
+      "prompt_tokens_details": {
+        "text_tokens": 4395,
+        "audio_tokens": 0,
+        "image_tokens": 0,
+        "cached_tokens": 128
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2277,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "num_sources_used": 0,
+      "cost_in_usd_ticks": 301904000
+    },
+    {
+      "prompt_tokens": 4751,
+      "completion_tokens": 1362,
+      "total_tokens": 10168,
+      "prompt_tokens_details": {
+        "text_tokens": 4751,
+        "audio_tokens": 0,
+        "image_tokens": 0,
+        "cached_tokens": 128
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 4055,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "num_sources_used": 0,
+      "cost_in_usd_ticks": 417864000
+    },
+    {
+      "prompt_tokens": 4615,
+      "completion_tokens": 1385,
+      "total_tokens": 9488,
+      "prompt_tokens_details": {
+        "text_tokens": 4615,
+        "audio_tokens": 0,
+        "image_tokens": 0,
+        "cached_tokens": 128
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3488,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "num_sources_used": 0,
+      "cost_in_usd_ticks": 382504000
+    },
+    {
+      "prompt_tokens": 4471,
+      "completion_tokens": 1369,
+      "total_tokens": 9057,
+      "prompt_tokens_details": {
+        "text_tokens": 4471,
+        "audio_tokens": 0,
+        "image_tokens": 0,
+        "cached_tokens": 128
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3217,
+        "audio_tokens": 0,
+        "accepted_prediction_tokens": 0,
+        "rejected_prediction_tokens": 0
+      },
+      "num_sources_used": 0,
+      "cost_in_usd_ticks": 362404000
+    }
+  ],
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "selection_method": "deterministic_posthoc_v1_thresholds_max7",
+  "validation_warnings": [],
+  "partial_failures": [],
+  "partial": false,
+  "provider_model": "grok-4.5"
+}

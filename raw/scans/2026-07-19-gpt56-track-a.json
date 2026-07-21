@@ -1,0 +1,45 @@
+{
+  "date": "2026-07-19",
+  "scan_timestamp": "2026-07-19T10:00:23Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 3,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times in 2026?",
+      "reason": "The 79.8% implied probability is broadly consistent with the related market assigning 19.95% to at least one cut after February 26. The differing measurement windows prevent treating the small discrepancy as arbitrage, and no credible 8-point macro edge is evident."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "reason": "The market is approximately consistent with the complementary zero-cut contract. The 1.9-cent spread further reduces the attractiveness of any marginal probability disagreement."
+    },
+    {
+      "market": "Will there be a recession in 2027?",
+      "reason": "The contract concerns two consecutive negative-growth quarters rather than an NBER recession. With no contemporaneous GDP, labor, credit, or leading-indicator releases supplied, a sufficiently grounded estimate exceeding the 8% macro threshold cannot be established."
+    },
+    {
+      "market": "Remaining supplied markets",
+      "reason": "Excluded because total volume is below the required $50,000 minimum."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "The supplied pricing indicates an inflationary, hawkish regime: markets strongly favor no Fed cuts during 2026, while the July CPI threshold curve centers near 3.4% year-over-year and commodity contracts reflect elevated nominal price levels. However, only three markets pass the volume and spread filters, and none offers a well-grounded edge meeting the macro threshold without unsupported external assumptions.",
+  "track": "A",
+  "snapshot_id": "1b417aef078cb0f91899d75a215e8148eb4f4f1cc35967d140c6346edee10fae",
+  "api_usage": {
+    "input_tokens": 26513,
+    "input_tokens_details": {
+      "cache_write_tokens": 26510,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1035,
+    "output_tokens_details": {
+      "reasoning_tokens": 623
+    },
+    "total_tokens": 27548
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

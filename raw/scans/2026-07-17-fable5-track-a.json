@@ -1,0 +1,72 @@
+{
+  "date": "2026-07-17",
+  "scan_timestamp": "2026-07-17T10:07:53Z",
+  "model": "fable5_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 100,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Deep, liquid market (1.9M volume) with tight spread. The 0-cuts market (0.802) plus the at-least-one-cut market (0.2265) sums to ~1.03, only a ~3pt overround across two contracts with slightly different resolution windows \u2014 insufficient edge vs the 8% macro threshold after spreads. No independent post-cutoff FOMC data to justify a directional divergence from market consensus."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Same complement structure as the 0-cuts market; no credible internal-knowledge basis for a 2026 Fed path forecast that beats a highly liquid market by 8%+."
+    },
+    {
+      "market": "WTI settlement above $77.99 on Jul 17, 2026 (KXWTIW-26JUL1714-T77.99)",
+      "reason": "Passes volume/spread filters, but resolution is hours away and depends entirely on the live September 2026 WTI contract price, which I cannot observe. Brent strike ladder implies spot Brent ~$85-86 and a normal ~$6-7 Brent-WTI spread, making the 0.845 pricing internally consistent. No edge without live spot data."
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "Resolution window (Q4 2026-Q4 2027) is far beyond any grounded forecasting horizon. 0.405 implied is within the plausible range given elevated inflation and a hawkish Fed, but I have no specific data source to justify an 8%+ divergence. Low 24h volume also suggests stale pricing."
+    },
+    {
+      "market": "CPI YoY July 2026 ladder (KXCPIYOY-26JUL-T3.2/3.3/3.4/3.5)",
+      "reason": "All strikes below the $50K volume floor except none qualify; ladder is monotonic and internally consistent (distribution centered ~3.3-3.4%). No post-cutoff CPI print data to fade the market."
+    },
+    {
+      "market": "Q2 2026 GDP ladder (KXGDP-26JUL30 strikes)",
+      "reason": "All strikes below the $50K volume filter. Additionally, no access to current GDPNow/consensus tracking estimates for Q2 2026, so no credible grounding source."
+    },
+    {
+      "market": "Gold/Silver/Copper daily and monthly strikes",
+      "reason": "All fail the $50K volume filter; many have zero volume and wide spreads. Ladder pricing is internally consistent around gold ~$4,000 and silver ~$56 spot, which I cannot independently verify."
+    },
+    {
+      "market": "Hurricane count markets (Central/Eastern Pacific)",
+      "reason": "All fail the $50K volume filter. Minor ladder inconsistencies exist (e.g., EPACMAJ >6 at 0.42 vs >7 at 0.405) but positions are untradeable at this depth and I lack current-season ACE/storm-count data."
+    },
+    {
+      "market": "NYC/Chicago/Miami high temp markets (Jul 17)",
+      "reason": "Fail the $50K volume filter and show zero 24h volume. No access to current NWS point forecasts; same-day temperature markets without a forecast source are pure gambling."
+    },
+    {
+      "market": "Ethereum price bands (KXETH-26JUL1717)",
+      "reason": "Fail volume filter; intraday crypto band markets require live spot and vol data, unavailable. Crypto threshold of 12% unreachable without it."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Regime classified as inflationary: markets price ~80% probability of zero Fed cuts in 2026, CPI YoY distribution centered around 3.3-3.4%, gold near $4,000/oz, silver mid-$50s, and Brent in the mid-$80s \u2014 a stagflation-tilted backdrop with real GDP expectations clustered near 1.5-2.0%. Only four markets pass the liquidity/spread filters (both Fed-cut contracts, same-day WTI, and 2027 recession). The Fed pair shows only a ~3pt combined overround \u2014 below the 8% macro edge threshold after transaction costs. The remaining candidates require live spot prices or post-knowledge-cutoff macro data I cannot verify, and fabricating grounding sources is prohibited. Zero trades is the disciplined output today. Watch items: any FOMC communication shift would reprice the rate-cut complex; the Jul 30 Q2 GDP advance estimate and Aug 12 CPI release are the next major catalysts if liquidity improves in those ladders.",
+  "track": "A",
+  "snapshot_id": "65aa48414c226af72d57297ae5cbc4360b6afe2ae30cab374180be25891a33a2",
+  "api_usage": {
+    "input_tokens": 35628,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 5277,
+    "output_tokens_details": {
+      "thinking_tokens": 3496
+    },
+    "service_tier": "batch",
+    "inference_geo": "global"
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

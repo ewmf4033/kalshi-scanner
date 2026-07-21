@@ -1,0 +1,69 @@
+{
+  "date": "2026-07-20",
+  "scan_timestamp": "2026-07-20T10:03:43Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Implied ~81% no cuts is internally consistent with sister market (~19% any cut) but no independent July-2026 FOMC/dot-plot or inflation-path source available under no-retrieval constraint; edge not verifiable."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Low implied P(YES)~19% aligns with zero-cut contract; cannot ground a directional edge without current 2026 labor/CPI trajectory and Fed communication."
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "Wide long-dated binary (mid 42.5%); definition is two consecutive negative GDP quarters spanning late-2026/2027\u2014too much path uncertainty and no specific BEA/NBER-consistent forecast source to claim \u22658% macro edge."
+    },
+    {
+      "market": "CPI YoY July 2026 above 3.5%/3.4%/3.3% ladder",
+      "reason": "Only T3.5 clears $50k volume; market ladder prices a ~3.3\u20133.4% print. Without the actual June/July 2026 CPI release trail or BLS nowcast under no-retrieval rules, any edge would be fabricated."
+    },
+    {
+      "market": "Real GDP Q2 2026 above 2.5%/2.0%/3.0%",
+      "reason": "Advance estimate due ~2026-07-30; only T2.5 clears volume filter. No Atlanta Fed GDPNow / BEA tracking print available in-session to justify \u22658% edge."
+    },
+    {
+      "market": "Same-day Brent/gold/copper/silver level contracts",
+      "reason": "All fail volume filter (<$50k) and/or require live spot and session path; no fabricated price source permitted."
+    },
+    {
+      "market": "NYC/Chicago/Miami high-temp buckets Jul 20",
+      "reason": "Volume well below $50k; weather edge needs NWS/NBM forecast grounding which is disallowed without retrieval."
+    },
+    {
+      "market": "2026 Pacific hurricane count binaries",
+      "reason": "Very low volume/OI; seasonal outlooks not citable under no-retrieval; spreads and thin books make risk-adjusted edge unreliable."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Regime read from book structure only: markets price sticky mid-3% inflation, low odds of 2026 cuts (~19%), moderate ~2% Q2 growth, and ~42% recession risk for 2027\u2014consistent with neutral/higher-for-longer, not a clear inflationary spike or recession print. Strict filters left only five names (two Fed cut, recession 2027, CPI YoY>3.5%, GDP Q2>2.5%). Per rules, no trade without a credible specific source; retrieval is prohibited and sources must not be fabricated. Therefore zero trades. Re-scan when BLS CPI, BEA GDP Advance, or FOMC materials are in the supplied context.",
+  "track": "A",
+  "snapshot_id": "56206b8d1764a492c8cb25a89049ddf3ce487a21e72ff0f405e4efadfaba0361",
+  "api_usage": {
+    "prompt_tokens": 28366,
+    "completion_tokens": 824,
+    "total_tokens": 30665,
+    "prompt_tokens_details": {
+      "text_tokens": 28366,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1475,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 703084000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}

@@ -1,0 +1,53 @@
+{
+  "date": "2026-07-17",
+  "scan_timestamp": "2026-07-17T10:03:13Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 4,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times?",
+      "reason": "Implied 80% aligns with sticky CPI ~3.3% and modest GDP; no independent edge or specific source beyond market consensus"
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "reason": "Complementary to zero-cut market at ~23%; no divergence or catalyst for 8%+ macro edge"
+    },
+    {
+      "market": "Will the WTI crude oil settlement price be above 77.99 USD/Bbl on Jul 17, 2026?",
+      "reason": "Same-day settlement; no current spot/futures quote or inventory data available for grounding, cannot establish edge"
+    },
+    {
+      "market": "Will there be a recession in 2027?",
+      "reason": "40% implied is reasonable for two-quarter GDP rule into 2027 given mixed growth signals; insufficient edge and no proprietary recession model"
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "High-volume markets limited to Fed policy, same-day WTI, and 2027 recession. CPI ladder prices sticky inflation near 3.3% YoY for July, Q2 GDP ladder implies ~1.5-2% growth, Fed holds (low cut odds). No same-day commodity/weather grounding data, no fabricated sources, and no macro edges meeting 8% threshold after filtering spreads >0.10 and volume <50k. Zero high-conviction opportunities.",
+  "track": "A",
+  "snapshot_id": "65aa48414c226af72d57297ae5cbc4360b6afe2ae30cab374180be25891a33a2",
+  "api_usage": {
+    "prompt_tokens": 28133,
+    "completion_tokens": 418,
+    "total_tokens": 31031,
+    "prompt_tokens_details": {
+      "text_tokens": 28133,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 2480,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 734620000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}

@@ -1,0 +1,65 @@
+{
+  "date": "2026-07-19",
+  "scan_timestamp": "2026-07-19T10:03:18Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 3,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Passes volume/spread filters but no non-fabricated, dated primary source available in-scan for mid-2026 growth/inflation/labor path to justify an 8%+ macro edge versus ~79.8% implied."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Mirror of zero-cut contract; priced consistently (~20% cut). Cannot ground a contrary Fed path without fabricating forward guidance or FOMC dots not in the supplied data."
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "Long-dated NBER-style GDP definition through 2027; 41% mid is plausible. Edge cannot be evidenced to 8% without current BEA/NFP trajectory sources beyond market-implied levels."
+    },
+    {
+      "market": "Q2/Q3 2026 GDP and July 2026 CPI ladder",
+      "reason": "All individual contracts have volume under $50K filter threshold (or wide spreads on thinner CPI rungs)."
+    },
+    {
+      "market": "Brent/gold/silver/copper daily and monthly strikes",
+      "reason": "Volume under $50K on nearly all strikes; residual names have insufficient liquidity for risk-adjusted entry and no spot/fix reference in supplied payload."
+    },
+    {
+      "market": "NYC/Miami/Chicago Jul 19 high-temp binaries",
+      "reason": "Same-day weather but volume well below $50K cutoff; skipped per filter rules despite tighter spreads."
+    },
+    {
+      "market": "2026 Pacific hurricane counts",
+      "reason": "Very low volume/OI and wide spreads; season still running with no in-scan best-track update to anchor edge."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Only three contracts clear volume>=50k and spread<=0.10: the 2026 Fed cut pair and 2027 recession. Market-implied regime is neutral-to-mildly sticky: ~80% odds of zero 2026 cuts, sub-50% near-term deep disinflation in thin CPI tapes, mid-2% GDP, ~41% 2027 recession. Without external retrieval, no credible specific release (FOMC SEP, CPI print, BEA advance, or NWS CLI) can be cited that is not fabricated; rules require skip. Zero trades is the correct output.",
+  "track": "A",
+  "snapshot_id": "1b417aef078cb0f91899d75a215e8148eb4f4f1cc35967d140c6346edee10fae",
+  "api_usage": {
+    "prompt_tokens": 28307,
+    "completion_tokens": 675,
+    "total_tokens": 30242,
+    "prompt_tokens_details": {
+      "text_tokens": 28307,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1260,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 680064000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}

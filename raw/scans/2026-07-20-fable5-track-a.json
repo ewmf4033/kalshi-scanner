@@ -1,0 +1,64 @@
+{
+  "date": "2026-07-20",
+  "scan_timestamp": "2026-07-20T10:08:30Z",
+  "model": "fable5_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Passes liquidity filters, but pricing is internally consistent with its complement market (KXRATECUT-26DEC31: 0.8085 + 0.194 \u2248 1.00, no arbitrage). I have no verifiable 2026 FOMC data, dot plot, or futures-implied path beyond my knowledge horizon to justify a divergent estimate. No credible grounding source = no trade."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Mirror of the 0-cut market; same lack of independent, sourceable information about the 2026 policy path. Cannot establish an 8% macro edge without fabricating a source."
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "Long-dated (resolves Jan 2028), 42.5% implied. No current GDP nowcast, yield-curve, or labor data available to me for mid-2026 that would support a defensible divergence. Capital lockup and uncertainty too high."
+    },
+    {
+      "market": "CPI YoY above 3.5% for year ending July 2026 (KXCPIYOY-26JUL-T3.5)",
+      "reason": "The CPI strike ladder (T3.3: 0.74, T3.4: 0.415, T3.5: 0.185) is monotone and internally coherent, implying a market consensus print near 3.3-3.4%. Without access to the actual June 2026 CPI print or nowcasts (beyond knowledge cutoff), any probability I assign would be anchored to the market itself \u2014 zero genuine edge."
+    },
+    {
+      "market": "Real GDP above 2.5% in Q2 2026 (KXGDP-26JUL30-T2.5)",
+      "reason": "GDP ladder (T2.0: 0.535, T2.5: 0.46, T3.0: 0.185) is consistent. I have no GDPNow or comparable nowcast data for Q2 2026 to justify an 8%+ edge ahead of the July 30 advance estimate. No source = no trade."
+    },
+    {
+      "market": "All Brent, gold, silver, copper strike ladders",
+      "reason": "All fail the $50K volume filter. Additionally, short-dated commodity binaries are efficiently priced off live futures; no informational edge available without real-time market data."
+    },
+    {
+      "market": "NYC/Chicago/Miami high-temperature markets",
+      "reason": "Fail the $50K volume filter, and no NWS point forecast data is available to me for July 20, 2026. Same-day weather markets require live forecast grounding."
+    },
+    {
+      "market": "Hurricane count markets (Central/Eastern Pacific)",
+      "reason": "Fail the $50K volume filter by a wide margin; several have near-zero open interest and stale quotes. Climatological priors alone are insufficient without the current-season ENSO state and mid-season storm counts."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Market pricing paints a clearly inflationary regime: ~81% implied probability of zero Fed cuts in 2026, CPI YoY consensus clustered around 3.3-3.4%, gold above $4,000/oz, silver near $57, and Brent near $88 \u2014 consistent with sticky inflation and a hawkish Fed hold, alongside elevated (42.5%) recession odds for 2027 signaling stagflation concern. Only 5 markets survived the spread/volume filters, and all are priced internally consistently across their strike ladders and complements. Because I cannot access post-cutoff data releases, nowcasts, or live forecasts, and fabricating grounding sources is prohibited, no trade meets the required edge threshold with credible sourcing. Zero trades is the correct output for this scan. Re-evaluate around the July 30 Q2 GDP advance estimate and the August 12 CPI release if verified nowcast data becomes available.",
+  "track": "A",
+  "snapshot_id": "56206b8d1764a492c8cb25a89049ddf3ce487a21e72ff0f405e4efadfaba0361",
+  "api_usage": {
+    "input_tokens": 35848,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 0
+    },
+    "output_tokens": 3257,
+    "output_tokens_details": {
+      "thinking_tokens": 1756
+    },
+    "service_tier": "batch",
+    "inference_geo": "global"
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

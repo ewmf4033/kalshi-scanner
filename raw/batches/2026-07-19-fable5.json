@@ -1,0 +1,10 @@
+{
+  "date": "2026-07-19",
+  "snapshot_id": "1b417aef078cb0f91899d75a215e8148eb4f4f1cc35967d140c6346edee10fae",
+  "batch_id": "msgbatch_011ybUiJJW7BAm11MQ77MTQ9",
+  "processing_status": "ended",
+  "submitted_at": "2026-07-19T10:07:17Z",
+  "model": "claude-fable-5",
+  "request_count": 5,
+  "last_polled_at": "2026-07-19T16:00:02Z"
+}

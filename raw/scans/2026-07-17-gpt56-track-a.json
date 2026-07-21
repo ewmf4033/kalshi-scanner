@@ -1,0 +1,67 @@
+{
+  "date": "2026-07-17",
+  "scan_timestamp": "2026-07-17T10:00:23Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 4,
+  "trades": [
+    {
+      "market": "Two consecutive quarters of negative real GDP from Q4 2026 through Q4 2027",
+      "ticker": "KXRECSSNBER-27",
+      "direction": "NO",
+      "current_price": 0.58,
+      "implied_prob": 0.405,
+      "prob_range": [
+        0.25,
+        0.35
+      ],
+      "prob_midpoint": 0.3,
+      "edge_pct": 11,
+      "catalyst": "Upcoming BEA GDP estimates will clarify the growth trajectory; the Q2 2026 Advance Estimate on July 30 is the nearest major repricing event.",
+      "resolution_date": "2028-01-31",
+      "entry_valid_until": "2026-07-30T12:29:00Z",
+      "confidence": "medium",
+      "risk_notes": "Persistent inflation and restrictive monetary policy could produce a downturn, while the contract needs only one pair of consecutive negative quarters within its five-quarter window. Advance GDP estimates are also revision-prone.",
+      "grounding_source": "U.S. Bureau of Economic Analysis, Gross Domestic Product releases: https://www.bea.gov/data/gdp/gross-domestic-product",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times in 2026?",
+      "reason": "The 80.2% implied probability is broadly consistent with the inflationary signals in the supplied CPI and energy markets; no credible 8-point macro edge."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027?",
+      "reason": "The 22.65% implied probability is approximately consistent with the complementary zero-cut contract and elevated inflation expectations; insufficient edge."
+    },
+    {
+      "market": "WTI September 2026 settlement above $77.99 on July 17",
+      "reason": "Same-day Brent thresholds broadly support a high WTI-above-threshold probability, but no live underlying futures reference was supplied to establish the required 10-point edge."
+    },
+    {
+      "market": "Remaining supplied markets",
+      "reason": "Excluded by the mandatory volume filter because total volume was below $50,000."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "The supplied market curve indicates an inflationary regime: July year-over-year CPI is concentrated near 3.3%\u20133.5%, crude oil thresholds imply elevated energy prices, and markets assign a low probability to a 2026 Fed cut. That combination argues against aggressive easing but does not by itself justify a 40.5% probability of two consecutive negative GDP quarters during the specified 2027 window.",
+  "track": "A",
+  "snapshot_id": "65aa48414c226af72d57297ae5cbc4360b6afe2ae30cab374180be25891a33a2",
+  "api_usage": {
+    "input_tokens": 26331,
+    "input_tokens_details": {
+      "cache_write_tokens": 26328,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1708,
+    "output_tokens_details": {
+      "reasoning_tokens": 1034
+    },
+    "total_tokens": 28039
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

@@ -1,0 +1,71 @@
+{
+  "date": "2026-07-20",
+  "scan_timestamp": "2026-07-20T10:00:23Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 5,
+  "trades": [
+    {
+      "market": "Two consecutive quarters of negative real GDP growth during Q4 2026 through Q4 2027",
+      "ticker": "KXRECSSNBER-27",
+      "direction": "NO",
+      "current_price": 0.56,
+      "implied_prob": 0.425,
+      "prob_range": [
+        0.25,
+        0.35
+      ],
+      "prob_midpoint": 0.3,
+      "edge_pct": 13,
+      "catalyst": "The Q2 2026 advance GDP release on July 30 will update growth momentum entering the contract's observation window. The contract requires two consecutive negative quarters, a substantially stricter outcome than a general slowdown.",
+      "resolution_date": "2028-01-31",
+      "entry_valid_until": "2026-07-30T12:29:00Z",
+      "confidence": "medium",
+      "risk_notes": "Persistent inflation and restrictive monetary policy could produce a delayed downturn. The long horizon creates substantial policy, energy-price, and GDP-revision risk, while consecutive-quarter dependence makes outcomes highly sensitive to the timing of contraction.",
+      "grounding_source": "BEA Gross Domestic Product releases: https://www.bea.gov/data/gdp/gross-domestic-product; FRED real-GDP growth series A191RL1Q225SBEA: https://fred.stlouisfed.org/series/A191RL1Q225SBEA",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Fed cuts exactly zero times in 2026",
+      "reason": "The inflationary market structure supports a high no-cut probability, but the estimated difference from the 0.8085 implied probability is below the 8% macro threshold."
+    },
+    {
+      "market": "Federal Reserve cuts rates before 2027",
+      "reason": "At least one cut remains plausible if labor or growth weakens, but the estimated edge versus the 0.194 implied probability is insufficient."
+    },
+    {
+      "market": "July 2026 year-over-year CPI above 3.5%",
+      "reason": "The neighboring CPI thresholds imply the distribution is concentrated near 3.4%-3.5%; uncertainty about the July monthly print prevents a qualifying edge."
+    },
+    {
+      "market": "Q2 2026 real GDP growth above 2.5%",
+      "reason": "The 0.46 implied probability is consistent with a broad, uncertain range for the advance estimate; no qualifying edge without a supplied contemporaneous GDP tracker."
+    },
+    {
+      "market": "Weather, commodity, hurricane, Q3 GDP, and other CPI contracts",
+      "reason": "Excluded by the required $50,000 minimum-volume filter."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "The supplied market structure indicates an inflationary expansion rather than an imminent recession: zero 2026 Fed cuts is priced near 81%, July year-over-year CPI is centered around the 3.4%-3.5% thresholds, and Q2 real GDP has meaningful probability of exceeding 2.5%. This combination supports restrictive policy but does not by itself justify a 42.5% probability of two consecutive negative-growth quarters during 2027.",
+  "track": "A",
+  "snapshot_id": "56206b8d1764a492c8cb25a89049ddf3ce487a21e72ff0f405e4efadfaba0361",
+  "api_usage": {
+    "input_tokens": 26566,
+    "input_tokens_details": {
+      "cache_write_tokens": 26563,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2342,
+    "output_tokens_details": {
+      "reasoning_tokens": 1552
+    },
+    "total_tokens": 28908
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}

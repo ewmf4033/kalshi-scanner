@@ -1,0 +1,69 @@
+{
+  "date": "2026-07-18",
+  "scan_timestamp": "2026-07-18T10:03:48Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 3,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Passes volume/spread filters but no verifiable non-fabricated real-time source for July 2026 FOMC path, dots, or incoming inflation/labor prints; liquid market (~81% no-cut) leaves no grounded edge \u22658%."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Complement of zero-cut contract; same lack of grounded July-2026 macro source; spread and efficiency make sub-threshold edge unreliable."
+    },
+    {
+      "market": "Will there be a recession in 2027? (KXRECSSNBER-27)",
+      "reason": "Long-dated binary with wide outcome uncertainty; no specific BEA/NBER-consistent forecast source available without fabrication; edge not demonstrable at \u22658%."
+    },
+    {
+      "market": "All GDP Q2/Q3 2026 thresholds (KXGDP-*)",
+      "reason": "Volume below $50K filter (max ~48K on T2.5); also advance-estimate edge requires data not in prompt."
+    },
+    {
+      "market": "All CPI YoY / monthly July 2026 thresholds (KXCPI*)",
+      "reason": "Volume below $50K filter; BLS print not yet known and no external retrieval allowed."
+    },
+    {
+      "market": "NYC/Chicago/Miami high-temp July 18 contracts",
+      "reason": "Volume below $50K; same-day weather requires live NWS/model guidance not supplied; no fabricated forecast."
+    },
+    {
+      "market": "Brent/gold/silver/copper level contracts",
+      "reason": "Volume below $50K on all names; spot/path edge needs live prices and term structure not in prompt."
+    },
+    {
+      "market": "Pacific hurricane season counts",
+      "reason": "Volume far below $50K; seasonal outlook edge not grounded without CSU/NOAA sources in prompt."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Only three contracts clear volume\u2265$50K and spread\u22640.10 (Fed zero-cuts, any 2026 cut, 2027 recession). Market-implied regime is neutral-to-mildly sticky: ~81% prob of zero 2026 cuts, CPI mass near 3.2\u20133.4%, Q2 GDP centered ~2%, 2027 recession ~42%. Without retrievable July-2026 data releases or live quotes, no non-fabricated grounding source exists, so edge thresholds cannot be met. Zero trades is the correct output.",
+  "track": "A",
+  "snapshot_id": "97dcb90561aaba0fc901d7d923f6561f5d2f3e680c59629529def1509d212818",
+  "api_usage": {
+    "prompt_tokens": 28336,
+    "completion_tokens": 706,
+    "total_tokens": 30263,
+    "prompt_tokens_details": {
+      "text_tokens": 28336,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1221,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 680420000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}

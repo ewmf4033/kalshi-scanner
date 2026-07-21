@@ -1,0 +1,41 @@
+{
+  "date": "2026-07-18",
+  "scan_timestamp": "2026-07-18T10:00:22Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 3,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Fed cuts 0 times in 2026",
+      "reason": "The market is highly liquid and tightly priced, but the supplied data contain no current inflation, labor-market, or FOMC projections sufficient to establish an independent edge of at least 8%."
+    },
+    {
+      "market": "Federal Reserve cuts rates before 2027",
+      "reason": "No qualifying edge. This contract begins on February 26, so it is not an exact complement to the zero-cuts contract, and no current authoritative macroeconomic release was supplied to support a materially different forecast."
+    },
+    {
+      "market": "Two consecutive quarters of negative GDP growth in Q4 2026 through Q4 2027",
+      "reason": "The long forecast horizon and nonstandard recession definition create substantial uncertainty. Without current GDP, labor, credit, or leading-indicator data, a credible 8% edge cannot be established."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "The market surface indicates an inflationary regime: roughly 81% pricing for zero Fed cuts, July year-over-year CPI concentrated near 3.3%-3.5%, and elevated commodity strike levels. Only three contracts passed the required volume and spread filters. None had sufficient supplied real-world grounding to justify a threshold-sized trade.",
+  "track": "A",
+  "snapshot_id": "97dcb90561aaba0fc901d7d923f6561f5d2f3e680c59629529def1509d212818",
+  "api_usage": {
+    "input_tokens": 26538,
+    "input_tokens_details": {
+      "cache_write_tokens": 26535,
+      "cached_tokens": 0
+    },
+    "output_tokens": 1058,
+    "output_tokens_details": {
+      "reasoning_tokens": 697
+    },
+    "total_tokens": 27596
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}
