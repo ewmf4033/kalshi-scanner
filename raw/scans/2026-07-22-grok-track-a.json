@@ -1,0 +1,65 @@
+{
+  "date": "2026-07-22",
+  "scan_timestamp": "2026-07-22T10:04:04Z",
+  "model": "grok_track_a",
+  "macro_regime": "neutral",
+  "markets_analyzed": 5,
+  "trades": [],
+  "avoid": [
+    {
+      "market": "Will the Fed cut rates 0 times? (KXRATECUTCOUNT-26DEC31-T0)",
+      "reason": "Passes volume/spread filters but no accessible current FOMC dots, SEP, or futures strip grounding without external data; fabricating a source is disallowed."
+    },
+    {
+      "market": "Will the Federal Reserve cut rates before 2027? (KXRATECUT-26DEC31)",
+      "reason": "Near-inverse of zero-cut contract; same lack of verifiable live policy-path source; edge cannot be validated."
+    },
+    {
+      "market": "CPI YoY above 3.4% July 2026 (KXCPIYOY-26JUL-T3.4)",
+      "reason": "Volume OK but July CPI prints mid-August; no BLS nowcast or Cleveland Fed inflation nowcast retrievable in-session without tools."
+    },
+    {
+      "market": "Recession in 2027 (KXRECSSNBER-27)",
+      "reason": "Long-dated binary; NBER/BEA two-quarter rule through 2027 is too diffuse and ungroundable from supplied data alone."
+    },
+    {
+      "market": "Real GDP Q2 2026 above 2.5% (KXGDP-26JUL30-T2.5)",
+      "reason": "Advance estimate due ~Jul 30; without Atlanta Fed GDPNow / Blue Chip tracking print, probability estimate would be unanchored."
+    },
+    {
+      "market": "NYC/Miami/Chicago high-temp binaries for Jul 22",
+      "reason": "All volume < $50K filter threshold; also require same-day NWS/CLI observations not supplied."
+    },
+    {
+      "market": "Brent/WTI/gold/silver/copper day and week strikes",
+      "reason": "Nearly all volume < $50K or wide spreads; intraday spot not in feed; cannot mark fair value without price tape."
+    }
+  ],
+  "no_trades_today": true,
+  "notes": "Market-implied regime is neutral/modest-growth with sticky ~3.3% CPI and Fed on hold (zero 2026 cuts ~82.5% implied, Q2 GDP centered near 2%). Only five contracts clear volume>=50K and spread<=0.10. Rules forbid external retrieval and fabricated grounding sources; therefore no edge-qualified trades. Zero-trade outcome is intentional and correct under the prompt constraints.",
+  "track": "A",
+  "snapshot_id": "098032ee38814a3c6954cc62dc6d771dd457c9af045b07e8868e46d8646d5c46",
+  "api_usage": {
+    "prompt_tokens": 28523,
+    "completion_tokens": 636,
+    "total_tokens": 30607,
+    "prompt_tokens_details": {
+      "text_tokens": 28523,
+      "audio_tokens": 0,
+      "image_tokens": 0,
+      "cached_tokens": 128
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 1448,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "num_sources_used": 0,
+    "cost_in_usd_ticks": 693324000
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2",
+  "provider_model": "grok-4.5"
+}

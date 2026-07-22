@@ -1,0 +1,67 @@
+{
+  "date": "2026-07-22",
+  "scan_timestamp": "2026-07-22T10:00:24Z",
+  "model": "gpt56_track_a",
+  "macro_regime": "inflationary",
+  "markets_analyzed": 5,
+  "trades": [
+    {
+      "market": "Two consecutive quarters of negative real GDP growth from Q4 2026 through Q4 2027",
+      "ticker": "KXRECSSNBER-27",
+      "direction": "NO",
+      "current_price": 0.58,
+      "implied_prob": 0.415,
+      "prob_range": [
+        0.22,
+        0.34
+      ],
+      "prob_midpoint": 0.28,
+      "edge_pct": 14,
+      "catalyst": "The July 30 advance estimate for Q2 2026 real GDP will update the growth trajectory and may reduce recession pricing if expansion remains positive.",
+      "resolution_date": "2028-01-31",
+      "entry_valid_until": "2026-07-30T12:29:00Z",
+      "confidence": "medium",
+      "risk_notes": "A prolonged restrictive-rate environment, commodity shock, or sharp labor-market deterioration could produce consecutive negative quarters. The contract uses a mechanical GDP definition rather than an NBER recession determination and includes Q4 2026.",
+      "grounding_source": "U.S. Bureau of Economic Analysis, National Income and Product Accounts Table 1.1.1 and Gross Domestic Product release: https://www.bea.gov/data/gdp/gross-domestic-product",
+      "correlation_cluster_id": "growth_gdp",
+      "category": "macro"
+    }
+  ],
+  "avoid": [
+    {
+      "market": "Federal Reserve 2026 rate-cut contracts",
+      "reason": "The zero-cut and at-least-one-cut markets are approximately complementary, and the supplied data do not establish an independent edge of at least 8% after policy uncertainty."
+    },
+    {
+      "market": "July 2026 CPI above 3.4%",
+      "reason": "The adjacent CPI thresholds imply substantial probability mass at the reported 3.4% value, but no component-level CPI data or independent forecast is supplied to justify an 8% edge."
+    },
+    {
+      "market": "Q2 2026 real GDP above 2.5%",
+      "reason": "The GDP threshold ladder appears internally coherent, while no independent nowcast inputs are available to support a qualifying edge."
+    },
+    {
+      "market": "Weather and short-dated commodity contracts",
+      "reason": "These contracts fail the $50,000 minimum-volume filter."
+    }
+  ],
+  "no_trades_today": false,
+  "notes": "Market pricing indicates an inflationary regime: elevated July inflation probabilities, high commodity-price thresholds, and an approximately 82.6% implied probability of no 2026 Fed cuts. The signal is market-derived and should be treated cautiously without contemporaneous component data.",
+  "track": "A",
+  "snapshot_id": "098032ee38814a3c6954cc62dc6d771dd457c9af045b07e8868e46d8646d5c46",
+  "api_usage": {
+    "input_tokens": 26700,
+    "input_tokens_details": {
+      "cache_write_tokens": 26697,
+      "cached_tokens": 0
+    },
+    "output_tokens": 2354,
+    "output_tokens_details": {
+      "reasoning_tokens": 1699
+    },
+    "total_tokens": 29054
+  },
+  "shadow_only": true,
+  "external_search_enabled": false,
+  "prompt_builder": "explicit_no_search_track_a_v2"
+}
